@@ -13,10 +13,11 @@ final class ShortAudioViewController: UIViewController {
     @IBOutlet private weak var recordButton: UIButton!
     
     private var viewModel: ShortAudioViewModel!
+    private var audioURL: URL!
     
-    var isAllowedToRecord: Bool!
-    var recordingSession: AVAudioSession!
-    var audioRecorder: AVAudioRecorder!
+    private var isAllowedToRecord: Bool!
+    private var recordingSession: AVAudioSession!
+    private var audioRecorder: AVAudioRecorder!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,15 +83,9 @@ final class ShortAudioViewController: UIViewController {
              AVNumberOfChannelsKey: 2,
              AVSampleRateKey: 16000.0] as [String: Any]
         
-//        let settings = [
-//            AVFormatIDKey: Int(kAudioFileWAVEType),
-//            AVSampleRateKey: 16000,
-//            AVNumberOfChannelsKey: 2,
-//            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-//        ]
-        
         do {
-            audioRecorder = try AVAudioRecorder(url: getFileURL(), settings: settings)
+            audioURL = getFileURL()
+            audioRecorder = try AVAudioRecorder(url: audioURL, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
             
@@ -106,19 +101,27 @@ final class ShortAudioViewController: UIViewController {
     }
     
     func getFileURL() -> URL {
-        let path = getDocumentsDirectory().appendingPathComponent("recording.wav")
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "dd-MMM-yyyy HH-mm-ss"
+        
+        let date = dateFormatterGet.string(from: Date.currentTimeInMiliseconds().dateFromMilliseconds())
+        let filename = "Recording - " + date + ".wav"
+        let path = getDocumentsDirectory().appendingPathComponent(filename)
         return path as URL
     }
+    
+    
 }
 
 extension ShortAudioViewController: AVAudioRecorderDelegate {
     func finishRecording(success: Bool) {
+        guard audioRecorder != nil else { return }
         audioRecorder.stop()
         audioRecorder = nil
         
         if success {
             recordButton.setTitle("Tap to Re-record", for: .normal)
-            viewModel.transcribeData(getFileURL())
+//            viewModel.transcribeData(audioURL)
         } else {
             recordButton.setTitle("Tap to Record", for: .normal)
             print("Recording failed")

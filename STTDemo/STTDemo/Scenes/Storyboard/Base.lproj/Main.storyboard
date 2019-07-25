@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qk0-ZW-jZ1">
-                                <rect key="frame" x="0.0" y="102.5" width="414" height="601.5"/>
+                                <rect key="frame" x="0.0" y="109.5" width="414" height="594.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWQ-3o-D2k">
@@ -37,8 +37,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESULT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZh-3p-gWa">
-                                <rect key="frame" x="16" y="60" width="382" height="26.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <rect key="frame" x="16" y="60" width="382" height="33.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -90,13 +90,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESULT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0GC-xt-zkT">
-                                <rect key="frame" x="16" y="60" width="382" height="26.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <rect key="frame" x="16" y="60" width="382" height="33.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4U6-Gy-fXB">
-                                <rect key="frame" x="0.0" y="102.5" width="414" height="601.5"/>
+                                <rect key="frame" x="0.0" y="109.5" width="414" height="594.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -126,6 +126,47 @@
             </objects>
             <point key="canvasLocation" x="35" y="750"/>
         </scene>
+        <!--Audio Storage-->
+        <scene sceneID="tSY-UC-nIn">
+            <objects>
+                <viewController storyboardIdentifier="AudioViewController" id="cBM-oh-198" customClass="AudioViewController" customModule="STTDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Pd-BB-mw4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AUDIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVE-iq-JKw">
+                                <rect key="frame" x="16" y="60" width="382" height="33.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MeX-ik-AcM">
+                                <rect key="frame" x="0.0" y="109.5" width="414" height="703.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cVE-iq-JKw" firstAttribute="centerX" secondItem="hB5-40-x8N" secondAttribute="centerX" id="3OP-JH-e8L"/>
+                            <constraint firstItem="MeX-ik-AcM" firstAttribute="top" secondItem="cVE-iq-JKw" secondAttribute="bottom" constant="16" id="Jln-Gx-10Q"/>
+                            <constraint firstItem="cVE-iq-JKw" firstAttribute="leading" secondItem="hB5-40-x8N" secondAttribute="leading" constant="16" id="XCA-gt-LcV"/>
+                            <constraint firstItem="hB5-40-x8N" firstAttribute="trailing" secondItem="MeX-ik-AcM" secondAttribute="trailing" id="hM2-7x-Ndl"/>
+                            <constraint firstItem="cVE-iq-JKw" firstAttribute="top" secondItem="hB5-40-x8N" secondAttribute="top" constant="16" id="hfo-bQ-7eh"/>
+                            <constraint firstItem="hB5-40-x8N" firstAttribute="bottom" secondItem="MeX-ik-AcM" secondAttribute="bottom" id="wE8-J0-8C9"/>
+                            <constraint firstItem="MeX-ik-AcM" firstAttribute="leading" secondItem="hB5-40-x8N" secondAttribute="leading" id="zih-AN-bj2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hB5-40-x8N"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Audio Storage" id="fUw-hF-pad"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="audioTableView" destination="MeX-ik-AcM" id="rGs-yJ-TgK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zvN-IA-pQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="945" y="750"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mCD-ru-7cq">
             <objects>
@@ -139,6 +180,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="aWg-1X-Wm8"/>
                         <segue destination="YR6-Wd-qX8" kind="relationship" relationship="viewControllers" id="ITK-iM-IwV"/>
+                        <segue destination="cBM-oh-198" kind="relationship" relationship="viewControllers" id="HtT-pU-gk5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUe-bB-Gyq" userLabel="First Responder" sceneMemberID="firstResponder"/>

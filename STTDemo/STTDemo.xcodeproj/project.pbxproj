@@ -37,6 +37,15 @@
 		8E2D4D0B22E6E3AB002E414B /* ShortAudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2D4D0922E6E3AB002E414B /* ShortAudioCell.swift */; };
 		8E2D4D0C22E6E3AB002E414B /* ShortAudioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2D4D0A22E6E3AB002E414B /* ShortAudioCell.xib */; };
 		8E3402C322E8302A0007F030 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402C222E8302A0007F030 /* APIKey.swift */; };
+		8E3402C622E842A60007F030 /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402C522E842A60007F030 /* AudioViewController.swift */; };
+		8E3402C922E8430B0007F030 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402C822E8430B0007F030 /* AudioViewModel.swift */; };
+		8E3402CD22E843610007F030 /* AudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402CB22E843610007F030 /* AudioCell.swift */; };
+		8E3402CE22E843610007F030 /* AudioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E3402CC22E843610007F030 /* AudioCell.xib */; };
+		8E3402D122E8502B0007F030 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402D022E8502B0007F030 /* Date+.swift */; };
+		8E3402D322E850470007F030 /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402D222E850470007F030 /* Int+.swift */; };
+		8E3402D522E857A20007F030 /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402D422E857A20007F030 /* RecordedAudio.swift */; };
+		8E3402DB22E8624A0007F030 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402DA22E8624A0007F030 /* AlertMessage.swift */; };
+		8E3402DD22E862660007F030 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402DC22E862660007F030 /* UIApplication+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +83,15 @@
 		8E2D4D0922E6E3AB002E414B /* ShortAudioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortAudioCell.swift; sourceTree = "<group>"; };
 		8E2D4D0A22E6E3AB002E414B /* ShortAudioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShortAudioCell.xib; sourceTree = "<group>"; };
 		8E3402C222E8302A0007F030 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		8E3402C522E842A60007F030 /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
+		8E3402C822E8430B0007F030 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
+		8E3402CB22E843610007F030 /* AudioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
+		8E3402CC22E843610007F030 /* AudioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioCell.xib; sourceTree = "<group>"; };
+		8E3402D022E8502B0007F030 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		8E3402D222E850470007F030 /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
+		8E3402D422E857A20007F030 /* RecordedAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
+		8E3402DA22E8624A0007F030 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
+		8E3402DC22E862660007F030 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		AD5CAD0F0C08B69EDB4AB939 /* Pods_STTDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STTDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -118,7 +136,9 @@
 		8E2D4CB222E6916D002E414B /* STTDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8E3402D922E862260007F030 /* Helper */,
 				8E2D4CDC22E69832002E414B /* App */,
+				8E3402CF22E850200007F030 /* Extension */,
 				8E2D4CF822E6AE9A002E414B /* Constant */,
 				8E2D4CF222E6A3E3002E414B /* Audio */,
 				8E2D4CEF22E6A251002E414B /* Repositories */,
@@ -149,6 +169,7 @@
 				8E2D4CD222E69553002E414B /* Audio.swift */,
 				8E2D4CD422E6956B002E414B /* Config.swift */,
 				8E2D4CD622E69582002E414B /* STTRequest.swift */,
+				8E3402D422E857A20007F030 /* RecordedAudio.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -186,6 +207,7 @@
 		8E2D4CD922E697F6002E414B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				8E3402C422E8426F0007F030 /* AudioStorage */,
 				8E2D4D0222E6D7D9002E414B /* ShortAudio */,
 				8E2D4CDA22E69800002E414B /* Main */,
 				8E2D4CDB22E69805002E414B /* Storyboard */,
@@ -321,6 +343,51 @@
 			path = ShortAudioCell;
 			sourceTree = "<group>";
 		};
+		8E3402C422E8426F0007F030 /* AudioStorage */ = {
+			isa = PBXGroup;
+			children = (
+				8E3402CA22E8434A0007F030 /* AudioCell */,
+				8E3402C722E843000007F030 /* ViewModel */,
+				8E3402C522E842A60007F030 /* AudioViewController.swift */,
+			);
+			path = AudioStorage;
+			sourceTree = "<group>";
+		};
+		8E3402C722E843000007F030 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8E3402C822E8430B0007F030 /* AudioViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8E3402CA22E8434A0007F030 /* AudioCell */ = {
+			isa = PBXGroup;
+			children = (
+				8E3402CB22E843610007F030 /* AudioCell.swift */,
+				8E3402CC22E843610007F030 /* AudioCell.xib */,
+			);
+			path = AudioCell;
+			sourceTree = "<group>";
+		};
+		8E3402CF22E850200007F030 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8E3402D022E8502B0007F030 /* Date+.swift */,
+				8E3402D222E850470007F030 /* Int+.swift */,
+				8E3402DC22E862660007F030 /* UIApplication+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		8E3402D922E862260007F030 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8E3402DA22E8624A0007F030 /* AlertMessage.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		B5C6A7152DBCA8DB6D8D7D17 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E2D4CBE22E6916E002E414B /* LaunchScreen.storyboard in Resources */,
+				8E3402CE22E843610007F030 /* AudioCell.xib in Resources */,
 				8E2D4CBB22E6916E002E414B /* Assets.xcassets in Resources */,
 				8E2D4CF422E6A3F7002E414B /* chunk005.wav in Resources */,
 				8E2D4CB922E6916D002E414B /* Main.storyboard in Resources */,
@@ -450,20 +518,28 @@
 			files = (
 				8E2D4CDE22E69918002E414B /* APIUrl.swift in Sources */,
 				8E2D4CF122E6A266002E414B /* STTRepository.swift in Sources */,
+				8E3402C922E8430B0007F030 /* AudioViewModel.swift in Sources */,
 				8E3402C322E8302A0007F030 /* APIKey.swift in Sources */,
 				8E2D4CB622E6916D002E414B /* MainViewController.swift in Sources */,
 				8E2D4CCB22E69404002E414B /* APIService.swift in Sources */,
+				8E3402C622E842A60007F030 /* AudioViewController.swift in Sources */,
 				8E2D4CCD22E694B4002E414B /* Results.swift in Sources */,
 				8E2D4CEA22E6A034002E414B /* CustomRequestAdapter.swift in Sources */,
+				8E3402D122E8502B0007F030 /* Date+.swift in Sources */,
 				8E2D4CE822E6A01A002E414B /* BaseResult.swift in Sources */,
+				8E3402CD22E843610007F030 /* AudioCell.swift in Sources */,
 				8E2D4CFC22E6B049002E414B /* Languages.swift in Sources */,
 				8E2D4CCF22E694D1002E414B /* Alternatives.swift in Sources */,
 				8E2D4D0022E6B82C002E414B /* TableCell.swift in Sources */,
 				8E2D4CD122E694FD002E414B /* STTResponse.swift in Sources */,
+				8E3402DB22E8624A0007F030 /* AlertMessage.swift in Sources */,
+				8E3402D522E857A20007F030 /* RecordedAudio.swift in Sources */,
 				8E2D4CE422E69A07002E414B /* BaseRequest.swift in Sources */,
 				8E2D4CD522E6956B002E414B /* Config.swift in Sources */,
 				8E2D4D0622E6E0C5002E414B /* ShortAudioViewModel.swift in Sources */,
+				8E3402D322E850470007F030 /* Int+.swift in Sources */,
 				8E2D4CD722E69582002E414B /* STTRequest.swift in Sources */,
+				8E3402DD22E862660007F030 /* UIApplication+.swift in Sources */,
 				8E2D4CE622E69B21002E414B /* SpeechToTextRequest.swift in Sources */,
 				8E2D4CB422E6916D002E414B /* AppDelegate.swift in Sources */,
 				8E2D4CD322E69553002E414B /* Audio.swift in Sources */,
