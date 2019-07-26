@@ -6,62 +6,50 @@
 //  Copyright © 2019 nguyen.duc.huyb. All rights reserved.
 //
 
+import AVFoundation
+import googleapis
+
 final class MainViewModel: NSObject{
-    private let repoRepository = STTRepositoryImpl(api: APIService.shared)
-    private var results: [Alternatives] = [] {
+    private var transcripts: [String] = [] {
         didSet {
-            didChanged?()
+            didChanged?(nil)
         }
     }
     
-    var didChanged: (() -> Void)?
-    var apiIsCalled: Bool = false
+    private let sampleRate = 16000
+    private var audioData: NSMutableData!
+    var finished: Bool = false
+    
+    var didChanged: ((String?) -> Void)?
+    var deselectedButton: (() -> Void)?
     
     override init() {
         super.init()
+        transcripts.removeAll()
+        AudioController.sharedInstance.delegate = self
     }
     
-    func soundFilePath() -> URL? {
-        let folderURL = URL(fileURLWithPath: Bundle.main.resourcePath!)
+    func startAudio() {
+        let audioSession = AVAudioSession.sharedInstance()
         do {
-            let audioPath = try FileManager.default.contentsOfDirectory(at: folderURL, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-            
-            for audio in audioPath {
-                let myAudio = audio.absoluteString // Get song's url
-                if myAudio.contains(".wav") {
-                    return audio
-                }
-            }
+            try audioSession.setCategory(AVAudioSession.Category.record)
         } catch {
             print(error.localizedDescription)
         }
-        return nil
+        
+        audioData = NSMutableData()
+        let status = AudioController.sharedInstance.prepare(specifiedSampleRate: sampleRate)
+        if status != noErr {
+            
+        }
+        SpeechRecognitionService.sharedInstance.sampleRate = sampleRate
+        _ = AudioController.sharedInstance.start()
     }
     
-    func transcribeData() {
-        guard !apiIsCalled else { return }
-        guard let soundPath = soundFilePath() else { return }
-        do {
-            let audioData = try Data(contentsOf: soundPath)
-            apiIsCalled = true
-            repoRepository.transcribeAudio(audioData: audioData, languagueCode: Languages.Japanese.getLangCode()) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let response):
-                    guard let res = response?.results?.first?.alternatives else { return }
-                    self.results = res.sorted {
-                        $0.confidence! > $1.confidence!
-                    }
-                     print(self.results)
-                case .failure(let error):
-                    print(error?.errorMessage ?? "")
-                }
-                self.apiIsCalled = false
-            }
-        } catch let error {
-            print("ERROR: ", error.localizedDescription)
-            apiIsCalled = false
-        }
+    func stopAudio() {
+        _ = AudioController.sharedInstance.stop()
+        SpeechRecognitionService.sharedInstance.stopStreaming()
+        print("RECORDING STOP")
     }
 }
 
@@ -73,13 +61,61 @@ extension MainViewModel: UITableViewDelegate {
 
 extension MainViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
+        return transcripts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TableCell = tableView.dequeueReusableCell(for: indexPath)
-        guard let transcript = results[indexPath.row].transcript else { return UITableViewCell() }
+        let transcript = transcripts[indexPath.row]
         cell.configCell(transcript)
         return cell
+    }
+}
+
+extension MainViewModel: AudioControllerDelegate {
+    func processSampleData(_ data: Data) -> Void {
+        audioData.append(data)
+        // We recommend sending samples in 100ms chunks
+        let chunkSize : Int /* bytes/chunk */ = Int(0.1 /* seconds/chunk */
+            * Double(sampleRate) /* samples/second */
+            * 2 /* bytes/sample */);
+
+        if (audioData.length > chunkSize) {
+            SpeechRecognitionService.sharedInstance.streamAudioData(audioData) { [weak self] (response, error) in
+                guard let self = self else {
+                    return
+                }
+
+                if let error = error {
+                    self.didChanged?(error.localizedDescription)
+                    self.deselectedButton?()
+                } else if let response = response {
+                    self.finished = false
+                    print(response)
+                    for result in response.resultsArray! {
+                        if let result = result as? StreamingRecognitionResult {
+                            if result.isFinal {
+                                self.finished = true
+                                print(result.alternativesArray)
+
+                                if let res = result.alternativesArray as? [SpeechRecognitionAlternative] {
+                                    let alternative =  res.max(by: { (a, b) -> Bool in
+                                        a.confidence < b.confidence
+                                    })
+
+                                    self.transcripts.append(alternative?.transcript ?? "")
+                                }
+                            }
+                        }
+                    }
+
+                    if self.finished {
+//                        self.stopAudio()
+                        self.startAudio()
+                    }
+                }
+            }
+            self.audioData = NSMutableData()
+        }
     }
 }

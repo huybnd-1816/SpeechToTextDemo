@@ -8,9 +8,11 @@
 
 
 final class MainViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var translateButton: UIButton!
     
     private var viewModel: MainViewModel!
+    var isRecording: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +28,31 @@ final class MainViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.register(UINib(nibName: "TableCell", bundle: nil), forCellReuseIdentifier: "TableCell")
         
-        viewModel.didChanged = { [weak self] in
+        viewModel.didChanged = { [weak self] errorMessage in
             guard let self = self else { return }
-            self.tableView.reloadData()
+            if let errorMessage = errorMessage {
+                self.showAlert(title: "Error", message: errorMessage)
+                print(errorMessage)
+            } else {
+                self.tableView.reloadData()
+            }
+        }
+        
+        viewModel.deselectedButton = { [weak self] in
+            guard let self = self else { return }
+            self.translateButton.setTitle("Start To Translate", for: .normal)
         }
     }
     
     @IBAction func handleTranscribeButtonTapped(_ sender: Any) {
-        viewModel.transcribeData()
+        if !isRecording {
+            translateButton.setTitle("Translating...", for: .normal)
+            viewModel.startAudio()
+        } else {
+            translateButton.setTitle("Start To Translate", for: .normal)
+            viewModel.stopAudio()
+        }
+        isRecording = !isRecording
     }
-    
 }
 

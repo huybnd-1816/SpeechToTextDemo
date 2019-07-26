@@ -6,6 +6,7 @@ target 'STTDemo' do
   use_frameworks!
   pod 'Alamofire', '~> 4.8'
   pod 'Reusable'
+  pod 'googleapis', :path => '.'
   # Pods for STTDemo
 
 end
