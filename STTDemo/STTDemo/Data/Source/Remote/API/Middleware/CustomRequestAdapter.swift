@@ -13,7 +13,7 @@ final class CustomRequestAdapter: RequestAdapter {
     
     func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         var urlRequest = urlRequest
-//        urlRequest.setValue(APIKey.apiKey, forHTTPHeaderField: "X-Goog-Api-Key")
+        urlRequest.setValue(APIKey.apiKey, forHTTPHeaderField: "X-Goog-Api-Key")
         urlRequest.setValue(Bundle.main.bundleIdentifier, forHTTPHeaderField: "X-Ios-Bundle-Identifier")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         return urlRequest

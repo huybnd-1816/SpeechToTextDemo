@@ -13,6 +13,7 @@ final class MainViewModel: NSObject{
     private var transcripts: [String] = [] {
         didSet {
             didChanged?(nil)
+            
         }
     }
     
@@ -87,16 +88,18 @@ extension MainViewModel: AudioControllerDelegate {
                 }
 
                 if let error = error {
-                    self.didChanged?(error.localizedDescription)
+                    self.didChanged?(error.localizedFailureReason)
                     self.deselectedButton?()
+                    self.stopAudio()
                 } else if let response = response {
                     self.finished = false
                     print(response)
+                    
                     for result in response.resultsArray! {
                         if let result = result as? StreamingRecognitionResult {
                             if result.isFinal {
                                 self.finished = true
-                                print(result.alternativesArray)
+//                                print(result.alternativesArray)
 
                                 if let res = result.alternativesArray as? [SpeechRecognitionAlternative] {
                                     let alternative =  res.max(by: { (a, b) -> Bool in
@@ -110,7 +113,7 @@ extension MainViewModel: AudioControllerDelegate {
                     }
 
                     if self.finished {
-//                        self.stopAudio()
+                        self.stopAudio()
                         self.startAudio()
                     }
                 }

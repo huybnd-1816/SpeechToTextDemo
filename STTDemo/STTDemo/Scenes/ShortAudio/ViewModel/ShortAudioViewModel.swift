@@ -28,7 +28,7 @@ final class ShortAudioViewModel: NSObject {
         do {
             let audioData = try Data(contentsOf: audioPath)
             apiIsCalled = true
-            repoRepository.transcribeAudio(audioData: audioData, languagueCode: Languages.Vietnamese.getLangCode()) { [weak self] result in
+            repoRepository.transcribeShortAudio(audioData: audioData, languagueCode: Languages.Vietnamese.getLangCode()) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let response):

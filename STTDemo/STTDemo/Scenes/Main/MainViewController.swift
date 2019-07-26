@@ -35,6 +35,12 @@ final class MainViewController: UIViewController {
                 print(errorMessage)
             } else {
                 self.tableView.reloadData()
+                
+                // Scroll To Bottom
+                let indexPath = IndexPath(
+                    row: self.tableView.numberOfRows(inSection:  self.tableView.numberOfSections - 1) - 1,
+                    section: self.tableView.numberOfSections - 1)
+                self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
             }
         }
         
