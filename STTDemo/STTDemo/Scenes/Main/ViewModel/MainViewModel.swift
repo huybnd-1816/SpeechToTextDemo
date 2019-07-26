@@ -67,7 +67,7 @@ final class MainViewModel: NSObject{
 
 extension MainViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 64
+        return UITableView.automaticDimension
     }
 }
 
