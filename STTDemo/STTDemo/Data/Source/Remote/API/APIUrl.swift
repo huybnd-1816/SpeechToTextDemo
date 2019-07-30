@@ -14,4 +14,5 @@ enum Urls {
 enum UrlTypes {
     static let recognize = "speech:recognize"
     static let longRunningRecognize = "speech:longrunningrecognize" //longer than 1 minute
+    static let getAudioTransciption = "operations/"
 }

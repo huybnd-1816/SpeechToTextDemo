@@ -1,32 +1,32 @@
 //
-//  SpeechToTextRequest.swift
+//  STTLongAudioRequest.swift
 //  STTDemo
 //
-//  Created by nguyen.duc.huyb on 7/23/19.
+//  Created by nguyen.duc.huyb on 7/26/19.
 //  Copyright © 2019 nguyen.duc.huyb. All rights reserved.
 //
 
 import Alamofire
 
-final class SpeechToTextRequest: BaseRequest {
+final class STTLongAudioRequest: BaseRequest {
     
-    required init(data: Data, languageCode: String) {
+    required init(uri: String, languageCode: String) {
         let config: [String: Any] = ["encoding": "LINEAR16",
                                      "languageCode": languageCode,
-                                     "enableSpeakerDiarization": true,
                                      "enableAutomaticPunctuation": true,
                                      "maxAlternatives": 30,
                                      "sampleRateHertz": 16000,
                                      "enableWordTimeOffsets": false,
                                      "audioChannelCount": 2,
+                                     "profanityFilter": true,
                                      "enableSeparateRecognitionPerChannel": true,
                                      "model": "default"]
-        let audio = ["content": data.base64EncodedString()]
+        let audio = ["uri": uri]
         let parameters: [String: Any]  = [
             "audio": audio,
             "config": config
         ]
         
-        super.init(url: Urls.basePath + UrlTypes.recognize + "?key=\(APIKey.apiKey)", requestType: .post, parameters: parameters)
+        super.init(url: Urls.basePath + UrlTypes.longRunningRecognize + "?key=\(APIKey.apiKey)", requestType: .post, parameters: parameters)
     }
 }

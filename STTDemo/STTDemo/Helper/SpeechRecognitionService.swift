@@ -46,14 +46,15 @@ final class SpeechRecognitionService {
             let recognitionConfig = RecognitionConfig()
             recognitionConfig.encoding = .linear16
             recognitionConfig.sampleRateHertz = Int32(sampleRate)
-            recognitionConfig.languageCode = Languages.Vietnamese.getLangCode()
+            recognitionConfig.languageCode = Languages.English.getLangCode()
             recognitionConfig.maxAlternatives = 30
             recognitionConfig.enableWordTimeOffsets = true
+            recognitionConfig.profanityFilter = true
             
             let streamingRecognitionConfig = StreamingRecognitionConfig()
             streamingRecognitionConfig.config = recognitionConfig
             streamingRecognitionConfig.singleUtterance = false
-            streamingRecognitionConfig.interimResults = true
+            streamingRecognitionConfig.interimResults = false // if set 'true', it shows temp results with "is_final" flag is false
             
             let streamingRecognizeRequest = StreamingRecognizeRequest()
             streamingRecognizeRequest.streamingConfig = streamingRecognitionConfig

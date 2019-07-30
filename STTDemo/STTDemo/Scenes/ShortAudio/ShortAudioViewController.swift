@@ -26,6 +26,7 @@ final class ShortAudioViewController: UIViewController {
     }
     
     private func config() {
+        navigationItem.title = "Short Audio"
         viewModel = ShortAudioViewModel()
         shortAudioTableView.delegate = viewModel
         shortAudioTableView.dataSource = viewModel
@@ -121,7 +122,7 @@ extension ShortAudioViewController: AVAudioRecorderDelegate {
         
         if success {
             recordButton.setTitle("Tap to Re-record", for: .normal)
-//            viewModel.transcribeData(audioURL)
+            viewModel.transcribeData(audioURL)
         } else {
             recordButton.setTitle("Tap to Record", for: .normal)
             print("Recording failed")
@@ -133,4 +134,8 @@ extension ShortAudioViewController: AVAudioRecorderDelegate {
             finishRecording(success: false)
         }
     }
+}
+
+extension ShortAudioViewController: StoryboardSceneBased {
+    static var sceneStoryboard = Storyboards.main
 }

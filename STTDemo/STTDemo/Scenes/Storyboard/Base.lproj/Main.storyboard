@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--SampleAudio-->
+        <!--Streaming Audio-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" customModule="STTDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,7 +61,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="SampleAudio" id="uJE-tU-2ud"/>
+                    <tabBarItem key="tabBarItem" title="Streaming Audio" id="uJE-tU-2ud"/>
                     <connections>
                         <outlet property="tableView" destination="qk0-ZW-jZ1" id="cap-Vz-98x"/>
                         <outlet property="translateButton" destination="WWQ-3o-D2k" id="mla-cR-BO9"/>
@@ -71,7 +71,7 @@
             </objects>
             <point key="canvasLocation" x="944.92753623188412" y="18.75"/>
         </scene>
-        <!--ShortAudio-->
+        <!--Short Audio View Controller-->
         <scene sceneID="avE-yA-s4H">
             <objects>
                 <viewController storyboardIdentifier="ShortAudioViewController" id="YR6-Wd-qX8" customClass="ShortAudioViewController" customModule="STTDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -119,7 +119,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qwR-Ug-SnP"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ShortAudio" id="Mkx-gM-1jQ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="recordButton" destination="XOf-wu-oM7" id="X4A-bG-MKi"/>
@@ -128,7 +127,73 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WMU-WQ-ZMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="35" y="750"/>
+            <point key="canvasLocation" x="-846" y="1438"/>
+        </scene>
+        <!--Long Audio View Controller-->
+        <scene sceneID="bTg-mA-vrR">
+            <objects>
+                <viewController storyboardIdentifier="LongAudioViewController" id="ozt-88-otC" customClass="LongAudioViewController" customModule="STTDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vRc-QK-5iY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m8j-xa-MxK">
+                                <rect key="frame" x="64" y="785" width="286" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.1843137255" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="GyR-eZ-N8M"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title="Translate Audio">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleTranslateAudioButtonTapped:" destination="ozt-88-otC" eventType="touchUpInside" id="nqE-3X-6zb"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Td6-lA-fbc">
+                                <rect key="frame" x="16" y="109.5" width="382" height="643.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESULT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5x-hB-Azp">
+                                <rect key="frame" x="16" y="60" width="382" height="33.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m8j-xa-MxK" firstAttribute="centerX" secondItem="FRH-HI-k0z" secondAttribute="centerX" id="3Jb-ji-dge"/>
+                            <constraint firstItem="f5x-hB-Azp" firstAttribute="centerX" secondItem="FRH-HI-k0z" secondAttribute="centerX" id="4vj-OE-OG7"/>
+                            <constraint firstItem="f5x-hB-Azp" firstAttribute="leading" secondItem="FRH-HI-k0z" secondAttribute="leading" constant="16" id="Edo-kj-3jq"/>
+                            <constraint firstItem="FRH-HI-k0z" firstAttribute="bottom" secondItem="m8j-xa-MxK" secondAttribute="bottom" constant="32" id="MmO-pT-Rfi"/>
+                            <constraint firstItem="m8j-xa-MxK" firstAttribute="leading" secondItem="FRH-HI-k0z" secondAttribute="leading" constant="64" id="RVm-Vb-Y4u"/>
+                            <constraint firstItem="Td6-lA-fbc" firstAttribute="leading" secondItem="FRH-HI-k0z" secondAttribute="leading" constant="16" id="XbC-3J-7Fk"/>
+                            <constraint firstItem="Td6-lA-fbc" firstAttribute="top" secondItem="f5x-hB-Azp" secondAttribute="bottom" constant="16" id="dbU-oI-CTb"/>
+                            <constraint firstItem="FRH-HI-k0z" firstAttribute="trailing" secondItem="Td6-lA-fbc" secondAttribute="trailing" constant="16" id="dwb-rO-VQI"/>
+                            <constraint firstItem="f5x-hB-Azp" firstAttribute="top" secondItem="FRH-HI-k0z" secondAttribute="top" constant="16" id="e9a-fd-2Lf"/>
+                            <constraint firstItem="m8j-xa-MxK" firstAttribute="top" secondItem="Td6-lA-fbc" secondAttribute="bottom" constant="32" id="hZ5-cB-IRp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FRH-HI-k0z"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="twm-lx-ZdE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="35" y="1438"/>
         </scene>
         <!--Audio Storage-->
         <scene sceneID="tSY-UC-nIn">
@@ -169,7 +234,64 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvN-IA-pQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="750"/>
+            <point key="canvasLocation" x="1855.072463768116" y="750"/>
+        </scene>
+        <!--Category View Controller-->
+        <scene sceneID="UT0-lq-v2j">
+            <objects>
+                <viewController storyboardIdentifier="CategoryViewController" id="Q17-JT-9xS" customClass="CategoryViewController" customModule="STTDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3co-2D-Lci">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWb-mE-lcx">
+                                <rect key="frame" x="64" y="563" width="286" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.1843137255" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="z3T-xe-GKd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title="Translate Long Audio">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleTranslateLongAudioButtonTapped:" destination="Q17-JT-9xS" eventType="touchUpInside" id="dmN-by-miK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rq0-xq-T4q">
+                                <rect key="frame" x="64" y="428" width="286" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.1843137255" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="PXb-eP-ccU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title="Translate Short Audio">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleTranslateShortAudioButtonTapped:" destination="Q17-JT-9xS" eventType="touchUpInside" id="i8R-9L-gU8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KWb-mE-lcx" firstAttribute="leading" secondItem="8fj-iU-I3e" secondAttribute="leading" constant="64" id="892-BU-rdh"/>
+                            <constraint firstItem="KWb-mE-lcx" firstAttribute="top" secondItem="Rq0-xq-T4q" secondAttribute="bottom" constant="90" id="9IC-u3-HHD"/>
+                            <constraint firstItem="Rq0-xq-T4q" firstAttribute="leading" secondItem="8fj-iU-I3e" secondAttribute="leading" constant="64" id="Q6f-Bd-tVe"/>
+                            <constraint firstItem="Rq0-xq-T4q" firstAttribute="centerY" secondItem="8fj-iU-I3e" secondAttribute="centerY" id="Vzo-V5-91b"/>
+                            <constraint firstItem="Rq0-xq-T4q" firstAttribute="centerX" secondItem="8fj-iU-I3e" secondAttribute="centerX" id="xI6-Gy-27q"/>
+                            <constraint firstItem="KWb-mE-lcx" firstAttribute="centerX" secondItem="8fj-iU-I3e" secondAttribute="centerX" id="zh8-Og-peg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8fj-iU-I3e"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5zz-Xr-ZTR">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Ads-PO-Du1"/>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ztj-yG-DUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944.92753623188412" y="750"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mCD-ru-7cq">
@@ -183,7 +305,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="aWg-1X-Wm8"/>
-                        <segue destination="YR6-Wd-qX8" kind="relationship" relationship="viewControllers" id="ITK-iM-IwV"/>
+                        <segue destination="fqV-JN-nFK" kind="relationship" relationship="viewControllers" id="D9k-ok-5zT"/>
                         <segue destination="cBM-oh-198" kind="relationship" relationship="viewControllers" id="HtT-pU-gk5"/>
                     </connections>
                 </tabBarController>
@@ -191,5 +313,25 @@
             </objects>
             <point key="canvasLocation" x="34.782608695652179" y="18.75"/>
         </scene>
+        <!--Category-->
+        <scene sceneID="Au2-xZ-Pqa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fqV-JN-nFK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Category" id="3Rc-hm-nNk"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wLv-cu-ZTT">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Q17-JT-9xS" kind="relationship" relationship="rootViewController" id="MxM-1Z-hIY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pfn-4J-nPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34.782608695652179" y="750"/>
+        </scene>
     </scenes>
+    <color key="tintColor" red="1" green="0.1843137255" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>
