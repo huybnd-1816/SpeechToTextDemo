@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B265DEFCBFDF17EEE267C06 /* Pods_STTDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5CAD0F0C08B69EDB4AB939 /* Pods_STTDemo.framework */; };
+		569CE7FB11AD8B4CFEAA1CF0 /* Pods_STTDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4CBF12D4E51CEEE37DE480 /* Pods_STTDemo.framework */; };
 		8E2D4CB422E6916D002E414B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2D4CB322E6916D002E414B /* AppDelegate.swift */; };
 		8E2D4CB622E6916D002E414B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2D4CB522E6916D002E414B /* MainViewController.swift */; };
 		8E2D4CB922E6916D002E414B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E2D4CB722E6916D002E414B /* Main.storyboard */; };
@@ -46,7 +46,6 @@
 		8E3402D522E857A20007F030 /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402D422E857A20007F030 /* RecordedAudio.swift */; };
 		8E3402DB22E8624A0007F030 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402DA22E8624A0007F030 /* AlertMessage.swift */; };
 		8E3402DD22E862660007F030 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402DC22E862660007F030 /* UIApplication+.swift */; };
-		8E54AFAD22E9949C00001117 /* google in Resources */ = {isa = PBXBuildFile; fileRef = 8E54AFAB22E9949C00001117 /* google */; };
 		8E54AFB022E995CD00001117 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E54AFAF22E995CD00001117 /* AudioController.swift */; };
 		8E54AFB222E9962400001117 /* SpeechRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E54AFB122E9962400001117 /* SpeechRecognitionService.swift */; };
 		8E54AFB422E9A68E00001117 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E54AFB322E9A68E00001117 /* UIViewController+.swift */; };
@@ -59,11 +58,23 @@
 		8E54AFE422EADD0800001117 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E54AFE322EADD0800001117 /* Response.swift */; };
 		8E54AFE622EADD3400001117 /* STTLongAudioResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E54AFE522EADD3400001117 /* STTLongAudioResponse.swift */; };
 		8E54AFE822EADED400001117 /* GetAudioTransciptionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E54AFE722EADED400001117 /* GetAudioTransciptionRequest.swift */; };
+		8EC9DCCF22F0321A00C4FB8B /* TranslationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCCE22F0321A00C4FB8B /* TranslationRequest.swift */; };
+		8EC9DCD122F0338100C4FB8B /* TranslationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCD022F0338100C4FB8B /* TranslationRepository.swift */; };
+		8EC9DCD322F0340500C4FB8B /* TranslationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCD222F0340500C4FB8B /* TranslationResponse.swift */; };
+		8EC9DCD522F035B200C4FB8B /* TranslationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCD422F035B200C4FB8B /* TranslationData.swift */; };
+		8EC9DCD722F035DE00C4FB8B /* Translations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCD622F035DE00C4FB8B /* Translations.swift */; };
+		8EC9DCE122F055BA00C4FB8B /* google in Resources */ = {isa = PBXBuildFile; fileRef = 8EC9DCE022F055BA00C4FB8B /* google */; };
+		8EC9DCE322F0572E00C4FB8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EC9DCE222F0572E00C4FB8B /* GoogleService-Info.plist */; };
+		8EC9DCE522F1649700C4FB8B /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCE422F1649700C4FB8B /* FirebaseService.swift */; };
+		8EC9DCE722F1654900C4FB8B /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCE622F1654900C4FB8B /* MessageModel.swift */; };
+		8EC9DCE922F167A800C4FB8B /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCE822F167A800C4FB8B /* String+.swift */; };
+		8EC9DCED22F169F800C4FB8B /* AudioTranscriptVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCEC22F169F800C4FB8B /* AudioTranscriptVC.swift */; };
+		8EC9DCF022F16A4F00C4FB8B /* AudioTranscriptVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCEF22F16A4F00C4FB8B /* AudioTranscriptVM.swift */; };
+		8EC9DCF422F16C2F00C4FB8B /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCF222F16C2F00C4FB8B /* MessageCell.swift */; };
+		8EC9DCF522F16C2F00C4FB8B /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EC9DCF322F16C2F00C4FB8B /* MessageCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		14CBC6C92B137B428564868B /* Pods-STTDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STTDemo.debug.xcconfig"; path = "Target Support Files/Pods-STTDemo/Pods-STTDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		3D0DD2F6A7FE27660604E943 /* Pods-STTDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STTDemo.release.xcconfig"; path = "Target Support Files/Pods-STTDemo/Pods-STTDemo.release.xcconfig"; sourceTree = "<group>"; };
 		8E2D4CB022E6916D002E414B /* STTDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STTDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E2D4CB322E6916D002E414B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E2D4CB522E6916D002E414B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -105,7 +116,6 @@
 		8E3402D422E857A20007F030 /* RecordedAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
 		8E3402DA22E8624A0007F030 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
 		8E3402DC22E862660007F030 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
-		8E54AFAB22E9949C00001117 /* google */ = {isa = PBXFileReference; lastKnownFileType = folder; path = google; sourceTree = "<group>"; };
 		8E54AFAF22E995CD00001117 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		8E54AFB122E9962400001117 /* SpeechRecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionService.swift; sourceTree = "<group>"; };
 		8E54AFB322E9A68E00001117 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
@@ -118,7 +128,23 @@
 		8E54AFE322EADD0800001117 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		8E54AFE522EADD3400001117 /* STTLongAudioResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTLongAudioResponse.swift; sourceTree = "<group>"; };
 		8E54AFE722EADED400001117 /* GetAudioTransciptionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAudioTransciptionRequest.swift; sourceTree = "<group>"; };
-		AD5CAD0F0C08B69EDB4AB939 /* Pods_STTDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STTDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EC9DCCE22F0321A00C4FB8B /* TranslationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationRequest.swift; sourceTree = "<group>"; };
+		8EC9DCD022F0338100C4FB8B /* TranslationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationRepository.swift; sourceTree = "<group>"; };
+		8EC9DCD222F0340500C4FB8B /* TranslationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationResponse.swift; sourceTree = "<group>"; };
+		8EC9DCD422F035B200C4FB8B /* TranslationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationData.swift; sourceTree = "<group>"; };
+		8EC9DCD622F035DE00C4FB8B /* Translations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translations.swift; sourceTree = "<group>"; };
+		8EC9DCE022F055BA00C4FB8B /* google */ = {isa = PBXFileReference; lastKnownFileType = folder; path = google; sourceTree = "<group>"; };
+		8EC9DCE222F0572E00C4FB8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8EC9DCE422F1649700C4FB8B /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		8EC9DCE622F1654900C4FB8B /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		8EC9DCE822F167A800C4FB8B /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		8EC9DCEC22F169F800C4FB8B /* AudioTranscriptVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTranscriptVC.swift; sourceTree = "<group>"; };
+		8EC9DCEF22F16A4F00C4FB8B /* AudioTranscriptVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTranscriptVM.swift; sourceTree = "<group>"; };
+		8EC9DCF222F16C2F00C4FB8B /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		8EC9DCF322F16C2F00C4FB8B /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		CCEE279DAC157539F9D8294D /* Pods-STTDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STTDemo.release.xcconfig"; path = "Target Support Files/Pods-STTDemo/Pods-STTDemo.release.xcconfig"; sourceTree = "<group>"; };
+		DD4CBF12D4E51CEEE37DE480 /* Pods_STTDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STTDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2BBEEC872C58B5EF1487EAF /* Pods-STTDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STTDemo.debug.xcconfig"; path = "Target Support Files/Pods-STTDemo/Pods-STTDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,29 +152,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B265DEFCBFDF17EEE267C06 /* Pods_STTDemo.framework in Frameworks */,
+				569CE7FB11AD8B4CFEAA1CF0 /* Pods_STTDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05AC120FAA2438F704ED5E97 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AD5CAD0F0C08B69EDB4AB939 /* Pods_STTDemo.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		8E2D4CA722E6916D002E414B = {
 			isa = PBXGroup;
 			children = (
-				8E54AFAB22E9949C00001117 /* google */,
+				8EC9DCE022F055BA00C4FB8B /* google */,
 				8E2D4CB222E6916D002E414B /* STTDemo */,
 				8E2D4CB122E6916D002E414B /* Products */,
 				B5C6A7152DBCA8DB6D8D7D17 /* Pods */,
-				05AC120FAA2438F704ED5E97 /* Frameworks */,
+				9F27A2E7C49412EAA6CD5AAB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,6 +193,7 @@
 				8E2D4CBC22E6916E002E414B /* LaunchScreen.storyboard */,
 				8E2D4CBF22E6916E002E414B /* Info.plist */,
 				8E2D4CD822E69797002E414B /* Bridging-Header.h */,
+				8EC9DCE222F0572E00C4FB8B /* GoogleService-Info.plist */,
 			);
 			path = STTDemo;
 			sourceTree = "<group>";
@@ -199,6 +218,9 @@
 				8E3402D422E857A20007F030 /* RecordedAudio.swift */,
 				8E54AFE122EADCDC00001117 /* Metadata.swift */,
 				8E54AFE322EADD0800001117 /* Response.swift */,
+				8EC9DCD422F035B200C4FB8B /* TranslationData.swift */,
+				8EC9DCD622F035DE00C4FB8B /* Translations.swift */,
+				8EC9DCE622F1654900C4FB8B /* MessageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -236,6 +258,7 @@
 		8E2D4CD922E697F6002E414B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				8EC9DCEB22F169C800C4FB8B /* AudioTranscipt */,
 				8E54AFD822EAD63200001117 /* LongAudio */,
 				8E54AFD522EAD5E700001117 /* Category */,
 				8E3402C422E8426F0007F030 /* AudioStorage */,
@@ -297,6 +320,7 @@
 				8E2D4CE522E69B21002E414B /* STTShortAudioRequest.swift */,
 				8E54AFDF22EADAAF00001117 /* STTLongAudioRequest.swift */,
 				8E54AFE722EADED400001117 /* GetAudioTransciptionRequest.swift */,
+				8EC9DCCE22F0321A00C4FB8B /* TranslationRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -306,6 +330,7 @@
 			children = (
 				8E2D4CD022E694FD002E414B /* STTResponse.swift */,
 				8E54AFE522EADD3400001117 /* STTLongAudioResponse.swift */,
+				8EC9DCD222F0340500C4FB8B /* TranslationResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -314,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				8E2D4CF022E6A266002E414B /* STTRepository.swift */,
+				8EC9DCD022F0338100C4FB8B /* TranslationRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -408,11 +434,10 @@
 		8E3402CF22E850200007F030 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				8EC9DCEA22F167BB00C4FB8B /* UIExtension */,
 				8E3402D022E8502B0007F030 /* Date+.swift */,
 				8E3402D222E850470007F030 /* Int+.swift */,
-				8E3402DC22E862660007F030 /* UIApplication+.swift */,
-				8E54AFB322E9A68E00001117 /* UIViewController+.swift */,
-				8E54AFDD22EAD72900001117 /* UIView+.swift */,
+				8EC9DCE822F167A800C4FB8B /* String+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -423,6 +448,7 @@
 				8E3402DA22E8624A0007F030 /* AlertMessage.swift */,
 				8E54AFAF22E995CD00001117 /* AudioController.swift */,
 				8E54AFB122E9962400001117 /* SpeechRecognitionService.swift */,
+				8EC9DCE422F1649700C4FB8B /* FirebaseService.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -443,11 +469,56 @@
 			path = LongAudio;
 			sourceTree = "<group>";
 		};
+		8EC9DCEA22F167BB00C4FB8B /* UIExtension */ = {
+			isa = PBXGroup;
+			children = (
+				8E3402DC22E862660007F030 /* UIApplication+.swift */,
+				8E54AFB322E9A68E00001117 /* UIViewController+.swift */,
+				8E54AFDD22EAD72900001117 /* UIView+.swift */,
+			);
+			path = UIExtension;
+			sourceTree = "<group>";
+		};
+		8EC9DCEB22F169C800C4FB8B /* AudioTranscipt */ = {
+			isa = PBXGroup;
+			children = (
+				8EC9DCF122F16C0700C4FB8B /* MessageCell */,
+				8EC9DCEE22F16A3C00C4FB8B /* ViewModel */,
+				8EC9DCEC22F169F800C4FB8B /* AudioTranscriptVC.swift */,
+			);
+			path = AudioTranscipt;
+			sourceTree = "<group>";
+		};
+		8EC9DCEE22F16A3C00C4FB8B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8EC9DCEF22F16A4F00C4FB8B /* AudioTranscriptVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8EC9DCF122F16C0700C4FB8B /* MessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				8EC9DCF222F16C2F00C4FB8B /* MessageCell.swift */,
+				8EC9DCF322F16C2F00C4FB8B /* MessageCell.xib */,
+			);
+			path = MessageCell;
+			sourceTree = "<group>";
+		};
+		9F27A2E7C49412EAA6CD5AAB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DD4CBF12D4E51CEEE37DE480 /* Pods_STTDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B5C6A7152DBCA8DB6D8D7D17 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				14CBC6C92B137B428564868B /* Pods-STTDemo.debug.xcconfig */,
-				3D0DD2F6A7FE27660604E943 /* Pods-STTDemo.release.xcconfig */,
+				E2BBEEC872C58B5EF1487EAF /* Pods-STTDemo.debug.xcconfig */,
+				CCEE279DAC157539F9D8294D /* Pods-STTDemo.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -459,11 +530,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E2D4CC222E6916E002E414B /* Build configuration list for PBXNativeTarget "STTDemo" */;
 			buildPhases = (
-				12D25EE87196316BFE85A32F /* [CP] Check Pods Manifest.lock */,
+				44CDD3343F3357C440B87B39 /* [CP] Check Pods Manifest.lock */,
 				8E2D4CAC22E6916D002E414B /* Sources */,
 				8E2D4CAD22E6916D002E414B /* Frameworks */,
 				8E2D4CAE22E6916D002E414B /* Resources */,
-				3F9E321F9689A0A1EFFC3DF0 /* [CP] Embed Pods Frameworks */,
+				5E7418042F51909E2EB7FDFF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -514,8 +585,10 @@
 			files = (
 				8E2D4CBE22E6916E002E414B /* LaunchScreen.storyboard in Resources */,
 				8E3402CE22E843610007F030 /* AudioCell.xib in Resources */,
+				8EC9DCE322F0572E00C4FB8B /* GoogleService-Info.plist in Resources */,
 				8E2D4CBB22E6916E002E414B /* Assets.xcassets in Resources */,
-				8E54AFAD22E9949C00001117 /* google in Resources */,
+				8EC9DCE122F055BA00C4FB8B /* google in Resources */,
+				8EC9DCF522F16C2F00C4FB8B /* MessageCell.xib in Resources */,
 				8E2D4CF422E6A3F7002E414B /* chunk005.wav in Resources */,
 				8E2D4CB922E6916D002E414B /* Main.storyboard in Resources */,
 				8E2D4D0C22E6E3AB002E414B /* ShortAudioCell.xib in Resources */,
@@ -526,7 +599,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		12D25EE87196316BFE85A32F /* [CP] Check Pods Manifest.lock */ = {
+		44CDD3343F3357C440B87B39 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -548,7 +621,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3F9E321F9689A0A1EFFC3DF0 /* [CP] Embed Pods Frameworks */ = {
+		5E7418042F51909E2EB7FDFF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -576,6 +649,7 @@
 				8E2D4CF122E6A266002E414B /* STTRepository.swift in Sources */,
 				8E54AFE222EADCDC00001117 /* Metadata.swift in Sources */,
 				8E3402C922E8430B0007F030 /* AudioViewModel.swift in Sources */,
+				8EC9DCD322F0340500C4FB8B /* TranslationResponse.swift in Sources */,
 				8E3402C322E8302A0007F030 /* APIKey.swift in Sources */,
 				8E54AFE622EADD3400001117 /* STTLongAudioResponse.swift in Sources */,
 				8E2D4CB622E6916D002E414B /* MainViewController.swift in Sources */,
@@ -589,6 +663,7 @@
 				8E54AFE822EADED400001117 /* GetAudioTransciptionRequest.swift in Sources */,
 				8E3402D122E8502B0007F030 /* Date+.swift in Sources */,
 				8E2D4CE822E6A01A002E414B /* BaseResult.swift in Sources */,
+				8EC9DCE522F1649700C4FB8B /* FirebaseService.swift in Sources */,
 				8E3402CD22E843610007F030 /* AudioCell.swift in Sources */,
 				8E2D4CFC22E6B049002E414B /* Languages.swift in Sources */,
 				8E2D4CCF22E694D1002E414B /* Alternatives.swift in Sources */,
@@ -601,20 +676,29 @@
 				8E54AFE022EADAAF00001117 /* STTLongAudioRequest.swift in Sources */,
 				8E54AFDC22EAD69E00001117 /* Storyboards.swift in Sources */,
 				8E2D4CD522E6956B002E414B /* Config.swift in Sources */,
+				8EC9DCE922F167A800C4FB8B /* String+.swift in Sources */,
 				8E2D4D0622E6E0C5002E414B /* ShortAudioViewModel.swift in Sources */,
+				8EC9DCD722F035DE00C4FB8B /* Translations.swift in Sources */,
 				8E3402D322E850470007F030 /* Int+.swift in Sources */,
 				8E2D4CD722E69582002E414B /* STTRequest.swift in Sources */,
 				8E3402DD22E862660007F030 /* UIApplication+.swift in Sources */,
 				8E2D4CE622E69B21002E414B /* STTShortAudioRequest.swift in Sources */,
+				8EC9DCD522F035B200C4FB8B /* TranslationData.swift in Sources */,
 				8E54AFE422EADD0800001117 /* Response.swift in Sources */,
+				8EC9DCCF22F0321A00C4FB8B /* TranslationRequest.swift in Sources */,
 				8E2D4CB422E6916D002E414B /* AppDelegate.swift in Sources */,
+				8EC9DCD122F0338100C4FB8B /* TranslationRepository.swift in Sources */,
 				8E2D4CD322E69553002E414B /* Audio.swift in Sources */,
 				8E54AFD722EAD60B00001117 /* CategoryViewController.swift in Sources */,
 				8E2D4D0B22E6E3AB002E414B /* ShortAudioCell.swift in Sources */,
+				8EC9DCF022F16A4F00C4FB8B /* AudioTranscriptVM.swift in Sources */,
+				8EC9DCE722F1654900C4FB8B /* MessageModel.swift in Sources */,
+				8EC9DCED22F169F800C4FB8B /* AudioTranscriptVC.swift in Sources */,
 				8E54AFDE22EAD72900001117 /* UIView+.swift in Sources */,
 				8E2D4CEE22E6A134002E414B /* BaseError.swift in Sources */,
 				8E2D4CF722E6A98B002E414B /* MainViewModel.swift in Sources */,
 				8E2D4D0422E6D7F6002E414B /* ShortAudioViewController.swift in Sources */,
+				8EC9DCF422F16C2F00C4FB8B /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,7 +842,7 @@
 		};
 		8E2D4CC322E6916E002E414B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14CBC6C92B137B428564868B /* Pods-STTDemo.debug.xcconfig */;
+			baseConfigurationReference = E2BBEEC872C58B5EF1487EAF /* Pods-STTDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -779,7 +863,7 @@
 		};
 		8E2D4CC422E6916E002E414B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D0DD2F6A7FE27660604E943 /* Pods-STTDemo.release.xcconfig */;
+			baseConfigurationReference = CCEE279DAC157539F9D8294D /* Pods-STTDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

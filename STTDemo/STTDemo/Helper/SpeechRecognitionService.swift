@@ -46,7 +46,7 @@ final class SpeechRecognitionService {
             let recognitionConfig = RecognitionConfig()
             recognitionConfig.encoding = .linear16
             recognitionConfig.sampleRateHertz = Int32(sampleRate)
-            recognitionConfig.languageCode = Languages.English.getLangCode()
+            recognitionConfig.languageCode = STTLanguages.English.getLangCode()
             recognitionConfig.maxAlternatives = 30
             recognitionConfig.enableWordTimeOffsets = true
             recognitionConfig.profanityFilter = true

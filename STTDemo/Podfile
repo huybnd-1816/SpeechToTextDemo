@@ -7,6 +7,9 @@ target 'STTDemo' do
   pod 'Alamofire', '~> 4.8'
   pod 'Reusable'
   pod 'googleapis', :path => '.'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'SwiftyJSON'
   # Pods for STTDemo
 
 end
