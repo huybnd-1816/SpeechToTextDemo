@@ -21,8 +21,9 @@ final class AudioTranscriptVM: NSObject {
         reloadData()
     }
     
-    private func reloadData() {
+    func reloadData() {
         FirebaseService.shared.addObserverRead { messages in
+            guard messages.count > 0 else { return }
             // update data source
             self.messages.append(contentsOf: messages)
         }
