@@ -9,6 +9,7 @@
 
 enum Urls {
     static let basePath = "https://speech.googleapis.com/v1p1beta1/"
+    static let baseTranslationPath = "https://translation.googleapis.com/language/translate/v2/"
 }
 
 enum UrlTypes {

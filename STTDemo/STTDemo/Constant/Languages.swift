@@ -7,7 +7,7 @@
 //
 
 
-enum Languages {
+enum STTLanguages {
     case Japanese, Vietnamese, English
     
     func getLangCode() -> String {
@@ -18,6 +18,21 @@ enum Languages {
             return "vi-VN"
         case .English:
             return "en-US"
+        }
+    }
+}
+
+enum TranslationLanguagues {
+    case Japanese, Vietnamese, English
+    
+    func getLangCode() -> String {
+        switch self {
+        case .Japanese:
+            return "ja"
+        case .Vietnamese:
+            return "vi"
+        case .English:
+            return "en"
         }
     }
 }

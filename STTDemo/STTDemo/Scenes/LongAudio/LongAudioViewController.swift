@@ -19,7 +19,7 @@ final class LongAudioViewController: UIViewController {
     }
     
     private func sendTranslationRequest() {
-        repoRepository.transcribeLongAudio(audioURL: storageLocationURL, languageCode: Languages.Japanese.getLangCode()) { [weak self] result in
+        repoRepository.transcribeLongAudio(audioURL: storageLocationURL, languageCode: STTLanguages.Japanese.getLangCode()) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -33,8 +33,8 @@ final class LongAudioViewController: UIViewController {
     }
     
     private func fetchAudioTranslation(_ nameCode: String) {
-        repoRepository.getAudioTransciption(nameCode: nameCode) { [weak self] result in
-            guard let self = self else { return }
+        repoRepository.getAudioTransciption(nameCode: nameCode) {  result in
+//            guard let self = self else { return }
             
             switch result {
             case .success(let response):

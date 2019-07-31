@@ -13,10 +13,10 @@ final class MainViewModel: NSObject{
     private var transcripts: [String] = [] {
         didSet {
             didChanged?(nil)
-            
         }
     }
     
+    private let translationRepository = TranslationRepositoryImpl(api: APIService.shared)
     private let sampleRate = 16000
     private var audioData: NSMutableData!
     var finished: Bool = false
@@ -51,6 +51,27 @@ final class MainViewModel: NSObject{
         _ = AudioController.sharedInstance.stop()
         SpeechRecognitionService.sharedInstance.stopStreaming()
         print("RECORDING STOP")
+    }
+    
+    private func translatingText(_ inputText: String) {
+        translationRepository.translateText(text: inputText, sourceLangCode: TranslationLanguagues.English.getLangCode(), targetLangCode: TranslationLanguagues.Vietnamese.getLangCode()) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let response):
+                guard let res = response?.translationData?.translations?.first?.translatedText,
+                    res != "" else { return }
+//                self.transcripts.append(res)
+                print("TRANSLATE:", res)
+//                self.writeTextToFireBase(text: res)
+            case .failure(let err):
+                print("ERROR: ", err?.errorMessage ?? "")
+            }
+        }
+    }
+    
+    private func writeTextToFireBase(text: String) {
+        FirebaseService.shared.write(message: text)
     }
 }
 
@@ -107,6 +128,8 @@ extension MainViewModel: AudioControllerDelegate {
                                     })
 
                                     self.transcripts.append(alternative?.transcript ?? "")
+                                    // TRANSLATE SCRIPTS
+                                    self.translatingText(alternative?.transcript ?? "")
                                 }
                             }
                         }
