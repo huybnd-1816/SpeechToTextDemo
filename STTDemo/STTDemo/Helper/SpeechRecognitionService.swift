@@ -22,7 +22,7 @@ final class SpeechRecognitionService {
     
     static let sharedInstance = SpeechRecognitionService()
     
-    func streamAudioData(_ audioData: NSData, completion: @escaping SpeechRecognitionCompletionHandler) {
+    func streamAudioData(_ audioData: NSData, languagueCode: String,  completion: @escaping SpeechRecognitionCompletionHandler) {
         if (!streaming) {
             // if we aren't already streaming, set up a gRPC connection
             client = Speech(host: HOST)
@@ -46,7 +46,7 @@ final class SpeechRecognitionService {
             let recognitionConfig = RecognitionConfig()
             recognitionConfig.encoding = .linear16
             recognitionConfig.sampleRateHertz = Int32(sampleRate)
-            recognitionConfig.languageCode = STTLanguages.English.getLangCode()
+            recognitionConfig.languageCode = languagueCode
             recognitionConfig.maxAlternatives = 30
             recognitionConfig.enableWordTimeOffsets = true
             recognitionConfig.profanityFilter = true

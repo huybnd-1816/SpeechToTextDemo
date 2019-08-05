@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		569CE7FB11AD8B4CFEAA1CF0 /* Pods_STTDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4CBF12D4E51CEEE37DE480 /* Pods_STTDemo.framework */; };
+		8E29CC1F22F7DBFD005BFBEF /* ForeignLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29CC1E22F7DBFD005BFBEF /* ForeignLanguages.swift */; };
 		8E2D4CB422E6916D002E414B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2D4CB322E6916D002E414B /* AppDelegate.swift */; };
 		8E2D4CB622E6916D002E414B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2D4CB522E6916D002E414B /* MainViewController.swift */; };
 		8E2D4CB922E6916D002E414B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E2D4CB722E6916D002E414B /* Main.storyboard */; };
@@ -46,6 +47,10 @@
 		8E3402D522E857A20007F030 /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402D422E857A20007F030 /* RecordedAudio.swift */; };
 		8E3402DB22E8624A0007F030 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402DA22E8624A0007F030 /* AlertMessage.swift */; };
 		8E3402DD22E862660007F030 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3402DC22E862660007F030 /* UIApplication+.swift */; };
+		8E469BD122F2B68600A4CC9D /* ListLanguagesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E469BD022F2B68600A4CC9D /* ListLanguagesVM.swift */; };
+		8E469BD522F2B6AC00A4CC9D /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E469BD322F2B6AC00A4CC9D /* LanguageCell.swift */; };
+		8E469BD622F2B6AC00A4CC9D /* LanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E469BD422F2B6AC00A4CC9D /* LanguageCell.xib */; };
+		8E469BD822F2C52900A4CC9D /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E469BD722F2C52900A4CC9D /* Language.swift */; };
 		8E54AFB022E995CD00001117 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E54AFAF22E995CD00001117 /* AudioController.swift */; };
 		8E54AFB222E9962400001117 /* SpeechRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E54AFB122E9962400001117 /* SpeechRecognitionService.swift */; };
 		8E54AFB422E9A68E00001117 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E54AFB322E9A68E00001117 /* UIViewController+.swift */; };
@@ -72,9 +77,12 @@
 		8EC9DCF022F16A4F00C4FB8B /* AudioTranscriptVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCEF22F16A4F00C4FB8B /* AudioTranscriptVM.swift */; };
 		8EC9DCF422F16C2F00C4FB8B /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCF222F16C2F00C4FB8B /* MessageCell.swift */; };
 		8EC9DCF522F16C2F00C4FB8B /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EC9DCF322F16C2F00C4FB8B /* MessageCell.xib */; };
+		8EC9DCF722F17D7600C4FB8B /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCF622F17D7600C4FB8B /* PaddingLabel.swift */; };
+		8EC9DCF922F1995700C4FB8B /* ListLanguagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCF822F1995700C4FB8B /* ListLanguagesVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E29CC1E22F7DBFD005BFBEF /* ForeignLanguages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignLanguages.swift; sourceTree = "<group>"; };
 		8E2D4CB022E6916D002E414B /* STTDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STTDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E2D4CB322E6916D002E414B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E2D4CB522E6916D002E414B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +124,10 @@
 		8E3402D422E857A20007F030 /* RecordedAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
 		8E3402DA22E8624A0007F030 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
 		8E3402DC22E862660007F030 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
+		8E469BD022F2B68600A4CC9D /* ListLanguagesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLanguagesVM.swift; sourceTree = "<group>"; };
+		8E469BD322F2B6AC00A4CC9D /* LanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
+		8E469BD422F2B6AC00A4CC9D /* LanguageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageCell.xib; sourceTree = "<group>"; };
+		8E469BD722F2C52900A4CC9D /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		8E54AFAF22E995CD00001117 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		8E54AFB122E9962400001117 /* SpeechRecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionService.swift; sourceTree = "<group>"; };
 		8E54AFB322E9A68E00001117 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
@@ -142,6 +154,8 @@
 		8EC9DCEF22F16A4F00C4FB8B /* AudioTranscriptVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTranscriptVM.swift; sourceTree = "<group>"; };
 		8EC9DCF222F16C2F00C4FB8B /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		8EC9DCF322F16C2F00C4FB8B /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		8EC9DCF622F17D7600C4FB8B /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		8EC9DCF822F1995700C4FB8B /* ListLanguagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListLanguagesVC.swift; path = STTDemo/Scenes/ListLanguagesVC.swift; sourceTree = SOURCE_ROOT; };
 		CCEE279DAC157539F9D8294D /* Pods-STTDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STTDemo.release.xcconfig"; path = "Target Support Files/Pods-STTDemo/Pods-STTDemo.release.xcconfig"; sourceTree = "<group>"; };
 		DD4CBF12D4E51CEEE37DE480 /* Pods_STTDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STTDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BBEEC872C58B5EF1487EAF /* Pods-STTDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STTDemo.debug.xcconfig"; path = "Target Support Files/Pods-STTDemo/Pods-STTDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -221,6 +235,7 @@
 				8EC9DCD422F035B200C4FB8B /* TranslationData.swift */,
 				8EC9DCD622F035DE00C4FB8B /* Translations.swift */,
 				8EC9DCE622F1654900C4FB8B /* MessageModel.swift */,
+				8E469BD722F2C52900A4CC9D /* Language.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -258,6 +273,7 @@
 		8E2D4CD922E697F6002E414B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				8EC9DCFA22F1996000C4FB8B /* ListLanguages */,
 				8EC9DCEB22F169C800C4FB8B /* AudioTranscipt */,
 				8E54AFD822EAD63200001117 /* LongAudio */,
 				8E54AFD522EAD5E700001117 /* Category */,
@@ -449,8 +465,19 @@
 				8E54AFAF22E995CD00001117 /* AudioController.swift */,
 				8E54AFB122E9962400001117 /* SpeechRecognitionService.swift */,
 				8EC9DCE422F1649700C4FB8B /* FirebaseService.swift */,
+				8EC9DCF622F17D7600C4FB8B /* PaddingLabel.swift */,
+				8E29CC1E22F7DBFD005BFBEF /* ForeignLanguages.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		8E469BD222F2B68D00A4CC9D /* LanguageCell */ = {
+			isa = PBXGroup;
+			children = (
+				8E469BD322F2B6AC00A4CC9D /* LanguageCell.swift */,
+				8E469BD422F2B6AC00A4CC9D /* LanguageCell.xib */,
+			);
+			path = LanguageCell;
 			sourceTree = "<group>";
 		};
 		8E54AFD522EAD5E700001117 /* Category */ = {
@@ -504,6 +531,24 @@
 				8EC9DCF322F16C2F00C4FB8B /* MessageCell.xib */,
 			);
 			path = MessageCell;
+			sourceTree = "<group>";
+		};
+		8EC9DCFA22F1996000C4FB8B /* ListLanguages */ = {
+			isa = PBXGroup;
+			children = (
+				8E469BD222F2B68D00A4CC9D /* LanguageCell */,
+				8EC9DCFC22F2B64F00C4FB8B /* ViewModel */,
+				8EC9DCF822F1995700C4FB8B /* ListLanguagesVC.swift */,
+			);
+			path = ListLanguages;
+			sourceTree = "<group>";
+		};
+		8EC9DCFC22F2B64F00C4FB8B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8E469BD022F2B68600A4CC9D /* ListLanguagesVM.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9F27A2E7C49412EAA6CD5AAB /* Frameworks */ = {
@@ -588,6 +633,7 @@
 				8EC9DCE322F0572E00C4FB8B /* GoogleService-Info.plist in Resources */,
 				8E2D4CBB22E6916E002E414B /* Assets.xcassets in Resources */,
 				8EC9DCE122F055BA00C4FB8B /* google in Resources */,
+				8E469BD622F2B6AC00A4CC9D /* LanguageCell.xib in Resources */,
 				8EC9DCF522F16C2F00C4FB8B /* MessageCell.xib in Resources */,
 				8E2D4CF422E6A3F7002E414B /* chunk005.wav in Resources */,
 				8E2D4CB922E6916D002E414B /* Main.storyboard in Resources */,
@@ -666,6 +712,7 @@
 				8EC9DCE522F1649700C4FB8B /* FirebaseService.swift in Sources */,
 				8E3402CD22E843610007F030 /* AudioCell.swift in Sources */,
 				8E2D4CFC22E6B049002E414B /* Languages.swift in Sources */,
+				8EC9DCF722F17D7600C4FB8B /* PaddingLabel.swift in Sources */,
 				8E2D4CCF22E694D1002E414B /* Alternatives.swift in Sources */,
 				8E54AFDA22EAD64000001117 /* LongAudioViewController.swift in Sources */,
 				8E2D4D0022E6B82C002E414B /* TableCell.swift in Sources */,
@@ -684,18 +731,23 @@
 				8E3402DD22E862660007F030 /* UIApplication+.swift in Sources */,
 				8E2D4CE622E69B21002E414B /* STTShortAudioRequest.swift in Sources */,
 				8EC9DCD522F035B200C4FB8B /* TranslationData.swift in Sources */,
+				8E469BD122F2B68600A4CC9D /* ListLanguagesVM.swift in Sources */,
+				8E469BD522F2B6AC00A4CC9D /* LanguageCell.swift in Sources */,
+				8E29CC1F22F7DBFD005BFBEF /* ForeignLanguages.swift in Sources */,
 				8E54AFE422EADD0800001117 /* Response.swift in Sources */,
 				8EC9DCCF22F0321A00C4FB8B /* TranslationRequest.swift in Sources */,
 				8E2D4CB422E6916D002E414B /* AppDelegate.swift in Sources */,
 				8EC9DCD122F0338100C4FB8B /* TranslationRepository.swift in Sources */,
 				8E2D4CD322E69553002E414B /* Audio.swift in Sources */,
 				8E54AFD722EAD60B00001117 /* CategoryViewController.swift in Sources */,
+				8E469BD822F2C52900A4CC9D /* Language.swift in Sources */,
 				8E2D4D0B22E6E3AB002E414B /* ShortAudioCell.swift in Sources */,
 				8EC9DCF022F16A4F00C4FB8B /* AudioTranscriptVM.swift in Sources */,
 				8EC9DCE722F1654900C4FB8B /* MessageModel.swift in Sources */,
 				8EC9DCED22F169F800C4FB8B /* AudioTranscriptVC.swift in Sources */,
 				8E54AFDE22EAD72900001117 /* UIView+.swift in Sources */,
 				8E2D4CEE22E6A134002E414B /* BaseError.swift in Sources */,
+				8EC9DCF922F1995700C4FB8B /* ListLanguagesVC.swift in Sources */,
 				8E2D4CF722E6A98B002E414B /* MainViewModel.swift in Sources */,
 				8E2D4D0422E6D7F6002E414B /* ShortAudioViewController.swift in Sources */,
 				8EC9DCF422F16C2F00C4FB8B /* MessageCell.swift in Sources */,

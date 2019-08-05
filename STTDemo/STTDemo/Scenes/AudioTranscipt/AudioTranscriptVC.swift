@@ -7,7 +7,6 @@
 //
 
 
-
 final class AudioTranscriptVC: UIViewController {
     @IBOutlet private weak var audioTransciptTableView: UITableView!
     

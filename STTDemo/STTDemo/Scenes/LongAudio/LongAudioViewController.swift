@@ -45,7 +45,7 @@ final class LongAudioViewController: UIViewController {
                         a.confidence! < b.confidence!
                     })
                     
-                    print(alternative?.transcript)
+//                    print(alternative?.transcript)
                 }
             case .failure(let error):
                 print(error?.errorMessage ?? "")

@@ -19,7 +19,7 @@ final class MainViewModel: NSObject{
     private let translationRepository = TranslationRepositoryImpl(api: APIService.shared)
     private let sampleRate = 16000
     private var audioData: NSMutableData!
-    var finished: Bool = false
+    private var finished: Bool = false
     
     var didChanged: ((String?) -> Void)?
     var deselectedButton: (() -> Void)?
@@ -53,17 +53,15 @@ final class MainViewModel: NSObject{
         print("RECORDING STOP")
     }
     
-    private func translatingText(_ inputText: String) {
-        translationRepository.translateText(text: inputText, sourceLangCode: TranslationLanguagues.English.getLangCode(), targetLangCode: TranslationLanguagues.Vietnamese.getLangCode()) { [weak self] result in
-            guard let self = self else { return }
-            
+    private func translatingText(_ inputText: String, translationCode: String) {
+        translationRepository.translateText(text: inputText, sourceLangCode: translationCode,
+                                            targetLangCode: TranslationLanguagues.Vietnamese.getLangCode()) { result in
             switch result {
             case .success(let response):
                 guard let res = response?.translationData?.translations?.first?.translatedText,
                     res != "" else { return }
-//                self.transcripts.append(res)
                 print("TRANSLATE:", res)
-//                self.writeTextToFireBase(text: res)
+                self.writeTextToFireBase(text: res)
             case .failure(let err):
                 print("ERROR: ", err?.errorMessage ?? "")
             }
@@ -103,7 +101,7 @@ extension MainViewModel: AudioControllerDelegate {
             * 2 /* bytes/sample */);
 
         if (audioData.length > chunkSize) {
-            SpeechRecognitionService.sharedInstance.streamAudioData(audioData) { [weak self] (response, error) in
+            SpeechRecognitionService.sharedInstance.streamAudioData(audioData, languagueCode: (ForeignLanguages.shared.getSelectedLanguage()?.sttCode)!) { [weak self] (response, error) in
                 guard let self = self else {
                     return
                 }
@@ -115,7 +113,7 @@ extension MainViewModel: AudioControllerDelegate {
                 } else if let response = response {
                     self.finished = false
                     print(response)
-                    
+
                     for result in response.resultsArray! {
                         if let result = result as? StreamingRecognitionResult {
                             if result.isFinal {
@@ -129,7 +127,7 @@ extension MainViewModel: AudioControllerDelegate {
 
                                     self.transcripts.append(alternative?.transcript ?? "")
                                     // TRANSLATE SCRIPTS
-                                    self.translatingText(alternative?.transcript ?? "")
+                                    self.translatingText(alternative?.transcript ?? "", translationCode: (ForeignLanguages.shared.getSelectedLanguage()?.translationCode)!)
                                 }
                             }
                         }

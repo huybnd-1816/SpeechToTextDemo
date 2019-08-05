@@ -10,6 +10,7 @@
 final class MainViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var translateButton: UIButton!
+    @IBOutlet private weak var switchLanguageButton: UIButton!
     
     private var viewModel: MainViewModel!
     var isRecording: Bool = false
@@ -48,6 +49,8 @@ final class MainViewController: UIViewController {
             guard let self = self else { return }
             self.translateButton.setTitle("Start To Translate", for: .normal)
         }
+        
+        switchLanguageButton.setTitle(ForeignLanguages.shared.getSelectedLanguage()?.translationCode?.uppercased(), for: .normal)
     }
     
     @IBAction func handleTranscribeButtonTapped(_ sender: Any) {
@@ -59,6 +62,24 @@ final class MainViewController: UIViewController {
             viewModel.stopAudio()
         }
         isRecording = !isRecording
+    }
+    
+    @IBAction func handleSelectLanguageButtonTapped(_ sender: Any) {
+        if isRecording {
+            translateButton.setTitle("Start To Translate", for: .normal)
+            viewModel.stopAudio()
+            isRecording = !isRecording
+        }
+        
+        let vc = ListLanguagesVC.instantiate()
+        vc.didChangedLanguage = { [weak self] in
+            guard let self = self else { return }
+            self.switchLanguageButton.setTitle(ForeignLanguages.shared.getSelectedLanguage()?.translationCode?.uppercased(), for: .normal)
+        }
+        
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true)
     }
 }
 
