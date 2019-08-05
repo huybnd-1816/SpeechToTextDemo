@@ -16,6 +16,8 @@ final class MainViewModel: NSObject{
         }
     }
     
+    var audioName: String!
+    private var createdDate: String!
     private let translationRepository = TranslationRepositoryImpl(api: APIService.shared)
     private let sampleRate = 16000
     private var audioData: NSMutableData!
@@ -28,6 +30,11 @@ final class MainViewModel: NSObject{
         super.init()
         transcripts.removeAll()
         AudioController.sharedInstance.delegate = self
+        
+        // Setup CreatedDate
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        createdDate = formatter.string(from: Date())
     }
     
     func startAudio() {
@@ -69,7 +76,7 @@ final class MainViewModel: NSObject{
     }
     
     private func writeTextToFireBase(text: String) {
-        FirebaseService.shared.write(message: text)
+        FirebaseService.shared.write(audioName: audioName, createdDate: createdDate, message: text)
     }
 }
 
@@ -94,7 +101,9 @@ extension MainViewModel: UITableViewDataSource {
 
 extension MainViewModel: AudioControllerDelegate {
     func processSampleData(_ data: Data) -> Void {
+        guard data != nil else { return }
         audioData.append(data)
+        
         // We recommend sending samples in 100ms chunks
         let chunkSize : Int /* bytes/chunk */ = Int(0.1 /* seconds/chunk */
             * Double(sampleRate) /* samples/second */

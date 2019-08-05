@@ -15,4 +15,8 @@ extension String {
         dateFormatter.timeZone = timeZone
         return dateFormatter.date(from: self)
     }
+    
+    func removeWhitespace() -> String {
+        return self.replacingOccurrences(of: " ", with: "", options: NSString.CompareOptions.literal, range: nil)
+    }
 }
