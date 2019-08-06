@@ -30,21 +30,20 @@ final class AudioTranscriptVM: NSObject {
             audiosInfo.forEach {
                 let date = $0.1
                 let audio = $0.0
-                
                 if !self.audioTranscripts.contains(where: { $0.title == date }) { // If audioTranscripts does not contain date
                     let audioTranscript = AudioTranscript(title: date)
                     audioTranscript.audios.append(audio)
                     self.audioTranscripts.append(audioTranscript)
                 } else {
-                    self.audioTranscripts = self.audioTranscripts.filter { $0.title == date }
-                    self.audioTranscripts.first?.audios.append(audio)
-                    self.didChanged?()
+                    let filteredAudios = self.audioTranscripts.filter { $0.title == date }
+                    filteredAudios.first?.audios.append(audio)
                 }
             }
             
             self.audioTranscripts = self.audioTranscripts.sorted {
                 $0.title < $1.title
             }
+            self.didChanged?()
         }
     }
 }
