@@ -15,6 +15,7 @@ protocol AudioControllerDelegate {
 final class AudioController {
     fileprivate var remoteIOUnit: AudioComponentInstance? // optional to allow it to be an inout argument
     var delegate: AudioControllerDelegate!
+    var isRecording: Bool = false
     
     static var sharedInstance = AudioController()
     
@@ -105,10 +106,12 @@ final class AudioController {
     }
     
     func start() -> OSStatus {
+        isRecording = true
         return AudioOutputUnitStart(remoteIOUnit!)
     }
     
     func stop() -> OSStatus {
+        isRecording = false
         return AudioOutputUnitStop(remoteIOUnit!)
     }
 }
