@@ -2,16 +2,20 @@
 //  MessageCell.swift
 //  STTDemo
 //
-//  Created by nguyen.duc.huyb on 7/31/19.
+//  Created by nguyen.duc.huyb on 8/6/19.
 //  Copyright © 2019 nguyen.duc.huyb. All rights reserved.
 //
 
 
 final class MessageCell: UITableViewCell, NibReusable {
-    
     @IBOutlet weak var messageLabel: UILabel!
     
-    func configCell(data: MessageModel) {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        selectionStyle = .none
+    }
+    
+    func configDetailCell(data: MessageModel) {
         messageLabel.text = data.content
     }
 }

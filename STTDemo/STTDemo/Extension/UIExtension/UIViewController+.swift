@@ -48,4 +48,14 @@ extension UIViewController {
             messageLabel.removeFromSuperview()
         })
     }
+    
+    func hideKeyboardWhenTapped() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    private func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

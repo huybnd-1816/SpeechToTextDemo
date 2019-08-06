@@ -10,14 +10,20 @@
 final class MainViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var translateButton: UIButton!
-    @IBOutlet private weak var switchLanguageButton: UIButton!
+    private var switchLanguageButton: UIBarButtonItem!
     
     private var viewModel: MainViewModel!
     var isRecording: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBarButton()
         config()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel.stopAudio()
     }
     
     private func config() {
@@ -50,7 +56,13 @@ final class MainViewController: UIViewController {
             self.translateButton.setTitle("Start To Translate", for: .normal)
         }
         
-        switchLanguageButton.setTitle(ForeignLanguages.shared.getSelectedLanguage()?.translationCode?.uppercased(), for: .normal)
+        viewModel.audioName = navigationItem.title
+    }
+    
+    private func setupBarButton() {
+        switchLanguageButton = UIBarButtonItem(title: ForeignLanguages.shared.getSelectedLanguage()?.translationCode?.uppercased(),
+                                               style: .plain, target: self, action: #selector(handleSelectLanguageButtonTapped))
+        navigationItem.rightBarButtonItem = switchLanguageButton
     }
     
     @IBAction func handleTranscribeButtonTapped(_ sender: Any) {
@@ -64,7 +76,8 @@ final class MainViewController: UIViewController {
         isRecording = !isRecording
     }
     
-    @IBAction func handleSelectLanguageButtonTapped(_ sender: Any) {
+    @objc
+    func handleSelectLanguageButtonTapped() {
         if isRecording {
             translateButton.setTitle("Start To Translate", for: .normal)
             viewModel.stopAudio()
@@ -74,7 +87,7 @@ final class MainViewController: UIViewController {
         let vc = ListLanguagesVC.instantiate()
         vc.didChangedLanguage = { [weak self] in
             guard let self = self else { return }
-            self.switchLanguageButton.setTitle(ForeignLanguages.shared.getSelectedLanguage()?.translationCode?.uppercased(), for: .normal)
+            self.switchLanguageButton.title = ForeignLanguages.shared.getSelectedLanguage()?.translationCode?.uppercased()
         }
         
         vc.modalPresentationStyle = .overCurrentContext
@@ -83,3 +96,6 @@ final class MainViewController: UIViewController {
     }
 }
 
+extension MainViewController: StoryboardSceneBased {
+    static var sceneStoryboard: UIStoryboard = Storyboards.main
+}

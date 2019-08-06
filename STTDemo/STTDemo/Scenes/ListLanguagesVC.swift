@@ -9,6 +9,7 @@
 
 final class ListLanguagesVC: UIViewController {
     @IBOutlet private weak var languagesTableView: UITableView!
+    @IBOutlet private weak var viewLeadingConstraint: NSLayoutConstraint!
     
     private var viewModel: ListLanguagesVM!
     var didChangedLanguage:(() -> Void)?
@@ -25,7 +26,12 @@ final class ListLanguagesVC: UIViewController {
         languagesTableView.register(UINib(nibName: "LanguageCell", bundle: nil), forCellReuseIdentifier: "LanguageCell")
         languagesTableView.tableFooterView = UIView(frame: .zero)
         languagesTableView.rowHeight = UITableView.automaticDimension
-        languagesTableView.estimatedRowHeight = 44
+        languagesTableView.estimatedRowHeight = 64
+        
+        // Set view size of iphone 5/5s
+        if UIDevice.current.screenType == UIDevice.ScreenType.iPhones_5_5s_5c_SE {
+            viewLeadingConstraint.constant = 16
+        }
     }
     
     @IBAction func handleCloseButtonTapped(_ sender: Any) {

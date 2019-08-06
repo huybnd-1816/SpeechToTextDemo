@@ -9,19 +9,20 @@
 import Firebase
 import SwiftyJSON
 
-class FirebaseService {
+final class FirebaseService {
     
     static let shared = FirebaseService()
     
     private let db = Firestore.firestore()
     
-    func write(message: String) {
+    func write(audioName: String, createdDate: String, message: String) {
         let model = MessageModel(time: Date(), content: message)
-        db.collection("messages").addDocument(data: model.dictValue())
+        db.collection("database").document(audioName).collection("messages").addDocument(data: model.dictValue())
+        db.collection("database").document(audioName).setData([ "CreatedDate": createdDate], merge: true)
     }
     
-    func addObserverRead(changes: @escaping ([MessageModel]) -> Void) {
-        db.collection("messages").addSnapshotListener { querySnapshot, error in
+    func addObserverRead(audioName: String, changes: @escaping ([MessageModel]) -> Void) {
+        db.collection("database").document(audioName).collection("messages").addSnapshotListener { querySnapshot, error in
             guard let snapshot = querySnapshot else {
                 print("Error fetching snapshots: \(error!)")
                 return
@@ -39,4 +40,23 @@ class FirebaseService {
         }
     }
     
+    func addObserverReadRoot(changes: @escaping ([(String, Date)]) -> Void) {
+        db.collection("database").addSnapshotListener { querySnapshot, error in
+            guard let snapshot = querySnapshot else {
+                print("Error fetching snapshots: \(error!)")
+                return
+            }
+            
+            var listData: [(String, Date)] = []
+            
+            snapshot.documentChanges.forEach { diff in
+                if diff.type == .added {
+                    let json = JSON(diff.document.data())
+                    let createdDate = json["CreatedDate"].stringValue.dateBy(format: "dd-MM-yyyy") ?? Date()
+                    listData.append((diff.document.documentID, createdDate))
+                }
+            }
+            changes(listData)
+        }
+    }
 }

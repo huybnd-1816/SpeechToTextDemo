@@ -17,24 +17,31 @@ final class AudioTranscriptVC: UIViewController {
         config()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        viewModel.reloadData()
+    }
+    
     private func config() {
+        navigationItem.title = "Audio"
         viewModel = AudioTranscriptVM()
         audioTransciptTableView.delegate = viewModel
         audioTransciptTableView.dataSource = viewModel
         audioTransciptTableView.tableFooterView = UIView(frame: .zero)
-        audioTransciptTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "MessageCell")
+        audioTransciptTableView.register(UINib(nibName: "AudioCell", bundle: nil), forCellReuseIdentifier: "AudioCell")
         audioTransciptTableView.rowHeight = UITableView.automaticDimension
         audioTransciptTableView.estimatedRowHeight = 44
         
         viewModel.didChanged = { [weak self] in
             guard let self = self else { return }
             self.audioTransciptTableView.reloadData()
-            
-            // Scroll To Bottom
-            let indexPath = IndexPath(
-                row: self.audioTransciptTableView.numberOfRows(inSection:  self.audioTransciptTableView.numberOfSections - 1) - 1,
-                section: self.audioTransciptTableView.numberOfSections - 1)
-            self.audioTransciptTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
+        
+        viewModel.didMoveToDetail = { [weak self] name in
+            guard let self = self else { return }
+            let vc = DetailViewController.instantiate()
+            vc.audioName = name
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
