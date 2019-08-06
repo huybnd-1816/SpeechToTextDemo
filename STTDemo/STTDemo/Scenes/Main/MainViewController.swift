@@ -47,6 +47,7 @@ final class MainViewController: UIViewController {
                 let indexPath = IndexPath(
                     row: self.tableView.numberOfRows(inSection:  self.tableView.numberOfSections - 1) - 1,
                     section: self.tableView.numberOfSections - 1)
+                guard indexPath.row >= 0 else { return }
                 self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
             }
         }
@@ -66,6 +67,12 @@ final class MainViewController: UIViewController {
     }
     
     @IBAction func handleTranscribeButtonTapped(_ sender: Any) {
+        // Check Internet
+        guard Reachability.isConnectedToNetwork() else {
+            showAlert(title: "Error", message: "Internet connection not available")
+            return
+        }
+        
         if !isRecording {
             translateButton.setTitle("Translating...", for: .normal)
             viewModel.startAudio()

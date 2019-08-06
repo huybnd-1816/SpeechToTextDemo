@@ -18,6 +18,7 @@
 		8E29CC3322F9140B005BFBEF /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E29CC3122F9140B005BFBEF /* MessageCell.xib */; };
 		8E29CC3622F91613005BFBEF /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29CC3522F91613005BFBEF /* DetailViewModel.swift */; };
 		8E29CC3822F96F15005BFBEF /* AudioTranscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29CC3722F96F15005BFBEF /* AudioTranscript.swift */; };
+		8E29CC3A22F97CC1005BFBEF /* CheckInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29CC3922F97CC1005BFBEF /* CheckInternet.swift */; };
 		8E2D4CB422E6916D002E414B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2D4CB322E6916D002E414B /* AppDelegate.swift */; };
 		8E2D4CB622E6916D002E414B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2D4CB522E6916D002E414B /* MainViewController.swift */; };
 		8E2D4CB922E6916D002E414B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E2D4CB722E6916D002E414B /* Main.storyboard */; };
@@ -90,6 +91,7 @@
 		8E29CC3122F9140B005BFBEF /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		8E29CC3522F91613005BFBEF /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		8E29CC3722F96F15005BFBEF /* AudioTranscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTranscript.swift; sourceTree = "<group>"; };
+		8E29CC3922F97CC1005BFBEF /* CheckInternet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
 		8E2D4CB022E6916D002E414B /* STTDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STTDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E2D4CB322E6916D002E414B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E2D4CB522E6916D002E414B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 				8EC9DCE422F1649700C4FB8B /* FirebaseService.swift */,
 				8EC9DCF622F17D7600C4FB8B /* PaddingLabel.swift */,
 				8E29CC1E22F7DBFD005BFBEF /* ForeignLanguages.swift */,
+				8E29CC3922F97CC1005BFBEF /* CheckInternet.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 				8E2D4CD522E6956B002E414B /* Config.swift in Sources */,
 				8EC9DCE922F167A800C4FB8B /* String+.swift in Sources */,
 				8EC9DCD722F035DE00C4FB8B /* Translations.swift in Sources */,
+				8E29CC3A22F97CC1005BFBEF /* CheckInternet.swift in Sources */,
 				8E3402D322E850470007F030 /* Int+.swift in Sources */,
 				8E2D4CD722E69582002E414B /* STTRequest.swift in Sources */,
 				8E3402DD22E862660007F030 /* UIApplication+.swift in Sources */,
