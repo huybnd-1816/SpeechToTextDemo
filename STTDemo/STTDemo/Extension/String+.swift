@@ -19,4 +19,19 @@ extension String {
     func removeWhitespace() -> String {
         return self.replacingOccurrences(of: " ", with: "", options: NSString.CompareOptions.literal, range: nil)
     }
+    
+    func hasSpecialCharacters() -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: ".*[^A-Za-z0-9\\s].*", options: .caseInsensitive)
+            if let _ = regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions.reportCompletion, range: NSMakeRange(0, self.count)) {
+                return true
+            }
+            
+        } catch {
+            debugPrint(error.localizedDescription)
+            return false
+        }
+        
+        return false
+    }
 }

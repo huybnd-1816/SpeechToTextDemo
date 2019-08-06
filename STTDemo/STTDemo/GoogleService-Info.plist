@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>288493459425-3268mt80kr00k29lbehktrufuk772666.apps.googleusercontent.com</string>
+	<string>288493459425-qphfq5jlgcp4k04mvgl31i02nlpsh18s.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.288493459425-3268mt80kr00k29lbehktrufuk772666</string>
+	<string>com.googleusercontent.apps.288493459425-qphfq5jlgcp4k04mvgl31i02nlpsh18s</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAhpgYO6YAsnTjldrJUegSuSOCFC7GEr2c</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.sunasterisk.SpeechToTextDemo</string>
+	<string>com.team131.meetingassistant</string>
 	<key>PROJECT_ID</key>
 	<string>demotranslationapp</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:288493459425:ios:fbc97ade72029126</string>
+	<string>1:288493459425:ios:3809d59b4011ca06</string>
 	<key>DATABASE_URL</key>
 	<string>https://demotranslationapp.firebaseio.com</string>
 </dict>

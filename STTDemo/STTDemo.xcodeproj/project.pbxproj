@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		569CE7FB11AD8B4CFEAA1CF0 /* Pods_STTDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4CBF12D4E51CEEE37DE480 /* Pods_STTDemo.framework */; };
+		8E178DC222FABB82002E1017 /* Pulsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E178DC122FABB82002E1017 /* Pulsing.swift */; };
 		8E29CC1F22F7DBFD005BFBEF /* ForeignLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29CC1E22F7DBFD005BFBEF /* ForeignLanguages.swift */; };
 		8E29CC2222F7E32D005BFBEF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29CC2122F7E32D005BFBEF /* MenuViewController.swift */; };
 		8E29CC2522F7FEC1005BFBEF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29CC2422F7FEC1005BFBEF /* NavigationController.swift */; };
@@ -18,6 +19,7 @@
 		8E29CC3322F9140B005BFBEF /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E29CC3122F9140B005BFBEF /* MessageCell.xib */; };
 		8E29CC3622F91613005BFBEF /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29CC3522F91613005BFBEF /* DetailViewModel.swift */; };
 		8E29CC3822F96F15005BFBEF /* AudioTranscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29CC3722F96F15005BFBEF /* AudioTranscript.swift */; };
+		8E29CC3A22F97CC1005BFBEF /* CheckInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29CC3922F97CC1005BFBEF /* CheckInternet.swift */; };
 		8E2D4CB422E6916D002E414B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2D4CB322E6916D002E414B /* AppDelegate.swift */; };
 		8E2D4CB622E6916D002E414B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2D4CB522E6916D002E414B /* MainViewController.swift */; };
 		8E2D4CB922E6916D002E414B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E2D4CB722E6916D002E414B /* Main.storyboard */; };
@@ -80,6 +82,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E178DC122FABB82002E1017 /* Pulsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pulsing.swift; sourceTree = "<group>"; };
 		8E29CC1E22F7DBFD005BFBEF /* ForeignLanguages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignLanguages.swift; sourceTree = "<group>"; };
 		8E29CC2122F7E32D005BFBEF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8E29CC2422F7FEC1005BFBEF /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -90,6 +93,7 @@
 		8E29CC3122F9140B005BFBEF /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		8E29CC3522F91613005BFBEF /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		8E29CC3722F96F15005BFBEF /* AudioTranscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTranscript.swift; sourceTree = "<group>"; };
+		8E29CC3922F97CC1005BFBEF /* CheckInternet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
 		8E2D4CB022E6916D002E414B /* STTDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STTDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E2D4CB322E6916D002E414B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E2D4CB522E6916D002E414B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +224,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		8E29CC3B22FABB4A005BFBEF /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				8E178DC122FABB82002E1017 /* Pulsing.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		8E2D4CA722E6916D002E414B = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				8E2D4CDC22E69832002E414B /* App */,
+				8E29CC3B22FABB4A005BFBEF /* Animation */,
 				8E3402D922E862260007F030 /* Helper */,
 				8E3402CF22E850200007F030 /* Extension */,
 				8E2D4CF822E6AE9A002E414B /* Constant */,
@@ -452,6 +465,7 @@
 				8EC9DCE422F1649700C4FB8B /* FirebaseService.swift */,
 				8EC9DCF622F17D7600C4FB8B /* PaddingLabel.swift */,
 				8E29CC1E22F7DBFD005BFBEF /* ForeignLanguages.swift */,
+				8E29CC3922F97CC1005BFBEF /* CheckInternet.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -691,6 +705,7 @@
 				8E2D4CD522E6956B002E414B /* Config.swift in Sources */,
 				8EC9DCE922F167A800C4FB8B /* String+.swift in Sources */,
 				8EC9DCD722F035DE00C4FB8B /* Translations.swift in Sources */,
+				8E29CC3A22F97CC1005BFBEF /* CheckInternet.swift in Sources */,
 				8E3402D322E850470007F030 /* Int+.swift in Sources */,
 				8E2D4CD722E69582002E414B /* STTRequest.swift in Sources */,
 				8E3402DD22E862660007F030 /* UIApplication+.swift in Sources */,
@@ -718,6 +733,7 @@
 				8E2D4CEE22E6A134002E414B /* BaseError.swift in Sources */,
 				8EC9DCF922F1995700C4FB8B /* ListLanguagesVC.swift in Sources */,
 				8E2D4CF722E6A98B002E414B /* MainViewModel.swift in Sources */,
+				8E178DC222FABB82002E1017 /* Pulsing.swift in Sources */,
 				8EC9DCF422F16C2F00C4FB8B /* AudioCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -866,14 +882,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2FVQE295NZ;
+				DEVELOPMENT_TEAM = 4S6V4A656S;
 				INFOPLIST_FILE = STTDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sunasterisk.SpeechToTextDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.team131.meetingassistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "STTDemo/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -887,14 +903,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2FVQE295NZ;
+				DEVELOPMENT_TEAM = 4S6V4A656S;
 				INFOPLIST_FILE = STTDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sunasterisk.SpeechToTextDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.team131.meetingassistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "STTDemo/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

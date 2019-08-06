@@ -10,7 +10,10 @@
 final class CreateRecordVC: UIViewController {
     @IBOutlet private weak var recordNameTextField: UITextField!
     @IBOutlet private weak var createdDateTextField: UITextField!
-    @IBOutlet weak var viewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var viewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var vietnameseButton: UIButton!
+    @IBOutlet private weak var englishButton: UIButton!
+    
     
     var transitingToMain: ((String) -> Void)?
     
@@ -31,6 +34,9 @@ final class CreateRecordVC: UIViewController {
         if UIDevice.current.screenType == UIDevice.ScreenType.iPhones_5_5s_5c_SE {
             viewLeadingConstraint.constant = 16
         }
+        
+        vietnameseButton.isSelected = ForeignLanguages.shared.translatingLanguagues[0].isSelected
+        englishButton.isSelected = ForeignLanguages.shared.translatingLanguagues[1].isSelected
     }
 
     @IBAction func handleCloseButtonTapped(_ sender: Any) {
@@ -38,14 +44,34 @@ final class CreateRecordVC: UIViewController {
     }
     
     @IBAction func handleDoneButtonTapped(_ sender: Any) {
-        guard recordNameTextField.text != nil,
+        guard let recordName = recordNameTextField.text,
             recordNameTextField.text?.removeWhitespace() != "" else {
                 showAlert(title: "Error", message: "The record's name is empty")
                 return
         }
+        
+        if recordName.hasSpecialCharacters() {
+            showAlert(title: "Error", message: "The record's name has special characters")
+            return
+        }
 
         dismiss(animated: true)
-        transitingToMain?(recordNameTextField.text!)
+        transitingToMain?(recordName)
+    }
+    
+    @IBAction func changeLanguage(_ sender: UIButton) {
+        for i in 0..<ForeignLanguages.shared.translatingLanguagues.count {
+            ForeignLanguages.shared.translatingLanguagues[i].isSelected = false
+        }
+
+        if sender == vietnameseButton {
+            ForeignLanguages.shared.translatingLanguagues[0].isSelected = true
+        } else if sender == englishButton {
+            ForeignLanguages.shared.translatingLanguagues[1].isSelected = true
+        }
+        
+        vietnameseButton.isSelected = ForeignLanguages.shared.translatingLanguagues[0].isSelected
+        englishButton.isSelected = ForeignLanguages.shared.translatingLanguagues[1].isSelected
     }
 }
 
