@@ -61,8 +61,10 @@ final class MainViewModel: NSObject{
     }
     
     private func translatingText(_ inputText: String, translationCode: String) {
+        print("TRANSLATION: ", ForeignLanguages.shared.getTranslationToLanguage()!)
+        
         translationRepository.translateText(text: inputText, sourceLangCode: translationCode,
-                                            targetLangCode: TranslationLanguagues.Vietnamese.getLangCode()) { result in
+                                            targetLangCode: ForeignLanguages.shared.getTranslationToLanguage()!) { result in
             switch result {
             case .success(let response):
                 guard let res = response?.translationData?.translations?.first?.translatedText,
