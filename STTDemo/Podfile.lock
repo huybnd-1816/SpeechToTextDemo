@@ -11,6 +11,9 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.3):
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Interface (0.0.3)
+  - Crashlytics (3.13.4):
+    - Fabric (~> 1.10.2)
+  - Fabric (1.10.2)
   - Firebase/Core (6.5.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.0.4)
@@ -131,6 +134,8 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.8)
+  - Crashlytics
+  - Fabric
   - Firebase/Core
   - Firebase/Firestore
   - googleapis (from `.`)
@@ -143,6 +148,8 @@ SPEC REPOS:
     - "!ProtoCompiler-gRPCPlugin"
     - Alamofire
     - BoringSSL-GRPC
+    - Crashlytics
+    - Fabric
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuthInterop
@@ -171,6 +178,8 @@ SPEC CHECKSUMS:
   "!ProtoCompiler-gRPCPlugin": 4e7f566ffe5de54bcea666ef15529eba89a1a712
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
+  Crashlytics: 2dfd686bcb918dc10ee0e76f7f853fe42c7bd552
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   Firebase: dedc9e48ea3f3649ad5f6b982f8a0c73508a14b5
   FirebaseAnalytics: 3fb375bc9d13779add4039716f868d233a473fad
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
@@ -191,6 +200,6 @@ SPEC CHECKSUMS:
   Reusable: 82be188f29d96dc5eff0db7b2393bcc08d2cdd5b
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 10e75481d3919a2eb3aca1a42ab9559e203d8417
+PODFILE CHECKSUM: 5eaa290bf6f527377348b5681c05869c053acf18
 
 COCOAPODS: 1.7.1
