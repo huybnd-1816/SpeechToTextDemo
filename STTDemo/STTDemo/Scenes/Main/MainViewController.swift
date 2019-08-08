@@ -11,7 +11,8 @@ final class MainViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var translateButton: UIButton!
     @IBOutlet private weak var translateButtonWidthConstraint: NSLayoutConstraint!
-    var pulseArray = [CAShapeLayer]()
+   
+    private var backButton: UIBarButtonItem!
     private var switchLanguageButton: UIBarButtonItem!
     private var widthButton: CGFloat!
     private var viewModel: MainViewModel!
@@ -26,9 +27,9 @@ final class MainViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if AudioController.sharedInstance.isRecording {
-            viewModel.stopAudio()
-        }
+//        if AudioController.sharedInstance.isRecording {
+//            viewModel.stopAudio()
+//        }
     }
     
     private func setupWidthConstraintForTranslationButton() {
@@ -37,6 +38,7 @@ final class MainViewController: UIViewController {
     }
     
     private func config() {
+        navigationItem.hidesBackButton = true
         viewModel = MainViewModel()
         tableView.delegate = viewModel
         tableView.dataSource = viewModel
@@ -74,6 +76,9 @@ final class MainViewController: UIViewController {
         switchLanguageButton = UIBarButtonItem(title: ForeignLanguages.shared.getSelectedLanguage()?.translationCode?.uppercased(),
                                                style: .plain, target: self, action: #selector(handleSelectLanguageButtonTapped))
         navigationItem.rightBarButtonItem = switchLanguageButton
+        
+        backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ic-back"), style: .plain, target: self, action: #selector(handleBackButtonTapped))
+        navigationItem.leftBarButtonItem = backButton
     }
     
     @IBAction func handleTranscribeButtonTapped(_ sender: Any) {
@@ -129,6 +134,21 @@ final class MainViewController: UIViewController {
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
         present(vc, animated: true)
+    }
+    
+    @objc
+    func handleBackButtonTapped() {
+        if AudioController.sharedInstance.isRecording {
+            showFullAlert(title: "Message", msg: "You will lost the record if back to main page") { [weak self] res in
+                guard let self = self else { return }
+                if res {
+                    self.viewModel.stopAudio()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
 
