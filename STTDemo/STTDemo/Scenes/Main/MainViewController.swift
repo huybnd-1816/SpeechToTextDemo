@@ -10,20 +10,30 @@
 final class MainViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var translateButton: UIButton!
+    @IBOutlet private weak var translateButtonWidthConstraint: NSLayoutConstraint!
+    var pulseArray = [CAShapeLayer]()
     private var switchLanguageButton: UIBarButtonItem!
-    
+    private var widthButton: CGFloat!
     private var viewModel: MainViewModel!
-    var isRecording: Bool = false
+    private var isRecording: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBarButton()
         config()
+        setupWidthConstraintForTranslationButton()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        viewModel.stopAudio()
+        if AudioController.sharedInstance.isRecording {
+            viewModel.stopAudio()
+        }
+    }
+    
+    private func setupWidthConstraintForTranslationButton() {
+        widthButton = UIScreen.main.bounds.width - 128
+        translateButtonWidthConstraint.constant = widthButton
     }
     
     private func config() {
@@ -74,13 +84,32 @@ final class MainViewController: UIViewController {
         }
         
         if !isRecording {
-            translateButton.setTitle("Translating...", for: .normal)
+            translateButton.setTitle("...", for: .normal)
+            animationButtonWhenTranslating()
             viewModel.startAudio()
         } else {
             translateButton.setTitle("Start To Translate", for: .normal)
+            animationButtonWhenStopTranslating()
             viewModel.stopAudio()
         }
         isRecording = !isRecording
+    }
+    
+    private func animationButtonWhenTranslating() {
+        self.translateButtonWidthConstraint.constant = 64
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveLinear], animations: {
+            self.view.layoutIfNeeded()
+            self.addPulse()
+        })
+        
+    }
+    
+    private func animationButtonWhenStopTranslating() {
+        self.translateButtonWidthConstraint.constant = widthButton
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveLinear], animations: {
+            self.view.layoutIfNeeded()
+        })
+        removePulse()
     }
     
     @objc
@@ -105,4 +134,24 @@ final class MainViewController: UIViewController {
 
 extension MainViewController: StoryboardSceneBased {
     static var sceneStoryboard: UIStoryboard = Storyboards.main
+}
+
+extension MainViewController {
+    func addPulse(){
+        let pulse = Pulsing(radius: 80, position: translateButton.center)
+        pulse.animationDuration = 1.5
+        pulse.backgroundColor = UIColor(red: 255.0/255.0, green: 75.0/255.0, blue: 110.0/255.0, alpha: 1.0).cgColor
+        
+        self.view.layer.insertSublayer(pulse, below: translateButton.layer)
+    }
+    
+    func removePulse() {
+        if let sublayers = view.layer.sublayers {
+            for layer in sublayers {
+                if layer.name == "pulsingLayer" {
+                    layer.removeFromSuperlayer()
+                }
+            }
+        }
+    }
 }

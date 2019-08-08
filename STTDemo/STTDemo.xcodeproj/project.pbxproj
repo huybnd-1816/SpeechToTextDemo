@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		569CE7FB11AD8B4CFEAA1CF0 /* Pods_STTDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4CBF12D4E51CEEE37DE480 /* Pods_STTDemo.framework */; };
+		8E178DC222FABB82002E1017 /* Pulsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E178DC122FABB82002E1017 /* Pulsing.swift */; };
 		8E29CC1F22F7DBFD005BFBEF /* ForeignLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29CC1E22F7DBFD005BFBEF /* ForeignLanguages.swift */; };
 		8E29CC2222F7E32D005BFBEF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29CC2122F7E32D005BFBEF /* MenuViewController.swift */; };
 		8E29CC2522F7FEC1005BFBEF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29CC2422F7FEC1005BFBEF /* NavigationController.swift */; };
@@ -81,6 +82,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E178DC122FABB82002E1017 /* Pulsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pulsing.swift; sourceTree = "<group>"; };
 		8E29CC1E22F7DBFD005BFBEF /* ForeignLanguages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignLanguages.swift; sourceTree = "<group>"; };
 		8E29CC2122F7E32D005BFBEF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8E29CC2422F7FEC1005BFBEF /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -222,6 +224,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		8E29CC3B22FABB4A005BFBEF /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				8E178DC122FABB82002E1017 /* Pulsing.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		8E2D4CA722E6916D002E414B = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				8E2D4CDC22E69832002E414B /* App */,
+				8E29CC3B22FABB4A005BFBEF /* Animation */,
 				8E3402D922E862260007F030 /* Helper */,
 				8E3402CF22E850200007F030 /* Extension */,
 				8E2D4CF822E6AE9A002E414B /* Constant */,
@@ -741,6 +752,7 @@
 				8E2D4CEE22E6A134002E414B /* BaseError.swift in Sources */,
 				8EC9DCF922F1995700C4FB8B /* ListLanguagesVC.swift in Sources */,
 				8E2D4CF722E6A98B002E414B /* MainViewModel.swift in Sources */,
+				8E178DC222FABB82002E1017 /* Pulsing.swift in Sources */,
 				8EC9DCF422F16C2F00C4FB8B /* AudioCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
