@@ -67,7 +67,7 @@ final class MainViewController: UIViewController {
     }
     
     private func setupBarButton() {
-        switchLanguageButton = UIBarButtonItem(title: ForeignLanguages.shared.getSelectedLanguage()?.translationCode?.uppercased(),
+        switchLanguageButton = UIBarButtonItem(title: ForeignLanguages.shared.selectedLanguage?.translationCode?.uppercased(),
                                                style: .plain, target: self, action: #selector(handleSelectLanguageButtonTapped))
         navigationItem.rightBarButtonItem = switchLanguageButton
         
@@ -123,7 +123,7 @@ final class MainViewController: UIViewController {
         let vc = ListLanguagesVC.instantiate()
         vc.didChangedLanguage = { [weak self] in
             guard let self = self else { return }
-            self.switchLanguageButton.title = ForeignLanguages.shared.getSelectedLanguage()?.translationCode?.uppercased()
+            self.switchLanguageButton.title = ForeignLanguages.shared.selectedLanguage?.translationCode?.uppercased()
         }
         
         vc.modalPresentationStyle = .overCurrentContext

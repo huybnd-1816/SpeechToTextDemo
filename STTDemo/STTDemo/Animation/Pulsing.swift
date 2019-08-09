@@ -26,7 +26,7 @@ class Pulsing: CALayer {
     }
     
     
-    init (numberOfPulses:Float = Float.infinity, radius:CGFloat, position:CGPoint) {
+    init (numberOfPulses: Float = Float.infinity, radius: CGFloat, position: CGPoint) {
         super.init()
         
         self.name = "pulsingLayer"

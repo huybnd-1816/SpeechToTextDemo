@@ -17,11 +17,6 @@ final class AudioTranscriptVC: UIViewController {
         config()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        viewModel.reloadData()
-    }
-    
     private func config() {
         navigationItem.title = "Audio"
         viewModel = AudioTranscriptVM()

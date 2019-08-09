@@ -13,6 +13,8 @@ final class CreateRecordVC: UIViewController {
     @IBOutlet private weak var viewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet private weak var vietnameseButton: UIButton!
     @IBOutlet private weak var englishButton: UIButton!
+    @IBOutlet private weak var originalJapaneseButton: UIButton!
+    @IBOutlet private weak var originalEnglishButton: UIButton!
     
     
     var transitingToMain: ((String) -> Void)?
@@ -37,6 +39,8 @@ final class CreateRecordVC: UIViewController {
         
         vietnameseButton.isSelected = ForeignLanguages.shared.translatingLanguagues[0].isSelected
         englishButton.isSelected = ForeignLanguages.shared.translatingLanguagues[1].isSelected
+        originalJapaneseButton.isSelected = ForeignLanguages.shared.listLanguages[0].isSelected!
+        originalEnglishButton.isSelected = ForeignLanguages.shared.listLanguages[1].isSelected!
     }
 
     @IBAction func handleCloseButtonTapped(_ sender: Any) {
@@ -59,7 +63,7 @@ final class CreateRecordVC: UIViewController {
         transitingToMain?(recordName)
     }
     
-    @IBAction func changeLanguage(_ sender: UIButton) {
+    @IBAction func changeLanguageTo(_ sender: UIButton) {
         for i in 0..<ForeignLanguages.shared.translatingLanguagues.count {
             ForeignLanguages.shared.translatingLanguagues[i].isSelected = false
         }
@@ -72,6 +76,21 @@ final class CreateRecordVC: UIViewController {
         
         vietnameseButton.isSelected = ForeignLanguages.shared.translatingLanguagues[0].isSelected
         englishButton.isSelected = ForeignLanguages.shared.translatingLanguagues[1].isSelected
+    }
+    
+    @IBAction func changeLanguageFrom(_ sender: UIButton) {
+        for i in 0..<ForeignLanguages.shared.listLanguages.count {
+            ForeignLanguages.shared.listLanguages[i].isSelected = false
+        }
+        
+        if sender == originalJapaneseButton {
+            ForeignLanguages.shared.listLanguages[0].isSelected = true
+        } else if sender == originalEnglishButton {
+            ForeignLanguages.shared.listLanguages[1].isSelected = true
+        }
+        
+        originalJapaneseButton.isSelected = ForeignLanguages.shared.listLanguages[0].isSelected!
+        originalEnglishButton.isSelected = ForeignLanguages.shared.listLanguages[1].isSelected!
     }
 }
 

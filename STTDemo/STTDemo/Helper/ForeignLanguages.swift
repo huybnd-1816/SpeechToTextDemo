@@ -13,15 +13,15 @@ final class ForeignLanguages {
     var translatingLanguagues: [(translationCode: String, isSelected: Bool)] = []
     
     private init() {
-        let japanese = Language(name: "Japanese", sttCode: STTLanguages.Japanese.getLangCode(), translationCode: TranslationLanguagues.Japanese.getLangCode(), isSelected: true)
-        let english = Language(name: "English", sttCode: STTLanguages.English.getLangCode(), translationCode: TranslationLanguagues.English.getLangCode(), isSelected: false)
+        let japanese = Language(name: "Japanese", sttCode: STTLanguages.Japanese.languageCode, translationCode: TranslationLanguagues.Japanese.languageCode, isSelected: true)
+        let english = Language(name: "English", sttCode: STTLanguages.English.languageCode, translationCode: TranslationLanguagues.English.languageCode, isSelected: false)
         listLanguages.append(contentsOf: [japanese, english])
         
         // TranslationTo Code
-        translatingLanguagues = [(TranslationLanguagues.Vietnamese.getLangCode(), true), (TranslationLanguagues.English.getLangCode(), false)]
+        translatingLanguagues = [(TranslationLanguagues.Vietnamese.languageCode, true), (TranslationLanguagues.English.languageCode, false)]
     }
     
-    func getSelectedLanguage() -> Language? {
+    var selectedLanguage: Language? {
         if let language = ForeignLanguages.shared.listLanguages.first(where: {
             $0.isSelected == true }) {
             return language
@@ -29,7 +29,7 @@ final class ForeignLanguages {
         return nil
     }
     
-    func getTranslationToLanguage() -> String? {
+    var translationToLanguage: String? {
         if let language = ForeignLanguages.shared.translatingLanguagues.first(where: {
             $0.isSelected == true
         }) {
@@ -37,4 +37,21 @@ final class ForeignLanguages {
         }
         return nil
     }
+    
+//    func getSelectedLanguage() -> Language? {
+//        if let language = ForeignLanguages.shared.listLanguages.first(where: {
+//            $0.isSelected == true }) {
+//            return language
+//        }
+//        return nil
+//    }
+//
+//    func getTranslationToLanguage() -> String? {
+//        if let language = ForeignLanguages.shared.translatingLanguagues.first(where: {
+//            $0.isSelected == true
+//        }) {
+//            return language.translationCode
+//        }
+//        return nil
+//    }
 }
