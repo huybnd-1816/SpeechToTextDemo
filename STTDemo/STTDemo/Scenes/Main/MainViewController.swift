@@ -25,13 +25,6 @@ final class MainViewController: UIViewController {
         setupWidthConstraintForTranslationButton()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-//        if AudioController.sharedInstance.isRecording {
-//            viewModel.stopAudio()
-//        }
-    }
-    
     private func setupWidthConstraintForTranslationButton() {
         widthButton = UIScreen.main.bounds.width - 128
         translateButtonWidthConstraint.constant = widthButton
@@ -67,6 +60,7 @@ final class MainViewController: UIViewController {
         viewModel.deselectedButton = { [weak self] in
             guard let self = self else { return }
             self.translateButton.setTitle("Start To Translate", for: .normal)
+            self.animationButtonWhenStopTranslating()
         }
         
         viewModel.audioName = navigationItem.title
@@ -121,6 +115,7 @@ final class MainViewController: UIViewController {
     func handleSelectLanguageButtonTapped() {
         if isRecording {
             translateButton.setTitle("Start To Translate", for: .normal)
+            animationButtonWhenStopTranslating()
             viewModel.stopAudio()
             isRecording = !isRecording
         }
@@ -152,10 +147,6 @@ final class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: StoryboardSceneBased {
-    static var sceneStoryboard: UIStoryboard = Storyboards.main
-}
-
 extension MainViewController {
     func addPulse(){
         let pulse = Pulsing(radius: 80, position: translateButton.center)
@@ -174,4 +165,8 @@ extension MainViewController {
             }
         }
     }
+}
+
+extension MainViewController: StoryboardSceneBased {
+    static var sceneStoryboard: UIStoryboard = Storyboards.main
 }

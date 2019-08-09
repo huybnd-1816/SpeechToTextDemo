@@ -44,16 +44,21 @@ final class CreateRecordVC: UIViewController {
     }
     
     @IBAction func handleDoneButtonTapped(_ sender: Any) {
-        guard recordNameTextField.text != nil,
+        guard let recordName = recordNameTextField.text,
             recordNameTextField.text?.removeWhitespace() != "" else {
                 showAlert(title: "Error", message: "The record's name is empty")
                 return
         }
+        
+        if recordName.hasSpecialCharacters() {
+            showAlert(title: "Error", message: "The record's name has special characters")
+            return
+        }
 
         dismiss(animated: true)
-        transitingToMain?(recordNameTextField.text!)
+        transitingToMain?(recordName)
     }
-    
+        
     @IBAction func changeLanguage(_ sender: UIButton) {
         for i in 0..<ForeignLanguages.shared.translatingLanguagues.count {
             ForeignLanguages.shared.translatingLanguagues[i].isSelected = false
