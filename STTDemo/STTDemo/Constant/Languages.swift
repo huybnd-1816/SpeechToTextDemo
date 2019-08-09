@@ -10,7 +10,7 @@
 enum STTLanguages {
     case Japanese, Vietnamese, English
     
-    func getLangCode() -> String {
+    var languageCode: String {
         switch self {
         case .Japanese:
             return "ja-JP"
@@ -25,7 +25,7 @@ enum STTLanguages {
 enum TranslationLanguagues {
     case Japanese, Vietnamese, English
     
-    func getLangCode() -> String {
+    var languageCode: String {
         switch self {
         case .Japanese:
             return "ja"

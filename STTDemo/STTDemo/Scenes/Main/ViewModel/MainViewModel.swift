@@ -61,10 +61,10 @@ final class MainViewModel: NSObject{
     }
     
     private func translatingText(_ inputText: String, translationCode: String) {
-        print("TRANSLATION: ", ForeignLanguages.shared.getTranslationToLanguage()!)
+        print("TRANSLATION: ", ForeignLanguages.shared.translationToLanguage!)
         
         translationRepository.translateText(text: inputText, sourceLangCode: translationCode,
-                                            targetLangCode: ForeignLanguages.shared.getTranslationToLanguage()!) { result in
+                                            targetLangCode: ForeignLanguages.shared.translationToLanguage!) { result in
             switch result {
             case .success(let response):
                 guard let res = response?.translationData?.translations?.first?.translatedText,
@@ -112,7 +112,7 @@ extension MainViewModel: AudioControllerDelegate {
             * 2 /* bytes/sample */);
 
         if (audioData.length > chunkSize) {
-            SpeechRecognitionService.sharedInstance.streamAudioData(audioData, languagueCode: (ForeignLanguages.shared.getSelectedLanguage()?.sttCode)!) { [weak self] (response, error) in
+            SpeechRecognitionService.sharedInstance.streamAudioData(audioData, languagueCode: (ForeignLanguages.shared.selectedLanguage?.sttCode)!) { [weak self] (response, error) in
                 guard let self = self else {
                     return
                 }
@@ -138,7 +138,7 @@ extension MainViewModel: AudioControllerDelegate {
 
                                     self.transcripts.append(alternative?.transcript ?? "")
                                     // TRANSLATE SCRIPTS
-                                    self.translatingText(alternative?.transcript ?? "", translationCode: (ForeignLanguages.shared.getSelectedLanguage()?.translationCode)!)
+                                    self.translatingText(alternative?.transcript ?? "", translationCode: (ForeignLanguages.shared.selectedLanguage?.translationCode)!)
                                 }
                             }
                         }
