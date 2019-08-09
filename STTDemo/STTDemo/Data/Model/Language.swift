@@ -7,9 +7,15 @@
 //
 
 
-struct Language {
+struct STTLanguage {
     var name: String?
     var sttCode: String?
-    var translationCode: String?
+    var sourceTransCode: String?
+    var isSelected: Bool?
+}
+
+struct TranslationLanguage {
+    var name: String?
+    var desTransCode: String?
     var isSelected: Bool?
 }

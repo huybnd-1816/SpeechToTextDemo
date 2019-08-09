@@ -9,19 +9,25 @@
 final class ForeignLanguages {
     static let shared = ForeignLanguages()
     
-    var listLanguages: [Language] = []
-    var translatingLanguagues: [(translationCode: String, isSelected: Bool)] = []
+    var listLanguages: [STTLanguage] = []
+    var translatingLanguages: [TranslationLanguage] = []
     
     private init() {
-        let japanese = Language(name: "Japanese", sttCode: STTLanguages.Japanese.languageCode, translationCode: TranslationLanguagues.Japanese.languageCode, isSelected: true)
-        let english = Language(name: "English", sttCode: STTLanguages.English.languageCode, translationCode: TranslationLanguagues.English.languageCode, isSelected: false)
-        listLanguages.append(contentsOf: [japanese, english])
+        // STT Language
+        let japaneseSTT = STTLanguage(name: "Japanese", sttCode: STTLanguages.Japanese.languageCode, sourceTransCode: TranslationLanguages.Japanese.languageCode, isSelected: true)
+        let englishSTT = STTLanguage(name: "English", sttCode: STTLanguages.English.languageCode, sourceTransCode: TranslationLanguages.English.languageCode, isSelected: false)
+        let vietnameseSTT = STTLanguage(name: "Vietnamese", sttCode: STTLanguages.Vietnamese.languageCode, sourceTransCode: TranslationLanguages.Vietnamese.languageCode, isSelected: false)
+        listLanguages.append(contentsOf: [japaneseSTT, englishSTT, vietnameseSTT])
         
-        // TranslationTo Code
-        translatingLanguagues = [(TranslationLanguagues.Vietnamese.languageCode, true), (TranslationLanguagues.English.languageCode, false)]
+        // Translation Language
+        let japaneseTrans = TranslationLanguage(name: "Japanese", desTransCode: TranslationLanguages.Japanese.languageCode, isSelected: false)
+        let englishTrans = TranslationLanguage(name: "English", desTransCode: TranslationLanguages.English.languageCode, isSelected: false)
+        let vietnameseTrans = TranslationLanguage(name: "Vietnamese", desTransCode: TranslationLanguages.Vietnamese.languageCode, isSelected: true)
+        
+        translatingLanguages.append(contentsOf: [japaneseTrans, englishTrans, vietnameseTrans])
     }
     
-    var selectedLanguage: Language? {
+    var selectedSTTLanguage: STTLanguage? {
         if let language = ForeignLanguages.shared.listLanguages.first(where: {
             $0.isSelected == true }) {
             return language
@@ -29,29 +35,11 @@ final class ForeignLanguages {
         return nil
     }
     
-    var translationToLanguage: String? {
-        if let language = ForeignLanguages.shared.translatingLanguagues.first(where: {
-            $0.isSelected == true
-        }) {
-            return language.translationCode
+    var selectedTransToLanguage: TranslationLanguage? {
+        if let language = ForeignLanguages.shared.translatingLanguages.first(where: {
+            $0.isSelected == true }) {
+            return language
         }
         return nil
     }
-    
-//    func getSelectedLanguage() -> Language? {
-//        if let language = ForeignLanguages.shared.listLanguages.first(where: {
-//            $0.isSelected == true }) {
-//            return language
-//        }
-//        return nil
-//    }
-//
-//    func getTranslationToLanguage() -> String? {
-//        if let language = ForeignLanguages.shared.translatingLanguagues.first(where: {
-//            $0.isSelected == true
-//        }) {
-//            return language.translationCode
-//        }
-//        return nil
-//    }
 }

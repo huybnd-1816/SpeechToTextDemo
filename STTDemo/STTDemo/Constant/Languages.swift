@@ -22,7 +22,7 @@ enum STTLanguages {
     }
 }
 
-enum TranslationLanguagues {
+enum TranslationLanguages {
     case Japanese, Vietnamese, English
     
     var languageCode: String {

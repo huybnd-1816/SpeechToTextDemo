@@ -13,14 +13,12 @@ final class MainViewController: UIViewController {
     @IBOutlet private weak var translateButtonWidthConstraint: NSLayoutConstraint!
    
     private var backButton: UIBarButtonItem!
-    private var switchLanguageButton: UIBarButtonItem!
     private var widthButton: CGFloat!
     private var viewModel: MainViewModel!
     private var isRecording: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBarButton()
         config()
         setupWidthConstraintForTranslationButton()
     }
@@ -66,14 +64,6 @@ final class MainViewController: UIViewController {
         viewModel.audioName = navigationItem.title
     }
     
-    private func setupBarButton() {
-        switchLanguageButton = UIBarButtonItem(title: ForeignLanguages.shared.selectedLanguage?.translationCode?.uppercased(),
-                                               style: .plain, target: self, action: #selector(handleSelectLanguageButtonTapped))
-        navigationItem.rightBarButtonItem = switchLanguageButton
-        
-        backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ic-back"), style: .plain, target: self, action: #selector(handleBackButtonTapped))
-        navigationItem.leftBarButtonItem = backButton
-    }
     
     @IBAction func handleTranscribeButtonTapped(_ sender: Any) {
         // Check Internet
@@ -109,26 +99,6 @@ final class MainViewController: UIViewController {
             self.view.layoutIfNeeded()
         })
         removePulse()
-    }
-    
-    @objc
-    func handleSelectLanguageButtonTapped() {
-        if isRecording {
-            translateButton.setTitle("Start To Translate", for: .normal)
-            animationButtonWhenStopTranslating()
-            viewModel.stopAudio()
-            isRecording = !isRecording
-        }
-        
-        let vc = ListLanguagesVC.instantiate()
-        vc.didChangedLanguage = { [weak self] in
-            guard let self = self else { return }
-            self.switchLanguageButton.title = ForeignLanguages.shared.selectedLanguage?.translationCode?.uppercased()
-        }
-        
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.modalTransitionStyle = .crossDissolve
-        present(vc, animated: true)
     }
     
     @objc
