@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWB-bv-psG">
-                        <rect key="frame" x="24" y="12" width="223" height="20.5"/>
+                        <rect key="frame" x="16" y="12" width="231" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -35,7 +35,7 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="NWB-bv-psG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="Bby-6q-CQ1"/>
+                    <constraint firstItem="NWB-bv-psG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Bby-6q-CQ1"/>
                     <constraint firstItem="NWB-bv-psG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Fu1-fk-cKs"/>
                     <constraint firstItem="Tru-Tx-ha6" firstAttribute="centerY" secondItem="NWB-bv-psG" secondAttribute="centerY" id="HPu-mz-TWK"/>
                     <constraint firstAttribute="bottom" secondItem="NWB-bv-psG" secondAttribute="bottom" constant="12" id="O9S-IF-KKP"/>

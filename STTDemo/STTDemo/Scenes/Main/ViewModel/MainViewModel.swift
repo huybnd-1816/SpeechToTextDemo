@@ -61,10 +61,11 @@ final class MainViewModel: NSObject{
     }
     
     private func translatingText(_ inputText: String, translationCode: String) {
-        print("TRANSLATION: ", ForeignLanguages.shared.translationToLanguage!)
+        print("TRANSLATION: ", ForeignLanguages.shared.selectedTransToLanguage!)
+        guard let desTransCode = ForeignLanguages.shared.selectedTransToLanguage?.desTransCode else { return }
         
         translationRepository.translateText(text: inputText, sourceLangCode: translationCode,
-                                            targetLangCode: ForeignLanguages.shared.translationToLanguage!) { result in
+                                            targetLangCode: desTransCode) { result in
             switch result {
             case .success(let response):
                 guard let res = response?.translationData?.translations?.first?.translatedText,
@@ -112,7 +113,7 @@ extension MainViewModel: AudioControllerDelegate {
             * 2 /* bytes/sample */);
 
         if (audioData.length > chunkSize) {
-            SpeechRecognitionService.sharedInstance.streamAudioData(audioData, languagueCode: (ForeignLanguages.shared.selectedLanguage?.sttCode)!) { [weak self] (response, error) in
+            SpeechRecognitionService.sharedInstance.streamAudioData(audioData, languagueCode: (ForeignLanguages.shared.selectedSTTLanguage?.sttCode)!) { [weak self] (response, error) in
                 guard let self = self else {
                     return
                 }
@@ -138,7 +139,7 @@ extension MainViewModel: AudioControllerDelegate {
 
                                     self.transcripts.append(alternative?.transcript ?? "")
                                     // TRANSLATE SCRIPTS
-                                    self.translatingText(alternative?.transcript ?? "", translationCode: (ForeignLanguages.shared.selectedLanguage?.translationCode)!)
+                                    self.translatingText(alternative?.transcript ?? "", translationCode: (ForeignLanguages.shared.selectedSTTLanguage?.sourceTransCode)!)
                                 }
                             }
                         }

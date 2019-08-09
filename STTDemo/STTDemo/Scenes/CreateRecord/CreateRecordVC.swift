@@ -11,11 +11,8 @@ final class CreateRecordVC: UIViewController {
     @IBOutlet private weak var recordNameTextField: UITextField!
     @IBOutlet private weak var createdDateTextField: UITextField!
     @IBOutlet private weak var viewLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var vietnameseButton: UIButton!
-    @IBOutlet private weak var englishButton: UIButton!
-    @IBOutlet private weak var originalJapaneseButton: UIButton!
-    @IBOutlet private weak var originalEnglishButton: UIButton!
-    
+    @IBOutlet private weak var translateFromButton: UIButton!
+    @IBOutlet private weak var translateToButton: UIButton!
     
     var transitingToMain: ((String) -> Void)?
     
@@ -36,11 +33,8 @@ final class CreateRecordVC: UIViewController {
         if UIDevice.current.screenType == UIDevice.ScreenType.iPhones_5_5s_5c_SE {
             viewLeadingConstraint.constant = 16
         }
-        
-        vietnameseButton.isSelected = ForeignLanguages.shared.translatingLanguagues[0].isSelected
-        englishButton.isSelected = ForeignLanguages.shared.translatingLanguagues[1].isSelected
-        originalJapaneseButton.isSelected = ForeignLanguages.shared.listLanguages[0].isSelected!
-        originalEnglishButton.isSelected = ForeignLanguages.shared.listLanguages[1].isSelected!
+        translateFromButton.setTitle(ForeignLanguages.shared.selectedSTTLanguage?.name, for: .normal)
+        translateToButton.setTitle(ForeignLanguages.shared.selectedTransToLanguage?.name, for: .normal)
     }
 
     @IBAction func handleCloseButtonTapped(_ sender: Any) {
@@ -63,34 +57,28 @@ final class CreateRecordVC: UIViewController {
         transitingToMain?(recordName)
     }
     
-    @IBAction func changeLanguageTo(_ sender: UIButton) {
-        for i in 0..<ForeignLanguages.shared.translatingLanguagues.count {
-            ForeignLanguages.shared.translatingLanguagues[i].isSelected = false
-        }
-
-        if sender == vietnameseButton {
-            ForeignLanguages.shared.translatingLanguagues[0].isSelected = true
-        } else if sender == englishButton {
-            ForeignLanguages.shared.translatingLanguagues[1].isSelected = true
-        }
+    @IBAction func handleTranslateFromButtonTapped(_ sender: Any) {
+        let vc = ListLanguagesVC.instantiate()
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true)
         
-        vietnameseButton.isSelected = ForeignLanguages.shared.translatingLanguagues[0].isSelected
-        englishButton.isSelected = ForeignLanguages.shared.translatingLanguagues[1].isSelected
+        vc.didChangedLanguage = { [weak self] in
+            guard let self = self else { return }
+            self.translateFromButton.setTitle(ForeignLanguages.shared.selectedSTTLanguage?.name, for: .normal)
+        }
     }
     
-    @IBAction func changeLanguageFrom(_ sender: UIButton) {
-        for i in 0..<ForeignLanguages.shared.listLanguages.count {
-            ForeignLanguages.shared.listLanguages[i].isSelected = false
-        }
+    @IBAction func handleTranslateToButtonTapped(_ sender: Any) {
+        let vc = ListTransLanguagesVC.instantiate()
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true)
         
-        if sender == originalJapaneseButton {
-            ForeignLanguages.shared.listLanguages[0].isSelected = true
-        } else if sender == originalEnglishButton {
-            ForeignLanguages.shared.listLanguages[1].isSelected = true
+        vc.didChangedLanguage = { [weak self] in
+            guard let self = self else { return }
+            self.translateToButton.setTitle(ForeignLanguages.shared.selectedTransToLanguage?.name, for: .normal)
         }
-        
-        originalJapaneseButton.isSelected = ForeignLanguages.shared.listLanguages[0].isSelected!
-        originalEnglishButton.isSelected = ForeignLanguages.shared.listLanguages[1].isSelected!
     }
 }
 

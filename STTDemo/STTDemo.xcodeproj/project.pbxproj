@@ -63,6 +63,10 @@
 		8E54AFE422EADD0800001117 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E54AFE322EADD0800001117 /* Response.swift */; };
 		8E54AFE622EADD3400001117 /* STTLongAudioResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E54AFE522EADD3400001117 /* STTLongAudioResponse.swift */; };
 		8E54AFE822EADED400001117 /* GetAudioTransciptionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E54AFE722EADED400001117 /* GetAudioTransciptionRequest.swift */; };
+		8E7B4FEA22FD6A0600608FD4 /* ListTransLanguagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7B4FE922FD6A0600608FD4 /* ListTransLanguagesVC.swift */; };
+		8E7B4FEE22FD6AD800608FD4 /* ListTransLanguagesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7B4FED22FD6AD800608FD4 /* ListTransLanguagesVM.swift */; };
+		8E7B4FF122FD6AFA00608FD4 /* TransLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7B4FEF22FD6AFA00608FD4 /* TransLanguageCell.swift */; };
+		8E7B4FF222FD6AFA00608FD4 /* TransLanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B4FF022FD6AFA00608FD4 /* TransLanguageCell.xib */; };
 		8EC9DCCF22F0321A00C4FB8B /* TranslationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCCE22F0321A00C4FB8B /* TranslationRequest.swift */; };
 		8EC9DCD122F0338100C4FB8B /* TranslationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCD022F0338100C4FB8B /* TranslationRepository.swift */; };
 		8EC9DCD322F0340500C4FB8B /* TranslationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCD222F0340500C4FB8B /* TranslationResponse.swift */; };
@@ -140,6 +144,10 @@
 		8E54AFE322EADD0800001117 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		8E54AFE522EADD3400001117 /* STTLongAudioResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTLongAudioResponse.swift; sourceTree = "<group>"; };
 		8E54AFE722EADED400001117 /* GetAudioTransciptionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAudioTransciptionRequest.swift; sourceTree = "<group>"; };
+		8E7B4FE922FD6A0600608FD4 /* ListTransLanguagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTransLanguagesVC.swift; sourceTree = "<group>"; };
+		8E7B4FED22FD6AD800608FD4 /* ListTransLanguagesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTransLanguagesVM.swift; sourceTree = "<group>"; };
+		8E7B4FEF22FD6AFA00608FD4 /* TransLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransLanguageCell.swift; sourceTree = "<group>"; };
+		8E7B4FF022FD6AFA00608FD4 /* TransLanguageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransLanguageCell.xib; sourceTree = "<group>"; };
 		8EC9DCCE22F0321A00C4FB8B /* TranslationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationRequest.swift; sourceTree = "<group>"; };
 		8EC9DCD022F0338100C4FB8B /* TranslationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationRepository.swift; sourceTree = "<group>"; };
 		8EC9DCD222F0340500C4FB8B /* TranslationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationResponse.swift; sourceTree = "<group>"; };
@@ -338,6 +346,7 @@
 				8E29CC2622F807D3005BFBEF /* CreateRecord */,
 				8E2D4CDA22E69800002E414B /* Main */,
 				8EC9DCFA22F1996000C4FB8B /* ListLanguages */,
+				8E7B4FE822FD69E700608FD4 /* ListTransLanguages */,
 				8EC9DCEB22F169C800C4FB8B /* AudioTranscipt */,
 				8E29CC2C22F907D2005BFBEF /* DetailTranscipt */,
 				8E2D4CDB22E69805002E414B /* Storyboard */,
@@ -479,6 +488,33 @@
 			path = LanguageCell;
 			sourceTree = "<group>";
 		};
+		8E7B4FE822FD69E700608FD4 /* ListTransLanguages */ = {
+			isa = PBXGroup;
+			children = (
+				8E7B4FEB22FD6AB300608FD4 /* TransLanguageCell */,
+				8E7B4FEC22FD6ABF00608FD4 /* ViewModel */,
+				8E7B4FE922FD6A0600608FD4 /* ListTransLanguagesVC.swift */,
+			);
+			path = ListTransLanguages;
+			sourceTree = "<group>";
+		};
+		8E7B4FEB22FD6AB300608FD4 /* TransLanguageCell */ = {
+			isa = PBXGroup;
+			children = (
+				8E7B4FEF22FD6AFA00608FD4 /* TransLanguageCell.swift */,
+				8E7B4FF022FD6AFA00608FD4 /* TransLanguageCell.xib */,
+			);
+			path = TransLanguageCell;
+			sourceTree = "<group>";
+		};
+		8E7B4FEC22FD6ABF00608FD4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8E7B4FED22FD6AD800608FD4 /* ListTransLanguagesVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		8EC9DCEA22F167BB00C4FB8B /* UIExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +654,7 @@
 				8EC9DCE122F055BA00C4FB8B /* google in Resources */,
 				8E29CC3322F9140B005BFBEF /* MessageCell.xib in Resources */,
 				8E469BD622F2B6AC00A4CC9D /* LanguageCell.xib in Resources */,
+				8E7B4FF222FD6AFA00608FD4 /* TransLanguageCell.xib in Resources */,
 				8EC9DCF522F16C2F00C4FB8B /* AudioCell.xib in Resources */,
 				8E2D4CB922E6916D002E414B /* Main.storyboard in Resources */,
 				8E2D4D0122E6B82C002E414B /* TableCell.xib in Resources */,
@@ -675,6 +712,7 @@
 			files = (
 				8E2D4CDE22E69918002E414B /* APIUrl.swift in Sources */,
 				8E2D4CF122E6A266002E414B /* STTRepository.swift in Sources */,
+				8E7B4FEA22FD6A0600608FD4 /* ListTransLanguagesVC.swift in Sources */,
 				8E54AFE222EADCDC00001117 /* Metadata.swift in Sources */,
 				8EC9DCD322F0340500C4FB8B /* TranslationResponse.swift in Sources */,
 				8E3402C322E8302A0007F030 /* APIKey.swift in Sources */,
@@ -686,11 +724,13 @@
 				8E2D4CCD22E694B4002E414B /* Results.swift in Sources */,
 				8E2D4CEA22E6A034002E414B /* CustomRequestAdapter.swift in Sources */,
 				8E54AFB222E9962400001117 /* SpeechRecognitionService.swift in Sources */,
+				8E7B4FF122FD6AFA00608FD4 /* TransLanguageCell.swift in Sources */,
 				8E29CC2522F7FEC1005BFBEF /* NavigationController.swift in Sources */,
 				8E54AFE822EADED400001117 /* GetAudioTransciptionRequest.swift in Sources */,
 				8E3402D122E8502B0007F030 /* Date+.swift in Sources */,
 				8E2D4CE822E6A01A002E414B /* BaseResult.swift in Sources */,
 				8EC9DCE522F1649700C4FB8B /* FirebaseService.swift in Sources */,
+				8E7B4FEE22FD6AD800608FD4 /* ListTransLanguagesVM.swift in Sources */,
 				8E2D4CFC22E6B049002E414B /* Languages.swift in Sources */,
 				8E29CC2B22F818B5005BFBEF /* UIDevice+.swift in Sources */,
 				8EC9DCF722F17D7600C4FB8B /* PaddingLabel.swift in Sources */,

@@ -41,7 +41,7 @@ final class AudioTranscriptVM: NSObject {
             }
             
             self.audioTranscripts = self.audioTranscripts.sorted {
-                $0.title < $1.title
+                $0.title > $1.title
             }
             self.didChanged?()
         }
@@ -53,9 +53,21 @@ extension AudioTranscriptVM: UITableViewDelegate {
         return UITableView.automaticDimension
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return audioTranscripts[section].title.stringBy(format: "dd-MM-yyyy")
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        headerView.backgroundColor = UIColor(red: 255.0/255.0, green: 75.0/255.0, blue: 110.0/255.0, alpha: 1.0)
+        let label = UILabel()
+        label.frame = CGRect.init(x: 16, y: 5, width: headerView.frame.width, height: headerView.frame.height - 10)
+        label.text = audioTranscripts[section].title.stringBy(format: "dd-MM-yyyy")
+        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        headerView.addSubview(label)
+        return headerView
     }
+    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return audioTranscripts[section].title.stringBy(format: "dd-MM-yyyy")
+//    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
