@@ -29,13 +29,14 @@ final class MainViewController: UIViewController {
     }
     
     private func config() {
-        navigationItem.hidesBackButton = true
+        navigationItem.hidesBackButton = false
         viewModel = MainViewModel()
         tableView.delegate = viewModel
         tableView.dataSource = viewModel
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 64
+        tableView.estimatedRowHeight = 20
         tableView.tableFooterView = UIView(frame: .zero)
+        tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "TableCell", bundle: nil), forCellReuseIdentifier: "TableCell")
         
         viewModel.didChanged = { [weak self] errorMessage in

@@ -10,7 +10,7 @@ import AVFoundation
 import googleapis
 
 final class MainViewModel: NSObject{
-    private var transcripts: [String] = [] {
+    private var transcripts: [CellData] = [] {
         didSet {
             didChanged?(nil)
         }
@@ -25,6 +25,8 @@ final class MainViewModel: NSObject{
     
     var didChanged: ((String?) -> Void)?
     var deselectedButton: (() -> Void)?
+    
+    var arrConversion : [CellData] = []
     
     override init() {
         super.init()
@@ -60,17 +62,24 @@ final class MainViewModel: NSObject{
         print("RECORDING STOP")
     }
     
-    private func translatingText(_ inputText: String, translationCode: String) {
+    private func translatingText( inputData: CellData, translationCode: String) {
         print("TRANSLATION: ", ForeignLanguages.shared.selectedTransToLanguage!)
         guard let desTransCode = ForeignLanguages.shared.selectedTransToLanguage?.desTransCode else { return }
         
-        translationRepository.translateText(text: inputText, sourceLangCode: translationCode,
+        translationRepository.translateText(text: inputData.strTextRecognizedFromSpeech, sourceLangCode: translationCode,
                                             targetLangCode: desTransCode) { result in
             switch result {
             case .success(let response):
                 guard let res = response?.translationData?.translations?.first?.translatedText,
                     res != "" else { return }
                 print("TRANSLATE:", res)
+                
+                // update Transcript data
+                var dataChange = self.transcripts[inputData.dataIndex]
+                dataChange.strTextTranslated = res
+                self.transcripts[inputData.dataIndex] = dataChange
+                
+                // write to firebase store
                 self.writeTextToFireBase(text: res)
             case .failure(let err):
                 print("ERROR: ", err?.errorMessage ?? "")
@@ -136,10 +145,12 @@ extension MainViewModel: AudioControllerDelegate {
                                     let alternative =  res.max(by: { (a, b) -> Bool in
                                         a.confidence < b.confidence
                                     })
-
-                                    self.transcripts.append(alternative?.transcript ?? "")
+                                    let dataItem : CellData = CellData(givenTextRecog: alternative?.transcript ?? "",
+                                                                       givenTextTranslated: "",
+                                                                       givenIndex: self.transcripts.count)
+                                    self.transcripts.append(dataItem)
                                     // TRANSLATE SCRIPTS
-                                    self.translatingText(alternative?.transcript ?? "", translationCode: (ForeignLanguages.shared.selectedSTTLanguage?.sourceTransCode)!)
+                                    self.translatingText(inputData: dataItem, translationCode: (ForeignLanguages.shared.selectedSTTLanguage?.sourceTransCode)!)
                                 }
                             }
                         }

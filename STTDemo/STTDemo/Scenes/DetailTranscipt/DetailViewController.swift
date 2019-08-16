@@ -28,6 +28,8 @@ final class DetailViewController: UIViewController {
         detailTableView.rowHeight = UITableView.automaticDimension
         detailTableView.estimatedRowHeight = 44
         
+        detailTableView.separatorStyle = .none
+                
         viewModel.reloadData(audioName)
         
         viewModel.didChanged = { [weak self] in
