@@ -21,11 +21,17 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         config()
         setupWidthConstraintForTranslationButton()
+        setupBarButton()
     }
     
     private func setupWidthConstraintForTranslationButton() {
         widthButton = UIScreen.main.bounds.width - 128
         translateButtonWidthConstraint.constant = widthButton
+    }
+    
+    private func setupBarButton() {
+        backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ic-back"), style: .plain, target: self, action: #selector(handleBackButtonTapped))
+        navigationItem.leftBarButtonItem = backButton
     }
     
     private func config() {
