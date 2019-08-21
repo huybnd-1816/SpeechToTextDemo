@@ -920,7 +920,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E2BBEEC872C58B5EF1487EAF /* Pods-STTDemo.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ic_app_MeetingAssistant;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4S6V4A656S;
 				INFOPLIST_FILE = STTDemo/Info.plist;
@@ -941,7 +941,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CCEE279DAC157539F9D8294D /* Pods-STTDemo.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ic_app_MeetingAssistant;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4S6V4A656S;
 				INFOPLIST_FILE = STTDemo/Info.plist;
