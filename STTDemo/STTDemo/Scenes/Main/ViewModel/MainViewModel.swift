@@ -26,6 +26,7 @@ final class MainViewModel: NSObject{
     var didChanged: ((String?) -> Void)?
     var deselectedButton: (() -> Void)?
     var didShowValue: ((String) -> Void)?
+    var didPressCopyText: ((String) -> Void)?
     
     var arrConversion : [CellData] = []
     
@@ -115,11 +116,12 @@ extension MainViewModel: UITableViewDataSource, TableCellDelegate {
     
     func didPressCopyText(at index: IndexPath) {
         let dataItem = self.transcripts[index.row]
-        // toast this message
-        Toast(text: "Copied: " + dataItem.strTextRecognizedFromSpeech)
+        
         // copy to clipboard
         let pasteboard = UIPasteboard.general
         pasteboard.string = dataItem.strTextRecognizedFromSpeech
+        
+        self.didPressCopyText?(dataItem.strTextRecognizedFromSpeech)
     }
 }
 

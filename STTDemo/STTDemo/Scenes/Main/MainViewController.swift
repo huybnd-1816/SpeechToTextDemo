@@ -69,6 +69,11 @@ final class MainViewController: UIViewController {
             self.animationButtonWhenStopTranslating()
         }
         
+        viewModel.didPressCopyText = { [weak self] message in
+            guard let self = self else { return }
+            Loaf("Copied: " + message, state: .success, sender: self).show()
+        }
+        
         viewModel.audioName = navigationItem.title
         
         viewModel.didShowValue = { [weak self] record in

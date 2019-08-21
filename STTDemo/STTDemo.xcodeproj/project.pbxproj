@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		53860C5D230D46FE00D2FB9D /* ToastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53860C59230D46FD00D2FB9D /* ToastWindow.swift */; };
-		53860C5E230D46FE00D2FB9D /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53860C5A230D46FD00D2FB9D /* ToastView.swift */; };
-		53860C5F230D46FE00D2FB9D /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53860C5B230D46FD00D2FB9D /* Toast.swift */; };
-		53860C60230D46FE00D2FB9D /* ToastCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53860C5C230D46FD00D2FB9D /* ToastCenter.swift */; };
+		53860C6B230D4E6C00D2FB9D /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53860C65230D4E6C00D2FB9D /* Manager.swift */; };
+		53860C6C230D4E6C00D2FB9D /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53860C66230D4E6C00D2FB9D /* Controller.swift */; };
+		53860C6D230D4E6C00D2FB9D /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53860C67230D4E6C00D2FB9D /* Animator.swift */; };
+		53860C6E230D4E6C00D2FB9D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53860C68230D4E6C00D2FB9D /* Extensions.swift */; };
+		53860C6F230D4E6C00D2FB9D /* Loaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53860C69230D4E6C00D2FB9D /* Loaf.swift */; };
+		53860C70230D4E6C00D2FB9D /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53860C6A230D4E6C00D2FB9D /* Icons.swift */; };
 		569CE7FB11AD8B4CFEAA1CF0 /* Pods_STTDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4CBF12D4E51CEEE37DE480 /* Pods_STTDemo.framework */; };
 		8E178DC222FABB82002E1017 /* Pulsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E178DC122FABB82002E1017 /* Pulsing.swift */; };
 		8E29CC1F22F7DBFD005BFBEF /* ForeignLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29CC1E22F7DBFD005BFBEF /* ForeignLanguages.swift */; };
@@ -90,10 +92,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		53860C59230D46FD00D2FB9D /* ToastWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastWindow.swift; sourceTree = "<group>"; };
-		53860C5A230D46FD00D2FB9D /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		53860C5B230D46FD00D2FB9D /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		53860C5C230D46FD00D2FB9D /* ToastCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastCenter.swift; sourceTree = "<group>"; };
+		53860C65230D4E6C00D2FB9D /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		53860C66230D4E6C00D2FB9D /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		53860C67230D4E6C00D2FB9D /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		53860C68230D4E6C00D2FB9D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		53860C69230D4E6C00D2FB9D /* Loaf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loaf.swift; sourceTree = "<group>"; };
+		53860C6A230D4E6C00D2FB9D /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		8E178DC122FABB82002E1017 /* Pulsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pulsing.swift; sourceTree = "<group>"; };
 		8E29CC1E22F7DBFD005BFBEF /* ForeignLanguages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignLanguages.swift; sourceTree = "<group>"; };
 		8E29CC2122F7E32D005BFBEF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -192,12 +196,22 @@
 		53860C58230D46FD00D2FB9D /* ToastMessage */ = {
 			isa = PBXGroup;
 			children = (
-				53860C59230D46FD00D2FB9D /* ToastWindow.swift */,
-				53860C5A230D46FD00D2FB9D /* ToastView.swift */,
-				53860C5B230D46FD00D2FB9D /* Toast.swift */,
-				53860C5C230D46FD00D2FB9D /* ToastCenter.swift */,
+				53860C68230D4E6C00D2FB9D /* Extensions.swift */,
+				53860C6A230D4E6C00D2FB9D /* Icons.swift */,
+				53860C69230D4E6C00D2FB9D /* Loaf.swift */,
+				53860C64230D4E6C00D2FB9D /* Presenter */,
 			);
 			path = ToastMessage;
+			sourceTree = "<group>";
+		};
+		53860C64230D4E6C00D2FB9D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				53860C65230D4E6C00D2FB9D /* Manager.swift */,
+				53860C66230D4E6C00D2FB9D /* Controller.swift */,
+				53860C67230D4E6C00D2FB9D /* Animator.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		8E29CC2022F7E2E9005BFBEF /* Menu */ = {
@@ -739,7 +753,6 @@
 				8E54AFE622EADD3400001117 /* STTLongAudioResponse.swift in Sources */,
 				8E2D4CB622E6916D002E414B /* MainViewController.swift in Sources */,
 				8E2D4CCB22E69404002E414B /* APIService.swift in Sources */,
-				53860C5E230D46FE00D2FB9D /* ToastView.swift in Sources */,
 				8E54AFB422E9A68E00001117 /* UIViewController+.swift in Sources */,
 				8E54AFB022E995CD00001117 /* AudioController.swift in Sources */,
 				8E2D4CCD22E694B4002E414B /* Results.swift in Sources */,
@@ -750,6 +763,7 @@
 				8E54AFE822EADED400001117 /* GetAudioTransciptionRequest.swift in Sources */,
 				8E3402D122E8502B0007F030 /* Date+.swift in Sources */,
 				8E2D4CE822E6A01A002E414B /* BaseResult.swift in Sources */,
+				53860C6B230D4E6C00D2FB9D /* Manager.swift in Sources */,
 				8EC9DCE522F1649700C4FB8B /* FirebaseService.swift in Sources */,
 				8E7B4FEE22FD6AD800608FD4 /* ListTransLanguagesVM.swift in Sources */,
 				8E2D4CFC22E6B049002E414B /* Languages.swift in Sources */,
@@ -758,10 +772,8 @@
 				8E2D4CCF22E694D1002E414B /* Alternatives.swift in Sources */,
 				8E2D4D0022E6B82C002E414B /* TableCell.swift in Sources */,
 				8E2D4CD122E694FD002E414B /* STTResponse.swift in Sources */,
-				53860C60230D46FE00D2FB9D /* ToastCenter.swift in Sources */,
 				8E3402DB22E8624A0007F030 /* AlertMessage.swift in Sources */,
 				8E3402D522E857A20007F030 /* RecordedAudio.swift in Sources */,
-				53860C5D230D46FE00D2FB9D /* ToastWindow.swift in Sources */,
 				8E2D4CE422E69A07002E414B /* BaseRequest.swift in Sources */,
 				8E54AFE022EADAAF00001117 /* STTLongAudioRequest.swift in Sources */,
 				8E54AFDC22EAD69E00001117 /* Storyboards.swift in Sources */,
@@ -769,22 +781,24 @@
 				8EC9DCE922F167A800C4FB8B /* String+.swift in Sources */,
 				8EC9DCD722F035DE00C4FB8B /* Translations.swift in Sources */,
 				8E29CC3A22F97CC1005BFBEF /* CheckInternet.swift in Sources */,
+				53860C70230D4E6C00D2FB9D /* Icons.swift in Sources */,
 				8E3402D322E850470007F030 /* Int+.swift in Sources */,
 				8E2D4CD722E69582002E414B /* STTRequest.swift in Sources */,
 				8E3402DD22E862660007F030 /* UIApplication+.swift in Sources */,
 				8E29CC3622F91613005BFBEF /* DetailViewModel.swift in Sources */,
+				53860C6F230D4E6C00D2FB9D /* Loaf.swift in Sources */,
 				8E2D4CE622E69B21002E414B /* STTShortAudioRequest.swift in Sources */,
 				8E29CC2222F7E32D005BFBEF /* MenuViewController.swift in Sources */,
 				8E29CC2922F80805005BFBEF /* CreateRecordVC.swift in Sources */,
 				8EC9DCD522F035B200C4FB8B /* TranslationData.swift in Sources */,
 				8E469BD122F2B68600A4CC9D /* ListLanguagesVM.swift in Sources */,
+				53860C6E230D4E6C00D2FB9D /* Extensions.swift in Sources */,
 				8E469BD522F2B6AC00A4CC9D /* LanguageCell.swift in Sources */,
 				8E29CC1F22F7DBFD005BFBEF /* ForeignLanguages.swift in Sources */,
 				8E54AFE422EADD0800001117 /* Response.swift in Sources */,
 				8EC9DCCF22F0321A00C4FB8B /* TranslationRequest.swift in Sources */,
 				8E2D4CB422E6916D002E414B /* AppDelegate.swift in Sources */,
 				8EC9DCD122F0338100C4FB8B /* TranslationRepository.swift in Sources */,
-				53860C5F230D46FE00D2FB9D /* Toast.swift in Sources */,
 				8E2D4CD322E69553002E414B /* Audio.swift in Sources */,
 				8E29CC3822F96F15005BFBEF /* AudioTranscript.swift in Sources */,
 				8E29CC3222F9140B005BFBEF /* MessageCell.swift in Sources */,
@@ -796,6 +810,8 @@
 				8E54AFDE22EAD72900001117 /* UIView+.swift in Sources */,
 				8E2D4CEE22E6A134002E414B /* BaseError.swift in Sources */,
 				8EC9DCF922F1995700C4FB8B /* ListLanguagesVC.swift in Sources */,
+				53860C6C230D4E6C00D2FB9D /* Controller.swift in Sources */,
+				53860C6D230D4E6C00D2FB9D /* Animator.swift in Sources */,
 				8E2D4CF722E6A98B002E414B /* MainViewModel.swift in Sources */,
 				8E178DC222FABB82002E1017 /* Pulsing.swift in Sources */,
 				8EC9DCF422F16C2F00C4FB8B /* AudioCell.swift in Sources */,
