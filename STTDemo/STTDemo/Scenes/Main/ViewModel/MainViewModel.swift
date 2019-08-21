@@ -25,6 +25,7 @@ final class MainViewModel: NSObject{
     
     var didChanged: ((String?) -> Void)?
     var deselectedButton: (() -> Void)?
+    var didShowValue: ((String) -> Void)?
     
     override init() {
         super.init()
@@ -52,6 +53,7 @@ final class MainViewModel: NSObject{
         }
         SpeechRecognitionService.sharedInstance.sampleRate = sampleRate
         _ = AudioController.sharedInstance.start()
+        print("RECORDING START")
     }
     
     func stopAudio() {
@@ -124,30 +126,28 @@ extension MainViewModel: AudioControllerDelegate {
                     self.stopAudio()
                 } else if let response = response {
                     self.finished = false
-                    print(response)
 
                     for result in response.resultsArray! {
                         if let result = result as? StreamingRecognitionResult {
                             if result.isFinal {
                                 self.finished = true
-//                                print(result.alternativesArray)
-
+                                
                                 if let res = result.alternativesArray as? [SpeechRecognitionAlternative] {
                                     let alternative =  res.max(by: { (a, b) -> Bool in
                                         a.confidence < b.confidence
                                     })
-
+                                    
                                     self.transcripts.append(alternative?.transcript ?? "")
+                                    self.didShowValue?(alternative?.transcript ?? "")
                                     // TRANSLATE SCRIPTS
                                     self.translatingText(alternative?.transcript ?? "", translationCode: (ForeignLanguages.shared.selectedSTTLanguage?.sourceTransCode)!)
                                 }
+                            } else {
+                                if let res = result.alternativesArray as? [SpeechRecognitionAlternative] {
+                                    self.didShowValue?(res.first?.transcript ?? "")
+                                }
                             }
                         }
-                    }
-
-                    if self.finished {
-                        self.stopAudio()
-                        self.startAudio()
                     }
                 }
             }

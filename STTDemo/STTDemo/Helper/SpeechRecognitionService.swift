@@ -54,7 +54,7 @@ final class SpeechRecognitionService {
             let streamingRecognitionConfig = StreamingRecognitionConfig()
             streamingRecognitionConfig.config = recognitionConfig
             streamingRecognitionConfig.singleUtterance = false
-            streamingRecognitionConfig.interimResults = false // if set 'true', it shows temp results with "is_final" flag is false
+            streamingRecognitionConfig.interimResults = true // if set 'true', it shows temp results with "is_final" flag is false
             
             let streamingRecognizeRequest = StreamingRecognizeRequest()
             streamingRecognizeRequest.streamingConfig = streamingRecognitionConfig
