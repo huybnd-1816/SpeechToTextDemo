@@ -66,8 +66,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LHJ-Gx-Pan">
+                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="TAQ-kC-fST"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="8"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qk0-ZW-jZ1">
-                                <rect key="frame" x="0.0" y="44" width="414" height="658"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="558"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWQ-3o-D2k">
@@ -98,16 +108,20 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WWQ-3o-D2k" secondAttribute="bottom" constant="64" id="CJb-sx-9Yy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LHJ-Gx-Pan" secondAttribute="trailing" id="Ckj-zE-67r"/>
                             <constraint firstItem="WWQ-3o-D2k" firstAttribute="top" secondItem="qk0-ZW-jZ1" secondAttribute="bottom" constant="32" id="EJq-C9-wZJ"/>
+                            <constraint firstItem="LHJ-Gx-Pan" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FPS-oa-eM7"/>
+                            <constraint firstItem="LHJ-Gx-Pan" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Iw1-ei-fTB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qk0-ZW-jZ1" secondAttribute="trailing" id="QjV-u3-czV"/>
                             <constraint firstItem="WWQ-3o-D2k" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Uox-4P-JFr"/>
+                            <constraint firstItem="qk0-ZW-jZ1" firstAttribute="top" secondItem="LHJ-Gx-Pan" secondAttribute="bottom" id="dkh-A5-pNU"/>
                             <constraint firstItem="qk0-ZW-jZ1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dq3-3u-MLG"/>
-                            <constraint firstItem="qk0-ZW-jZ1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jG9-BN-grj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Streaming Audio" image="icons8-man_in_headphones" id="uJE-tU-2ud"/>
                     <connections>
+                        <outlet property="recordTextView" destination="LHJ-Gx-Pan" id="ahn-5d-rYY"/>
                         <outlet property="tableView" destination="qk0-ZW-jZ1" id="cap-Vz-98x"/>
                         <outlet property="translateButton" destination="WWQ-3o-D2k" id="mla-cR-BO9"/>
                         <outlet property="translateButtonWidthConstraint" destination="Ght-3a-kdc" id="Hf8-8c-weP"/>
@@ -115,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="1438"/>
+            <point key="canvasLocation" x="944.92753623188412" y="1437.7232142857142"/>
         </scene>
         <!--List LanguagesVC-->
         <scene sceneID="aRp-di-sLN">

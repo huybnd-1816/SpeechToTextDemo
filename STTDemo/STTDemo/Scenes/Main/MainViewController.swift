@@ -11,7 +11,8 @@ final class MainViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var translateButton: UIButton!
     @IBOutlet private weak var translateButtonWidthConstraint: NSLayoutConstraint!
-   
+    @IBOutlet private weak var recordTextView: UITextView!
+    
     private var backButton: UIBarButtonItem!
     private var widthButton: CGFloat!
     private var viewModel: MainViewModel!
@@ -69,8 +70,12 @@ final class MainViewController: UIViewController {
         }
         
         viewModel.audioName = navigationItem.title
+        
+        viewModel.didShowValue = { [weak self] record in
+            guard let self = self, record != "" else { return }
+            self.recordTextView.text = record
+        }
     }
-    
     
     @IBAction func handleTranscribeButtonTapped(_ sender: Any) {
         // Check Internet
