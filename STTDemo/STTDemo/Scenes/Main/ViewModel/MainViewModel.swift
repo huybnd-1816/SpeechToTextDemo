@@ -100,16 +100,26 @@ extension MainViewModel: UITableViewDelegate {
     }
 }
 
-extension MainViewModel: UITableViewDataSource {
+extension MainViewModel: UITableViewDataSource, TableCellDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transcripts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TableCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.delegate = self
         let transcript = transcripts[indexPath.row]
-        cell.configCell(transcript)
+        cell.configCell(transcript, givenIndexPath: indexPath)
         return cell
+    }
+    
+    func didPressCopyText(at index: IndexPath) {
+        let dataItem = self.transcripts[index.row]
+        // toast this message
+        Toast(text: "Copied: " + dataItem.strTextRecognizedFromSpeech)
+        // copy to clipboard
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = dataItem.strTextRecognizedFromSpeech
     }
 }
 

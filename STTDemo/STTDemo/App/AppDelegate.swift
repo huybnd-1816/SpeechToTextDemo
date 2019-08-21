@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Fabric.with([Crashlytics.self])
         
+        UIApplication.shared.isIdleTimerDisabled = true
         return true
     }
 }
