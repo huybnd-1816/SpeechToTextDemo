@@ -43,6 +43,11 @@ final class DetailViewController: UIViewController {
                 section: self.detailTableView.numberOfSections - 1)
             self.detailTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
+        
+        viewModel.didPressCopyText = { [weak self] message in
+            guard let self = self else { return }
+            Loaf("Copied: " + message, state: .success, sender: self).show()
+        }
     }
 }
 

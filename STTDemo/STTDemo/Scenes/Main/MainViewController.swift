@@ -37,6 +37,8 @@ final class MainViewController: UIViewController {
     
     private func config() {
         navigationItem.hidesBackButton = false
+        recordTextView.textContainerInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 8)
+        
         viewModel = MainViewModel()
         tableView.delegate = viewModel
         tableView.dataSource = viewModel
@@ -151,6 +153,15 @@ extension MainViewController {
                 }
             }
         }
+    }
+}
+
+extension MainViewController : UITextViewDelegate {
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        if textView == recordTextView {
+            return false
+        }
+        return true
     }
 }
 

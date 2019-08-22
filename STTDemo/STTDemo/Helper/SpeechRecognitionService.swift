@@ -47,7 +47,7 @@ final class SpeechRecognitionService {
             recognitionConfig.encoding = .linear16
             recognitionConfig.sampleRateHertz = Int32(sampleRate)
             recognitionConfig.languageCode = languagueCode
-            recognitionConfig.maxAlternatives = 30
+            recognitionConfig.maxAlternatives = 15
             recognitionConfig.enableWordTimeOffsets = true
             recognitionConfig.profanityFilter = true
             
@@ -74,6 +74,13 @@ final class SpeechRecognitionService {
         }
         writer.finishWithError(nil)
         streaming = false
+    }
+    
+    func cancelCurrentStreaming() {
+        if (!streaming) {
+            return
+        }
+        
     }
     
     func isStreaming() -> Bool {

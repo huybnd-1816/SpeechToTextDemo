@@ -65,6 +65,29 @@ final class MainViewModel: NSObject{
         print("RECORDING STOP")
     }
     
+    func restartRecord () {
+        _ = AudioController.sharedInstance.stop()
+        SpeechRecognitionService.sharedInstance.stopStreaming()
+        print("RECORDING STOP")
+        delay(0.2) {
+            let audioSession = AVAudioSession.sharedInstance()
+            do {
+                try audioSession.setCategory(AVAudioSession.Category.record)
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            self.audioData = NSMutableData()
+            let status = AudioController.sharedInstance.prepare(specifiedSampleRate: self.sampleRate)
+            if status != noErr {
+                
+            }
+            SpeechRecognitionService.sharedInstance.sampleRate = self.sampleRate
+            _ = AudioController.sharedInstance.start()
+            print("RECORDING START")
+        }
+    }
+    
     private func translatingText( inputData: CellData, translationCode: String) {
         print("TRANSLATION: ", ForeignLanguages.shared.selectedTransToLanguage!)
         guard let desTransCode = ForeignLanguages.shared.selectedTransToLanguage?.desTransCode else { return }
@@ -83,10 +106,11 @@ final class MainViewModel: NSObject{
                 self.transcripts[inputData.dataIndex] = dataChange
                 
                 // write to firebase store
-                self.writeTextToFireBase(text: res)
-                
+                self.writeTextToFireBase(text: dataChange.strTextRecognizedFromSpeech + "[&]" + res)
+
                 // clear text video
                 self.didShowValue?("...")
+                
             case .failure(let err):
                 print("ERROR: ", err?.errorMessage ?? "")
             }
@@ -171,6 +195,11 @@ extension MainViewModel: AudioControllerDelegate {
                                 }
                             } else {
                                 if let res = result.alternativesArray as? [SpeechRecognitionAlternative] {
+                                    
+                                    if ((res.first?.transcript.count)! >= 10) {
+//                                        self.restartRecord()
+                                        self.finished = true
+                                    }
                                     self.didShowValue?(res.first?.transcript ?? "")
                                 }
                             }

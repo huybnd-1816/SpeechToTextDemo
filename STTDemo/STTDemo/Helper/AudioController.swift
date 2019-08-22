@@ -114,6 +114,7 @@ final class AudioController {
         isRecording = false
         return AudioOutputUnitStop(remoteIOUnit!)
     }
+    
 }
 
 func recordingCallback(
@@ -132,6 +133,7 @@ func recordingCallback(
     bufferList.mNumberBuffers = channelCount
     let buffers = UnsafeMutableBufferPointer<AudioBuffer>(start: &bufferList.mBuffers,
                                                           count: Int(bufferList.mNumberBuffers))
+    
     buffers[0].mNumberChannels = 1
     buffers[0].mDataByteSize = inNumberFrames * 2
     buffers[0].mData = nil
