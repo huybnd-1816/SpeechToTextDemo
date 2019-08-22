@@ -84,6 +84,9 @@ final class MainViewModel: NSObject{
                 
                 // write to firebase store
                 self.writeTextToFireBase(text: res)
+                
+                // clear text video
+                self.didShowValue?("...")
             case .failure(let err):
                 print("ERROR: ", err?.errorMessage ?? "")
             }
