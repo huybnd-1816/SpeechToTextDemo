@@ -8,12 +8,12 @@
 
 struct CellData {
     
-    var strTextRecognizedFromSpeech : String = ""
-    var strTextTranslated : String = ""
-    var dataIndex : Int = 0
+    var strTextRecognizedFromSpeech: String = ""
+    var strTextTranslated: String = ""
+    var dataIndex: Int = 0
     
     // Constructor.
-    init(givenTextRecog:String, givenTextTranslated:String, givenIndex : Int) {
+    init(givenTextRecog: String, givenTextTranslated: String, givenIndex: Int) {
         self.strTextRecognizedFromSpeech = givenTextRecog;
         self.strTextTranslated = givenTextTranslated;
         self.dataIndex = givenIndex
@@ -31,22 +31,21 @@ final class TableCell: UITableViewCell, NibReusable {
     @IBOutlet weak var lblTextRecognized: UILabel!
     @IBOutlet weak var lblTextTranslated: UILabel!
     
-    var delegate : TableCellDelegate!
-    var indexPath : IndexPath!
+    var delegate: TableCellDelegate!
+    var indexPath: IndexPath!
     
-    var localCellData : CellData = CellData(givenTextRecog: "Recognizing",
+    var localCellData: CellData = CellData(givenTextRecog: "Recognizing",
                                             givenTextTranslated: "",
                                             givenIndex: 0)
     
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        self.configView()
-        
-        self.presentCellData()
+        configView()
+        presentCellData()
     }
     
-    func configView () {
+    func configView() {
         self.viewMain.cornerRadius = 7
         self.viewMain.layer.borderWidth = 2
     }
@@ -57,7 +56,7 @@ final class TableCell: UITableViewCell, NibReusable {
         self.presentCellData()
     }
     
-    func presentCellData () {
+    func presentCellData() {
         self.lblTextRecognized.text = self.localCellData.strTextRecognizedFromSpeech
         self.lblTextTranslated.text = self.localCellData.strTextTranslated
     }
