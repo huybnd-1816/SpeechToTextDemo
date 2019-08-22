@@ -14,6 +14,7 @@ final class DetailViewModel: NSObject {
     }
     
     var didChanged: (() -> Void)?
+    var didPressCopyText: ((String) -> Void)?
     
     override init() {
         super.init()
@@ -43,7 +44,18 @@ extension DetailViewModel: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MessageCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.configDetailCell(data: messages[indexPath.row])
+        cell.delegate = self
+        cell.configDetailCell(messages[indexPath.row], givenIndexPath: indexPath)
         return cell
+    }
+}
+
+extension DetailViewModel: MessageCellDelegate {
+    func didPressCopyText(_ copyText: String) {
+        // copy to clipboard
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = copyText
+
+        self.didPressCopyText?(copyText)
     }
 }

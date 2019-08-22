@@ -83,7 +83,8 @@ final class MainViewModel: NSObject{
                 self.transcripts[inputData.dataIndex] = dataChange
                 
                 // write to firebase store
-                self.writeTextToFireBase(text: res)
+//                self.writeTextToFireBase(text: res)
+                self.writeTextToFireBase(text: dataChange.strTextRecognizedFromSpeech + "[&]" + res)
             case .failure(let err):
                 print("ERROR: ", err?.errorMessage ?? "")
             }

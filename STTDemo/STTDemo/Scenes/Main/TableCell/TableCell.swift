@@ -21,15 +21,13 @@ struct CellData {
 }
 
 protocol TableCellDelegate {
-    func didPressCopyText(at index:IndexPath)
+    func didPressCopyText(at index: IndexPath)
 }
 
 final class TableCell: UITableViewCell, NibReusable {
-    @IBOutlet weak var viewMain: UIView!
-    
-    @IBOutlet private weak var resultTextLabel: UILabel!
-    @IBOutlet weak var lblTextRecognized: UILabel!
-    @IBOutlet weak var lblTextTranslated: UILabel!
+    @IBOutlet private weak var viewMain: UIView!
+    @IBOutlet private weak var lblTextRecognized: UILabel!
+    @IBOutlet private weak var lblTextTranslated: UILabel!
     
     var delegate: TableCellDelegate!
     var indexPath: IndexPath!
