@@ -56,12 +56,14 @@ final class MainViewModel: NSObject{
         }
         SpeechRecognitionService.sharedInstance.sampleRate = sampleRate
         _ = AudioController.sharedInstance.start()
+        UIApplication.shared.isIdleTimerDisabled = true // Screen never sleep
         print("RECORDING START")
     }
     
     func stopAudio() {
         _ = AudioController.sharedInstance.stop()
         SpeechRecognitionService.sharedInstance.stopStreaming()
+        UIApplication.shared.isIdleTimerDisabled = false
         print("RECORDING STOP")
     }
     

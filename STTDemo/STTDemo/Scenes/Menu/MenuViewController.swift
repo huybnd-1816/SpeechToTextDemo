@@ -17,7 +17,7 @@ final class MenuViewController: UIViewController {
         navigationItem.title = "Home"
     }
     
-    @IBAction func handleCreateButtonTapped(_ sender: Any) {
+    @IBAction func handleRecordingAutomaticallyButtonTapped(_ sender: Any) {
         let vc = CreateRecordVC.instantiate()
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
@@ -29,5 +29,11 @@ final class MenuViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         present(vc, animated: true)
+    }
+    
+    @IBAction func handleRecordingManuallyButtonTapped(_ sender: Any) {
+        let vc = RecordingManuallyViewController.instantiate()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
