@@ -12,6 +12,7 @@ final class RecordingManuallyViewController: UIViewController {
     @IBOutlet private weak var recordingTextView: UITextView!
     @IBOutlet private weak var translatedTextView: UITextView!
     @IBOutlet private weak var leftView: UIView!
+    @IBOutlet private weak var rightView: UIView!
     @IBOutlet private weak var leftButton: UIButton!
     @IBOutlet private weak var rightButton: UIButton!
     
@@ -29,27 +30,37 @@ final class RecordingManuallyViewController: UIViewController {
     }
     
     private func setupGestureRecognizer() {
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleRecordingButtonTapped))
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLeftButtonTapped))
         leftButton.addGestureRecognizer(longPressGesture)
         
-        let longPressGesture2 = UILongPressGestureRecognizer(target: self, action: #selector(handleRecordingButtonTapped))
+        let longPressGesture2 = UILongPressGestureRecognizer(target: self, action: #selector(handleRightButtonTapped))
         rightButton.addGestureRecognizer(longPressGesture2)
     }
     
     @objc
-    private func handleRecordingButtonTapped(_ sender: UIGestureRecognizer) {
+    private func handleLeftButtonTapped(_ sender: UIGestureRecognizer) {
         if sender.state == .ended {
            animationButtonWhenStopTranslating()
         }
         else if sender.state == .began {
-            animationButtonWhenTranslating()
+            animationButtonWhenTranslating(leftView)
         }
     }
     
-    private func animationButtonWhenTranslating() {
+    @objc
+    private func handleRightButtonTapped(_ sender: UIGestureRecognizer) {
+        if sender.state == .ended {
+            animationButtonWhenStopTranslating()
+        }
+        else if sender.state == .began {
+            animationButtonWhenTranslating(rightView)
+        }
+    }
+    
+    private func animationButtonWhenTranslating(_ view: UIView) {
         UIView.animate(withDuration: 0.3, delay: 0, options: [.curveLinear], animations: {
             self.view.layoutIfNeeded()
-            self.addPulse()
+            self.addPulse(view)
         })
         isRecording = true
     }
@@ -64,12 +75,12 @@ final class RecordingManuallyViewController: UIViewController {
 }
 
 extension RecordingManuallyViewController {
-    func addPulse(){
-        let pulse = Pulsing(radius: 300, position: leftView.center)
+    func addPulse(_ view: UIView){
+        let pulse = Pulsing(radius: 300, position: view.center)
         pulse.animationDuration = 1.0
         pulse.backgroundColor = UIColor(red: 255.0/255.0, green: 75.0/255.0, blue: 110.0/255.0, alpha: 1.0).cgColor
         
-        self.view.layer.insertSublayer(pulse, below: leftView.layer)
+        self.view.layer.insertSublayer(pulse, below: view.layer)
     }
     
     func removePulse() {

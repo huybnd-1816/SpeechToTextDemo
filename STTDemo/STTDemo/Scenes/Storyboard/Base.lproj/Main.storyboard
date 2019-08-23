@@ -215,6 +215,7 @@
                         <outlet property="leftView" destination="7V4-Gf-bCP" id="9Q3-29-LxS"/>
                         <outlet property="recordingTextView" destination="z7B-hH-M9u" id="Np1-9Q-Ale"/>
                         <outlet property="rightButton" destination="NZt-ge-ca2" id="9ZB-Jh-ElQ"/>
+                        <outlet property="rightView" destination="W8P-qT-y5n" id="1g8-NX-sGI"/>
                         <outlet property="translatedTextView" destination="GkJ-aQ-C91" id="inN-yC-HWQ"/>
                     </connections>
                 </viewController>
