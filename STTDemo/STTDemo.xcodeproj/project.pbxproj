@@ -90,6 +90,7 @@
 		8EC9DCF522F16C2F00C4FB8B /* AudioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EC9DCF322F16C2F00C4FB8B /* AudioCell.xib */; };
 		8EC9DCF722F17D7600C4FB8B /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCF622F17D7600C4FB8B /* PaddingLabel.swift */; };
 		8EC9DCF922F1995700C4FB8B /* ListLanguagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DCF822F1995700C4FB8B /* ListLanguagesVC.swift */; };
+		8EE4D103230E6D13004CEC47 /* RecordingManuallyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE4D102230E6D13004CEC47 /* RecordingManuallyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -178,6 +179,7 @@
 		8EC9DCF322F16C2F00C4FB8B /* AudioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioCell.xib; sourceTree = "<group>"; };
 		8EC9DCF622F17D7600C4FB8B /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		8EC9DCF822F1995700C4FB8B /* ListLanguagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListLanguagesVC.swift; path = STTDemo/Scenes/ListLanguagesVC.swift; sourceTree = SOURCE_ROOT; };
+		8EE4D102230E6D13004CEC47 /* RecordingManuallyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingManuallyViewController.swift; sourceTree = "<group>"; };
 		CCEE279DAC157539F9D8294D /* Pods-STTDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STTDemo.release.xcconfig"; path = "Target Support Files/Pods-STTDemo/Pods-STTDemo.release.xcconfig"; sourceTree = "<group>"; };
 		DD4CBF12D4E51CEEE37DE480 /* Pods_STTDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STTDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BBEEC872C58B5EF1487EAF /* Pods-STTDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STTDemo.debug.xcconfig"; path = "Target Support Files/Pods-STTDemo/Pods-STTDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 			children = (
 				8E29CC2322F7FE46005BFBEF /* Navigation */,
 				8E29CC2022F7E2E9005BFBEF /* Menu */,
+				8EE4D101230E6CD1004CEC47 /* RecordingManually */,
 				8E29CC2622F807D3005BFBEF /* CreateRecord */,
 				8E2D4CDA22E69800002E414B /* Main */,
 				8EC9DCFA22F1996000C4FB8B /* ListLanguages */,
@@ -608,6 +611,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		8EE4D101230E6CD1004CEC47 /* RecordingManually */ = {
+			isa = PBXGroup;
+			children = (
+				8EE4D102230E6D13004CEC47 /* RecordingManuallyViewController.swift */,
+			);
+			path = RecordingManually;
+			sourceTree = "<group>";
+		};
 		9F27A2E7C49412EAA6CD5AAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -778,6 +789,7 @@
 				8EBDB469230E32B900B79B17 /* Icons.swift in Sources */,
 				8E3402DB22E8624A0007F030 /* AlertMessage.swift in Sources */,
 				8E3402D522E857A20007F030 /* RecordedAudio.swift in Sources */,
+				8EE4D103230E6D13004CEC47 /* RecordingManuallyViewController.swift in Sources */,
 				8E2D4CE422E69A07002E414B /* BaseRequest.swift in Sources */,
 				8E54AFE022EADAAF00001117 /* STTLongAudioRequest.swift in Sources */,
 				8E54AFDC22EAD69E00001117 /* Storyboards.swift in Sources */,
