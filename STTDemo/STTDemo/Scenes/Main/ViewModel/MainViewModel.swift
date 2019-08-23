@@ -9,6 +9,11 @@
 import AVFoundation
 import googleapis
 
+// We recommend sending samples in 100ms chunks
+let chunkSize : Int /* bytes/chunk */ = Int(0.1 /* seconds/chunk */
+    * Double(16000) /* samples/second */
+    * 2 /* bytes/sample */);
+
 final class MainViewModel: NSObject{
     private var transcripts: [CellData] = [] {
         didSet {
@@ -66,25 +71,9 @@ final class MainViewModel: NSObject{
     }
     
     func restartRecord () {
-        _ = AudioController.sharedInstance.stop()
-        SpeechRecognitionService.sharedInstance.stopStreaming()
-        print("RECORDING STOP")
+        self.stopAudio()
         delay(0.2) {
-            let audioSession = AVAudioSession.sharedInstance()
-            do {
-                try audioSession.setCategory(AVAudioSession.Category.record)
-            } catch {
-                print(error.localizedDescription)
-            }
-            
-            self.audioData = NSMutableData()
-            let status = AudioController.sharedInstance.prepare(specifiedSampleRate: self.sampleRate)
-            if status != noErr {
-                
-            }
-            SpeechRecognitionService.sharedInstance.sampleRate = self.sampleRate
-            _ = AudioController.sharedInstance.start()
-            print("RECORDING START")
+            self.startAudio()
         }
     }
     
@@ -154,14 +143,8 @@ extension MainViewModel: UITableViewDataSource, TableCellDelegate {
 
 extension MainViewModel: AudioControllerDelegate {
     func processSampleData(_ data: Data) -> Void {
-        guard data != nil else { return }
         audioData.append(data)
         
-        // We recommend sending samples in 100ms chunks
-        let chunkSize : Int /* bytes/chunk */ = Int(0.1 /* seconds/chunk */
-            * Double(sampleRate) /* samples/second */
-            * 2 /* bytes/sample */);
-
         if (audioData.length > chunkSize) {
             SpeechRecognitionService.sharedInstance.streamAudioData(audioData, languagueCode: (ForeignLanguages.shared.selectedSTTLanguage?.sttCode)!) { [weak self] (response, error) in
                 guard let self = self else {
@@ -169,6 +152,7 @@ extension MainViewModel: AudioControllerDelegate {
                 }
 
                 if let error = error {
+                    print("Did failed with error code : \(error.code) des: \(error.description)")
                     self.didChanged?(error.localizedFailureReason)
                     self.deselectedButton?()
                     self.stopAudio()
@@ -191,15 +175,15 @@ extension MainViewModel: AudioControllerDelegate {
                                     self.didShowValue?(alternative?.transcript ?? "")
 
                                     // TRANSLATE SCRIPTS
-                                    self.translatingText(inputData: dataItem, translationCode: (ForeignLanguages.shared.selectedSTTLanguage?.sourceTransCode)!)
+                                    self.translatingText(inputData: dataItem, translationCode: (
+                                        ForeignLanguages.shared.selectedSTTLanguage?.sourceTransCode)!)
+                                    
+                                    // continue record
+                                    self.restartRecord()
                                 }
+                                
                             } else {
                                 if let res = result.alternativesArray as? [SpeechRecognitionAlternative] {
-                                    
-                                    if ((res.first?.transcript.count)! >= 10) {
-//                                        self.restartRecord()
-                                        self.finished = true
-                                    }
                                     self.didShowValue?(res.first?.transcript ?? "")
                                 }
                             }
@@ -208,6 +192,8 @@ extension MainViewModel: AudioControllerDelegate {
                 }
             }
             self.audioData = NSMutableData()
+        } else {
+            // audio length to little, no need to do anything else here
         }
     }
 }

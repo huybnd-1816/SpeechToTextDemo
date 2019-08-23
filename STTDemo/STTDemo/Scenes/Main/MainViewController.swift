@@ -67,8 +67,7 @@ final class MainViewController: UIViewController {
         
         viewModel.deselectedButton = { [weak self] in
             guard let self = self else { return }
-            self.translateButton.setTitle("Start To Translate", for: .normal)
-            self.animationButtonWhenStopTranslating()
+            self.handleTranscribe()
         }
         
         viewModel.didPressCopyText = { [weak self] message in
@@ -90,6 +89,11 @@ final class MainViewController: UIViewController {
             showAlert(title: "Error", message: "Internet connection not available")
             return
         }
+        
+        self.handleTranscribe()
+    }
+    
+    func handleTranscribe () {
         
         if !isRecording {
             translateButton.setTitle("...", for: .normal)

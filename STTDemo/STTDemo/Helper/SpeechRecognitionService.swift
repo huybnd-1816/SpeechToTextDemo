@@ -53,7 +53,7 @@ final class SpeechRecognitionService {
             
             let streamingRecognitionConfig = StreamingRecognitionConfig()
             streamingRecognitionConfig.config = recognitionConfig
-            streamingRecognitionConfig.singleUtterance = false
+            streamingRecognitionConfig.singleUtterance = true
             streamingRecognitionConfig.interimResults = true // if set 'true', it shows temp results with "is_final" flag is false
             
             let streamingRecognizeRequest = StreamingRecognizeRequest()
@@ -74,6 +74,13 @@ final class SpeechRecognitionService {
         }
         writer.finishWithError(nil)
         streaming = false
+    }
+    
+    func startStreaming() {
+        if (streaming) {
+            return
+        }
+        streaming = true
     }
     
     func cancelCurrentStreaming() {
