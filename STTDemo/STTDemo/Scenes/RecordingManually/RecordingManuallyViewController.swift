@@ -21,7 +21,7 @@ final class RecordingManuallyViewController: UIViewController {
     @IBOutlet weak var btnLanguageSelectionLeft: UIButton!
     @IBOutlet weak var btnLanguageSelectionRight: UIButton!
     
-    @IBOutlet var txtvTextDetected: [UITextView]!
+    @IBOutlet var txtvTextDetected: UITextView!
     // vars
     private var isRecording: Bool = false
     private var viewModel: RecordManualViewModel!
@@ -60,6 +60,17 @@ final class RecordingManuallyViewController: UIViewController {
             }
         }
         
+        // realtime displaying text detected
+        viewModel.didShowValue = { [weak self] record in
+            guard let self = self, record != "" else { return }
+            self.txtvTextDetected.text = record
+        }
+        
+        viewModel.didPressCopyText = { [weak self] message in
+            guard let self = self else { return }
+            Loaf("Copied: " + message, state: .success, sender: self).show()
+        }
+        
         // config button select language
         self.btnLanguageSelectionLeft.setTitle(LanguageHelper.shared.getCurrentSpeakerLeft().name, for: .normal)
         self.btnLanguageSelectionRight.setTitle(LanguageHelper.shared.getCurrentSpeakerRight().name, for: .normal)
@@ -73,38 +84,38 @@ final class RecordingManuallyViewController: UIViewController {
         rightButton.addGestureRecognizer(longPressGesture2)
     }
     
-    
 }
 
 // MARK: - Button handler
 extension RecordingManuallyViewController {
     
     @IBAction func btnLanguageSelectionLeftDidPressed(_ sender: Any) {
-        let vc = ListLanguagesVC.instantiate()
-        vc.languageSelectionMode = .SpeakerLeft
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.modalTransitionStyle = .crossDissolve
-        self.present(vc, animated: true)
-        
-        vc.didChangedLanguage = { [weak self] givenData in
-            guard let self = self else { return }
-            self.btnLanguageSelectionLeft.setTitle(LanguageHelper.shared.getCurrentSpeakerLeft().name, for: .normal)
-        }
+        self.handleLanguageSelection(givenSelectionMode: .SpeakerLeft)
     }
     @IBAction func btnLanguageSelectionRightDidPressed(_ sender: Any) {
+        self.handleLanguageSelection(givenSelectionMode: .SpeakerRight)
+    }
+    
+    func handleLanguageSelection (givenSelectionMode : LanguageSelectionMode) {
         let vc = ListLanguagesVC.instantiate()
-        vc.languageSelectionMode = .SpeakerRight
+        vc.languageSelectionMode = givenSelectionMode
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true)
         
         vc.didChangedLanguage = { [weak self] givenData in
             guard let self = self else { return }
-            self.btnLanguageSelectionRight.setTitle(LanguageHelper.shared.getCurrentSpeakerRight().name, for: .normal)
+            
+            switch givenSelectionMode {
+            case .SpeakerLeft:
+                self.btnLanguageSelectionLeft.setTitle(LanguageHelper.shared.getCurrentSpeakerLeft().name, for: .normal)
+            case .SpeakerRight:
+                self.btnLanguageSelectionRight.setTitle(LanguageHelper.shared.getCurrentSpeakerRight().name, for: .normal)
+            default:
+                self.btnLanguageSelectionLeft.setTitle(LanguageHelper.shared.getCurrentSpeakerLeft().name, for: .normal)
+            }
+            
         }
-    }
-    
-    func handleLanguageSelection () {
         
     }
     
@@ -126,14 +137,6 @@ extension RecordingManuallyViewController {
         else if sender.state == .began {
             animationButtonWhenTranslating(rightView)
         }
-    }
-    
-    private func animationButtonWhenTranslating(_ view: UIView) {
-        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveLinear], animations: {
-            self.view.layoutIfNeeded()
-            self.addPulse(view)
-        })
-        isRecording = true
     }
 }
 
@@ -157,12 +160,33 @@ extension RecordingManuallyViewController {
         }
     }
     
+    private func animationButtonWhenTranslating(_ view: UIView) {
+        isRecording = true
+        if view.tag == 1 {
+            print("On Record & Translate from \(LanguageHelper.shared.getCurrentSpeakerLeft().name!) to \(LanguageHelper.shared.getCurrentSpeakerRight().name!)")
+        } else {
+            print("On Record & Translate from \(LanguageHelper.shared.getCurrentSpeakerRight().name!) to \(LanguageHelper.shared.getCurrentSpeakerLeft().name!)")
+        }
+        
+        self.viewModel.onTranslating = OnTranslating(rawValue: view.tag)!
+        self.viewModel.startAudio()
+        
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveLinear], animations: {
+            self.view.layoutIfNeeded()
+            self.addPulse(view)
+        })
+    }
+    
     private func animationButtonWhenStopTranslating() {
         UIView.animate(withDuration: 0.3, delay: 0, options: [.curveLinear], animations: {
             self.view.layoutIfNeeded()
         })
         removePulse()
         isRecording = false
+        
+//        self.viewModel.onTranslating = .None
+        self.viewModel.stopAudio()
+        self.txtvTextDetected.text = "..."
     }
 }
 

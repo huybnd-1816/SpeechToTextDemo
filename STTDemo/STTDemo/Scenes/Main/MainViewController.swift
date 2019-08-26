@@ -50,6 +50,8 @@ final class MainViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "TableCell", bundle: nil), forCellReuseIdentifier: "TableCell")
         
+        viewModel.audioName = navigationItem.title
+        
         viewModel.didChanged = { [weak self] errorMessage in
             guard let self = self else { return }
             if let errorMessage = errorMessage {
@@ -76,8 +78,6 @@ final class MainViewController: UIViewController {
             guard let self = self else { return }
             Loaf("Copied: " + message, state: .success, sender: self).show()
         }
-        
-        viewModel.audioName = navigationItem.title
         
         viewModel.didShowValue = { [weak self] record in
             guard let self = self, record != "" else { return }

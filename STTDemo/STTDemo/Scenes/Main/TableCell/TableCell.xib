@@ -30,7 +30,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IkG-uu-H78" firstAttribute="leading" secondItem="Kw4-mZ-PUg" secondAttribute="leading" id="4hw-gJ-aUS"/>
                             <constraint firstAttribute="height" secondItem="Kw4-mZ-PUg" secondAttribute="width" multiplier="1:1" id="GgQ-Ng-0Pr"/>
@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wSl-lP-WXh" firstAttribute="top" secondItem="GDb-O8-TFG" secondAttribute="top" id="3ny-xk-ha6"/>
                             <constraint firstAttribute="bottom" secondItem="wSl-lP-WXh" secondAttribute="bottom" id="Qvz-EC-gNH"/>

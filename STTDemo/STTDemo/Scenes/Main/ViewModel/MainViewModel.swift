@@ -160,12 +160,12 @@ extension MainViewModel: AudioControllerDelegate {
                     self.deselectedButton?()
                     self.stopAudio()
                 } else if let response = response {
-                    self.finished = false
+//                    self.finished = false
 
                     for result in response.resultsArray! {
                         if let result = result as? StreamingRecognitionResult {
                             if result.isFinal {
-                                self.finished = true
+//                                self.finished = true
                                 
                                 if let res = result.alternativesArray as? [SpeechRecognitionAlternative] {
                                     let alternative =  res.max(by: { (a, b) -> Bool in
@@ -180,7 +180,7 @@ extension MainViewModel: AudioControllerDelegate {
 
                                     // TRANSLATE SCRIPTS
                                     self.translatingText(inputData: dataItem,
-                                                         givenLangFromCode: LanguageHelper.shared.getCurrentSTT().langCodeSTT!,
+                                                         givenLangFromCode: LanguageHelper.shared.getCurrentSTT().langCodeTrans!,
                                                          givenLangToCode: LanguageHelper.shared.getCurrentTrans().langCodeTrans!)
                                     
                                     // continue record

@@ -10,6 +10,12 @@ import UIKit
 import googleapis
 import AVFoundation
 
+enum OnTranslating : Int {
+    case None = 0
+    case Left
+    case Right
+}
+
 class RecordManualViewModel: NSObject {
     
     // properties
@@ -18,12 +24,23 @@ class RecordManualViewModel: NSObject {
     private var audioData: NSMutableData!
     private var finished: Bool = false
     
+    var onTranslating : OnTranslating = .Left
+    
     var didChanged: ((String?) -> Void)?
+    var didShowValue: ((String) -> Void)?
+    var didPressCopyText: ((String) -> Void)?
     
     private var transcripts: [CellData] = [] {
         didSet {
             didChanged?(nil)
         }
+    }
+    
+    override init() {
+        super.init()
+        transcripts.removeAll()
+        AudioController.sharedInstance.delegate = self
+        
     }
 }
 
@@ -35,20 +52,28 @@ extension RecordManualViewModel: UITableViewDelegate {
 
 extension RecordManualViewModel: UITableViewDataSource, TableCellDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3//transcripts.count
+        return transcripts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TableCell = tableView.dequeueReusableCell(for: indexPath)
         cell.delegate = self
-//        let transcript = transcripts[indexPath.row]
-//        cell.configCell(transcript, givenIndexPath: indexPath)
+        
+        let transcript = transcripts[indexPath.row]
+        cell.configCell(transcript, givenIndexPath: indexPath)
+        
         return cell
     }
     
     // cell delegate
     func didPressCopyText(at index: IndexPath) {
-        // handle to protocol call-back
+        let dataItem = self.transcripts[index.row]
+        
+        // copy to clipboard
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = dataItem.strTextRecognizedFromSpeech
+        
+        self.didPressCopyText?(dataItem.strTextRecognizedFromSpeech)
     }
 }
 
@@ -87,12 +112,13 @@ extension RecordManualViewModel {
         }
     }
     
-    private func translatingText( inputData: CellData, translationCode: String) {
-        print("TRANSLATION: ", ForeignLanguages.shared.selectedTransToLanguage!)
-        guard let desTransCode = ForeignLanguages.shared.selectedTransToLanguage?.desTransCode else { return }
+    private func translatingText( inputData: CellData, givenLangFromCode: String, givenLangToCode: String) {
+        print("TRANSLATION: from \(givenLangFromCode) to \(givenLangToCode)")
         
-        translationRepository.translateText(text: inputData.strTextRecognizedFromSpeech, sourceLangCode: translationCode,
-                                            targetLangCode: desTransCode) { result in
+        
+        translationRepository.translateText(text: inputData.strTextRecognizedFromSpeech,
+                                            sourceLangCode: givenLangFromCode,
+                                            targetLangCode: givenLangToCode) { result in
                                                 switch result {
                                                 case .success(let response):
                                                     guard let res = response?.translationData?.translations?.first?.translatedText,
@@ -108,7 +134,7 @@ extension RecordManualViewModel {
 //                                                    self.writeTextToFireBase(text: dataChange.strTextRecognizedFromSpeech + "[&]" + res)
 //
 //                                                    // clear text video
-//                                                    self.didShowValue?("...")
+                                                    self.didShowValue?("...")
                                                     
                                                 case .failure(let err):
                                                     print("ERROR: ", err?.errorMessage ?? "")
@@ -121,8 +147,19 @@ extension RecordManualViewModel : AudioControllerDelegate {
     func processSampleData(_ data: Data) -> Void {
         audioData.append(data)
         
+        var processLanguageCode = ""
+        switch onTranslating {
+        case .Left:
+            processLanguageCode = LanguageHelper.shared.getCurrentSpeakerLeft().langCodeSTT!
+        case .Right:
+            processLanguageCode = LanguageHelper.shared.getCurrentSpeakerRight().langCodeSTT!
+        default:
+            processLanguageCode = LanguageHelper.shared.getCurrentSpeakerLeft().langCodeSTT!
+        }
+        
         if (audioData.length > chunkSize) {
-            SpeechRecognitionService.sharedInstance.streamAudioData(audioData, languagueCode: (ForeignLanguages.shared.selectedSTTLanguage?.sttCode)!) { [weak self] (response, error) in
+            SpeechRecognitionService.sharedInstance.streamAudioData(audioData,
+                                                                    languagueCode: processLanguageCode) { [weak self] (response, error) in
                 guard let self = self else {
                     return
                 }
@@ -147,21 +184,28 @@ extension RecordManualViewModel : AudioControllerDelegate {
                                     let dataItem : CellData = CellData(givenTextRecog: alternative?.transcript ?? "",
                                                                        givenTextTranslated: "",
                                                                        givenIndex: self.transcripts.count,
-                                                                       givenSenderType: .OnLeft)
+                                                                       givenSenderType: (self.onTranslating == .Left ? .OnLeft : .OnRight))
                                     self.transcripts.append(dataItem)
-//                                    self.didShowValue?(alternative?.transcript ?? "")
+                                    self.didShowValue?(alternative?.transcript ?? "")
                                     
                                     // TRANSLATE SCRIPTS
-                                    self.translatingText(inputData: dataItem, translationCode: (
-                                        ForeignLanguages.shared.selectedSTTLanguage?.sourceTransCode)!)
+                                    if self.onTranslating == .Left {
+                                        self.translatingText(inputData: dataItem,
+                                                             givenLangFromCode: LanguageHelper.shared.getCurrentSpeakerLeft().langCodeTrans!,
+                                                             givenLangToCode: LanguageHelper.shared.getCurrentSpeakerRight().langCodeTrans!)
+                                    } else if self.onTranslating == .Right {
+                                        self.translatingText(inputData: dataItem,
+                                                             givenLangFromCode: LanguageHelper.shared.getCurrentSpeakerRight().langCodeTrans!,
+                                                             givenLangToCode: LanguageHelper.shared.getCurrentSpeakerLeft().langCodeTrans!)
+                                    }
                                     
-                                    // continue record
-                                    self.restartRecord()
+//                                    // continue record
+//                                    self.restartRecord()
                                 }
                                 
                             } else {
                                 if let res = result.alternativesArray as? [SpeechRecognitionAlternative] {
-//                                    self.didShowValue?(res.first?.transcript ?? "")
+                                    self.didShowValue?(res.first?.transcript ?? "")
                                 }
                             }
                         }

@@ -93,7 +93,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7V4-Gf-bCP" userLabel="Left View - trans">
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7V4-Gf-bCP" userLabel="Left View - trans">
                                 <rect key="frame" x="-150" y="712" width="300" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGt-mb-uul">
@@ -136,7 +136,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W8P-qT-y5n" userLabel="Right View - trans">
+                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W8P-qT-y5n" userLabel="Right View - trans">
                                 <rect key="frame" x="264" y="712" width="300" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o9O-G0-JJS">
@@ -202,7 +202,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="z74-YV-qQY">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="z74-YV-qQY">
                                                 <rect key="frame" x="8" y="21" width="398" height="51"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -370,8 +370,8 @@
                         <outlet property="rightButton" destination="NZt-ge-ca2" id="9ZB-Jh-ElQ"/>
                         <outlet property="rightView" destination="W8P-qT-y5n" id="1g8-NX-sGI"/>
                         <outlet property="tbvMain" destination="3JO-ir-ead" id="118-aK-OsI"/>
+                        <outlet property="txtvTextDetected" destination="z74-YV-qQY" id="i6V-6r-Xd5"/>
                         <outlet property="viewMain" destination="Wfs-Fv-ViF" id="rSQ-v6-PZb"/>
-                        <outletCollection property="txtvTextDetected" destination="z74-YV-qQY" collectionClass="NSMutableArray" id="4UR-ne-fzv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2SA-sD-NnV" userLabel="First Responder" sceneMemberID="firstResponder"/>
