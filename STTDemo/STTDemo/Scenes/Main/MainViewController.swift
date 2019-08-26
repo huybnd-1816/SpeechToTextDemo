@@ -23,6 +23,8 @@ final class MainViewController: UIViewController {
         config()
         setupWidthConstraintForTranslationButton()
         setupBarButton()
+        
+        print("Start Conversation: From \(LanguageHelper.shared.getCurrentSTT().langCodeSTT!) to \(LanguageHelper.shared.getCurrentTrans().langCodeTrans!)")
     }
     
     private func setupWidthConstraintForTranslationButton() {

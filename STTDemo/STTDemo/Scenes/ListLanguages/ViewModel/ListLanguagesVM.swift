@@ -8,6 +8,8 @@
 
 
 final class ListLanguagesVM: NSObject {
+    var languageSelectionMode : LanguageSelectionMode = .SpeechToText
+    
     override init() {
         super.init()
     }
@@ -21,23 +23,32 @@ extension ListLanguagesVM: UITableViewDelegate {
 
 extension ListLanguagesVM: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ForeignLanguages.shared.listLanguages.count
+        return LanguageHelper.shared.listLanguage.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: LanguageCell = tableView.dequeueReusableCell(for: indexPath)
-        guard let langName = ForeignLanguages.shared.listLanguages[indexPath.row].name,
-            let isSelected = ForeignLanguages.shared.listLanguages[indexPath.row].isSelected else { return UITableViewCell() }
-        cell.config(langName: langName, isSelected: isSelected)
+        
+        let langItem = LanguageHelper.shared.listLanguage[indexPath.row]
+        cell.configCell(givenLangItem: langItem, givenLanguageSelectionMode: self.languageSelectionMode)
+//        cell.config(langName: langName, isSelected: isSelected)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        for i in 0..<ForeignLanguages.shared.listLanguages.count {
-            ForeignLanguages.shared.listLanguages[i].isSelected = false
+        
+        switch languageSelectionMode {
+        case .SpeechToText:
+            LanguageHelper.shared.setSelectedSTT(givenLangItem:LanguageHelper.shared.listLanguage[indexPath.row])
+        case .Translation:
+            LanguageHelper.shared.setSelectedTrans(givenLangItem:LanguageHelper.shared.listLanguage[indexPath.row])
+        case .SpeakerLeft:
+            LanguageHelper.shared.setSelectedSpeakerLeft(givenLangItem:LanguageHelper.shared.listLanguage[indexPath.row])
+        case .SpeakerRight:
+            LanguageHelper.shared.setSelectedSpeakerRight(givenLangItem:LanguageHelper.shared.listLanguage[indexPath.row])
         }
         
-        ForeignLanguages.shared.listLanguages[indexPath.row].isSelected = true
         tableView.reloadData()
     }
 }

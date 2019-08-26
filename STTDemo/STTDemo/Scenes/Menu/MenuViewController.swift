@@ -32,9 +32,9 @@ final class MenuViewController: UIViewController {
     }
     
     @IBAction func handleRecordingManuallyButtonTapped(_ sender: Any) {
-        showAlert(title: "Notice", message: "This feature is currently under development.")
-//        let vc = RecordingManuallyViewController.instantiate()
-//        vc.hidesBottomBarWhenPushed = true
-//        navigationController?.pushViewController(vc, animated: true)
+//        showAlert(title: "Notice", message: "This feature is currently under development.")
+        let vc = RecordingManuallyViewController.instantiate()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

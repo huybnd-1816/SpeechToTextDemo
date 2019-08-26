@@ -79,12 +79,13 @@ final class MainViewModel: NSObject{
         }
     }
     
-    private func translatingText( inputData: CellData, translationCode: String) {
-        print("TRANSLATION: ", ForeignLanguages.shared.selectedTransToLanguage!)
-        guard let desTransCode = ForeignLanguages.shared.selectedTransToLanguage?.desTransCode else { return }
+    private func translatingText( inputData: CellData, givenLangFromCode: String, givenLangToCode: String) {
+        print("TRANSLATION: from \(givenLangFromCode) to \(givenLangToCode)")
         
-        translationRepository.translateText(text: inputData.strTextRecognizedFromSpeech, sourceLangCode: translationCode,
-                                            targetLangCode: desTransCode) { result in
+        
+        translationRepository.translateText(text: inputData.strTextRecognizedFromSpeech,
+                                            sourceLangCode: givenLangFromCode,
+                                            targetLangCode: givenLangToCode) { result in
             switch result {
             case .success(let response):
                 guard let res = response?.translationData?.translations?.first?.translatedText,
@@ -148,7 +149,7 @@ extension MainViewModel: AudioControllerDelegate {
         audioData.append(data)
         
         if (audioData.length > chunkSize) {
-            SpeechRecognitionService.sharedInstance.streamAudioData(audioData, languagueCode: (ForeignLanguages.shared.selectedSTTLanguage?.sttCode)!) { [weak self] (response, error) in
+            SpeechRecognitionService.sharedInstance.streamAudioData(audioData, languagueCode: LanguageHelper.shared.getCurrentSTT().langCodeSTT!) { [weak self] (response, error) in
                 guard let self = self else {
                     return
                 }
@@ -172,13 +173,15 @@ extension MainViewModel: AudioControllerDelegate {
                                     })
                                     let dataItem : CellData = CellData(givenTextRecog: alternative?.transcript ?? "",
                                                                        givenTextTranslated: "",
-                                                                       givenIndex: self.transcripts.count)
+                                                                       givenIndex: self.transcripts.count,
+                                                                       givenSenderType: .OnLeft)
                                     self.transcripts.append(dataItem)
                                     self.didShowValue?(alternative?.transcript ?? "")
 
                                     // TRANSLATE SCRIPTS
-                                    self.translatingText(inputData: dataItem, translationCode: (
-                                        ForeignLanguages.shared.selectedSTTLanguage?.sourceTransCode)!)
+                                    self.translatingText(inputData: dataItem,
+                                                         givenLangFromCode: LanguageHelper.shared.getCurrentSTT().langCodeSTT!,
+                                                         givenLangToCode: LanguageHelper.shared.getCurrentTrans().langCodeTrans!)
                                     
                                     // continue record
                                     self.restartRecord()

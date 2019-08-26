@@ -31,7 +31,8 @@ final class MessageCell: UITableViewCell, NibReusable {
     
     var localCellData: CellData = CellData(givenTextRecog: "Recognizing",
                                            givenTextTranslated: "",
-                                           givenIndex: 0)
+                                           givenIndex: 0,
+                                           givenSenderType: SenderType.OnLeft)
     
     override func awakeFromNib() {
         super.awakeFromNib()

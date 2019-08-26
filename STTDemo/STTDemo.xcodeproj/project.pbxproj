@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		538225EE23137788009E2907 /* RecordManualViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538225ED23137788009E2907 /* RecordManualViewModel.swift */; };
 		5393DC64230E7EEE0089A24B /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5393DC63230E7EEE0089A24B /* CommonHelper.swift */; };
 		569CE7FB11AD8B4CFEAA1CF0 /* Pods_STTDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4CBF12D4E51CEEE37DE480 /* Pods_STTDemo.framework */; };
 		8E178DC222FABB82002E1017 /* Pulsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E178DC122FABB82002E1017 /* Pulsing.swift */; };
@@ -94,6 +95,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		538225ED23137788009E2907 /* RecordManualViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordManualViewModel.swift; sourceTree = "<group>"; };
 		5393DC63230E7EEE0089A24B /* CommonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHelper.swift; sourceTree = "<group>"; };
 		8E178DC122FABB82002E1017 /* Pulsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pulsing.swift; sourceTree = "<group>"; };
 		8E29CC1E22F7DBFD005BFBEF /* ForeignLanguages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignLanguages.swift; sourceTree = "<group>"; };
@@ -197,6 +199,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		538225EC2313776D009E2907 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				538225ED23137788009E2907 /* RecordManualViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		8E29CC2022F7E2E9005BFBEF /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -614,6 +624,7 @@
 		8EE4D101230E6CD1004CEC47 /* RecordingManually */ = {
 			isa = PBXGroup;
 			children = (
+				538225EC2313776D009E2907 /* ViewModel */,
 				8EE4D102230E6D13004CEC47 /* RecordingManuallyViewController.swift */,
 			);
 			path = RecordingManually;
@@ -773,6 +784,7 @@
 				8E2D4CEA22E6A034002E414B /* CustomRequestAdapter.swift in Sources */,
 				8E54AFB222E9962400001117 /* SpeechRecognitionService.swift in Sources */,
 				8E7B4FF122FD6AFA00608FD4 /* TransLanguageCell.swift in Sources */,
+				538225EE23137788009E2907 /* RecordManualViewModel.swift in Sources */,
 				8E29CC2522F7FEC1005BFBEF /* NavigationController.swift in Sources */,
 				8E54AFE822EADED400001117 /* GetAudioTransciptionRequest.swift in Sources */,
 				8E3402D122E8502B0007F030 /* Date+.swift in Sources */,

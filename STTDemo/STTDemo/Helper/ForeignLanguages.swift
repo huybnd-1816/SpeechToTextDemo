@@ -43,3 +43,87 @@ final class ForeignLanguages {
         return nil
     }
 }
+
+struct LanguageItem {
+    var name: String?
+    var langIndex : Int?
+    
+    var langCodeSTT: String?
+    var langCodeTrans: String?
+}
+
+enum LanguageSelectionMode : Int {
+    case SpeechToText = 0
+    case Translation
+    case SpeakerLeft
+    case SpeakerRight
+}
+
+final class LanguageHelper {
+    static let shared = LanguageHelper()
+    var listLanguage : [LanguageItem] = []
+    var currentSTT : LanguageItem?
+    var currentTrans : LanguageItem?
+    
+    var currentSpeakerLeft : LanguageItem?
+    var currentSpeakerRight : LanguageItem?
+    
+    private init () {
+        let viLang = LanguageItem(name: LanguageHelperItem.Vietnam.nameValue,
+                                  langIndex: LanguageHelperItem.Vietnam.indexValue,
+                                  langCodeSTT: LanguageHelperItem.Vietnam.sttCode,
+                                  langCodeTrans: LanguageHelperItem.Vietnam.transCode)
+        let japLang = LanguageItem(name: LanguageHelperItem.Japan.nameValue,
+                                   langIndex: LanguageHelperItem.Japan.indexValue,
+                                   langCodeSTT: LanguageHelperItem.Japan.sttCode,
+                                   langCodeTrans: LanguageHelperItem.Japan.transCode)
+        let enLang = LanguageItem(name: LanguageHelperItem.English.nameValue,
+                                  langIndex: LanguageHelperItem.English.indexValue,
+                                   langCodeSTT: LanguageHelperItem.English.sttCode,
+                                   langCodeTrans: LanguageHelperItem.English.transCode)
+        
+        self.listLanguage.append(viLang)
+        self.listLanguage.append(japLang)
+        self.listLanguage.append(enLang)
+        
+        self.currentSTT = self.listLanguage[0]
+        self.currentTrans = self.listLanguage[1]
+        
+        self.currentSpeakerLeft = self.listLanguage[0]
+        self.currentSpeakerRight = self.listLanguage[1]
+    }
+    
+    // Meeting mode
+    func setSelectedSTT (givenLangItem : LanguageItem) {
+        self.currentSTT = givenLangItem
+    }
+    
+    func setSelectedTrans (givenLangItem : LanguageItem) {
+        self.currentTrans = givenLangItem
+    }
+    
+    func getCurrentSTT () -> LanguageItem {
+        return self.currentSTT!
+    }
+    
+    func getCurrentTrans () -> LanguageItem {
+        return self.currentTrans!
+    }
+    
+    // Conversation mode
+    func setSelectedSpeakerLeft (givenLangItem : LanguageItem) {
+        self.currentSpeakerLeft = givenLangItem
+    }
+    
+    func setSelectedSpeakerRight (givenLangItem : LanguageItem) {
+        self.currentSpeakerRight = givenLangItem
+    }
+    
+    func getCurrentSpeakerLeft () -> LanguageItem {
+        return self.currentSpeakerLeft!
+    }
+    
+    func getCurrentSpeakerRight () -> LanguageItem {
+        return self.currentSpeakerRight!
+    }
+}

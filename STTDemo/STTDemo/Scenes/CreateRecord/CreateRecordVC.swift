@@ -33,8 +33,8 @@ final class CreateRecordVC: UIViewController {
         if UIDevice.current.screenType == UIDevice.ScreenType.iPhones_5_5s_5c_SE {
             viewLeadingConstraint.constant = 16
         }
-        translateFromButton.setTitle(ForeignLanguages.shared.selectedSTTLanguage?.name, for: .normal)
-        translateToButton.setTitle(ForeignLanguages.shared.selectedTransToLanguage?.name, for: .normal)
+        translateFromButton.setTitle(LanguageHelper.shared.getCurrentSTT().name, for: .normal)
+        translateToButton.setTitle(LanguageHelper.shared.getCurrentTrans().name, for: .normal)
     }
 
     @IBAction func handleCloseButtonTapped(_ sender: Any) {
@@ -59,25 +59,27 @@ final class CreateRecordVC: UIViewController {
     
     @IBAction func handleTranslateFromButtonTapped(_ sender: Any) {
         let vc = ListLanguagesVC.instantiate()
+        vc.languageSelectionMode = .SpeechToText
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true)
         
-        vc.didChangedLanguage = { [weak self] in
+        vc.didChangedLanguage = { [weak self] givenData in
             guard let self = self else { return }
-            self.translateFromButton.setTitle(ForeignLanguages.shared.selectedSTTLanguage?.name, for: .normal)
+            self.translateFromButton.setTitle(LanguageHelper.shared.getCurrentSTT().name, for: .normal)
         }
     }
     
     @IBAction func handleTranslateToButtonTapped(_ sender: Any) {
-        let vc = ListTransLanguagesVC.instantiate()
+        let vc = ListLanguagesVC.instantiate()
+        vc.languageSelectionMode = .Translation
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true)
         
-        vc.didChangedLanguage = { [weak self] in
+        vc.didChangedLanguage = { [weak self] givenData in
             guard let self = self else { return }
-            self.translateToButton.setTitle(ForeignLanguages.shared.selectedTransToLanguage?.name, for: .normal)
+            self.translateToButton.setTitle(LanguageHelper.shared.getCurrentTrans().name, for: .normal)
         }
     }
 }

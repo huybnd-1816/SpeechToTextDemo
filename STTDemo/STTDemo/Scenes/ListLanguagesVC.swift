@@ -11,8 +11,9 @@ final class ListLanguagesVC: UIViewController {
     @IBOutlet private weak var languagesTableView: UITableView!
     @IBOutlet private weak var viewLeadingConstraint: NSLayoutConstraint!
     
+    var languageSelectionMode : LanguageSelectionMode = .SpeechToText
     private var viewModel: ListLanguagesVM!
-    var didChangedLanguage:(() -> Void)?
+    var didChangedLanguage:((_ languageIndex : Int) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ final class ListLanguagesVC: UIViewController {
     
     private func config() {
         viewModel = ListLanguagesVM()
+        viewModel.languageSelectionMode = self.languageSelectionMode
         languagesTableView.delegate = viewModel
         languagesTableView.dataSource = viewModel
         languagesTableView.register(UINib(nibName: "LanguageCell", bundle: nil), forCellReuseIdentifier: "LanguageCell")
@@ -36,7 +38,7 @@ final class ListLanguagesVC: UIViewController {
     
     @IBAction func handleCloseButtonTapped(_ sender: Any) {
         dismiss(animated: true)
-        didChangedLanguage?()
+        didChangedLanguage?(1)
     }
 }
 
